@@ -1,13 +1,15 @@
 import AppRouter from '@/router/Router';
-import './App.css';
+import { Component } from 'react';
+import './App.scss';
 
-function App() {
-  return (
-    <div>
-      <AppRouter />
-      <h1> {location.pathname}</h1>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <AppRouter />
+      </div>
+    );
+  }
 }
 
 export default App;
