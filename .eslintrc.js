@@ -1,7 +1,7 @@
 module.exports = {
   env: {
     browser: true,
-    node: true
+    node: true,
   },
   parser: '@typescript-eslint/parser',
   extends: [
@@ -11,19 +11,19 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:prettier/recommended',
     'plugin:react/jsx-runtime',
-    'prettier'
+    'prettier',
   ],
   plugins: ['react', 'prettier', '@typescript-eslint'],
   settings: {
     react: {
-      version: 'detect'
-    }
+      version: 'detect',
+    },
   },
   overrides: [
     {
       files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
-      extends: ['plugin:testing-library/react']
-    }
+      extends: ['plugin:testing-library/react'],
+    },
   ],
   rules: {
     'react-hooks/rules-of-hooks': 'error',
@@ -40,7 +40,8 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/no-explicit-any': 'error',
     '@typescript-eslint/no-var-reqiures': 'off',
+    '@typescript-eslint/ban-types': 'off',
     'react/jsx-uses-react': 'off',
-    'react/react-in-jsx-scope': 'off'
-  }
+    'react/react-in-jsx-scope': 'off',
+  },
 };

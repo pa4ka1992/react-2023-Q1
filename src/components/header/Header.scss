@@ -1,5 +1,6 @@
 @import '~variables';
 
 .active {
-  color: $red-5;
+  border-bottom-color: $grey-1;
+  color: $grey-1;
 }
