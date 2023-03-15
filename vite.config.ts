@@ -24,7 +24,7 @@ export default defineConfig({
     environment: 'happy-dom',
     setupFiles: './src/setupTests.ts',
     coverage: {
-      reporter: ['html', 'lcov'],
+      reporter: ['text', 'json', 'html'],
     },
   },
 });
