@@ -8,7 +8,6 @@ export class Layout extends Component {
     return (
       <div>
         <Header />
-
         <main className={styles.container}>
           <Outlet />
         </main>

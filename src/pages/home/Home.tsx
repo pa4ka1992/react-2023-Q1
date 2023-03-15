@@ -1,4 +1,4 @@
-import { SearchBar } from '@/components/_index';
+import { CardList, SearchBar } from '@/components/_index';
 import { Component } from 'react';
 
 export class Home extends Component {
@@ -6,6 +6,7 @@ export class Home extends Component {
     return (
       <div>
         <SearchBar />
+        <CardList />
       </div>
     );
   }

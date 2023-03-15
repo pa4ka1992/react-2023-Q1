@@ -1,0 +1,9 @@
+@import '~variables';
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: map-get($space-md, 'x');
+
+  padding: map-get($space-xl, 'x') 0
+}
