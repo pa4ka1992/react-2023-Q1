@@ -1,8 +1,11 @@
-import { ROUTE } from '@/router/_constants';
 import { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Route, Routes } from 'react-router-dom';
+
 import styles from './Header.module.scss';
 import './Header.scss';
+
+import routes from '@/router/routes';
+import { ROUTE } from '@/router/_constants';
 
 export class Header extends Component {
   render() {
@@ -16,6 +19,15 @@ export class Header extends Component {
             About
           </NavLink>
         </nav>
+        <h4 className={styles.page}>
+          {
+            <Routes>
+              {routes.map(({ path, name }, key) => (
+                <Route path={path} element={name} key={key} />
+              ))}
+            </Routes>
+          }
+        </h4>
       </header>
     );
   }

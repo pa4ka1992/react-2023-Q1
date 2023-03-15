@@ -5,10 +5,12 @@ const routes = [
   {
     path: ROUTE.home,
     element: <Home />,
+    name: 'Home',
   },
   {
     path: ROUTE.about,
     element: <About />,
+    name: 'About',
   },
 ];
 

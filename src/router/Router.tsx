@@ -1,8 +1,9 @@
-import { Layout } from '@/components/_index';
-import { NotFound } from '@/pages/_index';
-import { ROUTE } from '@/router/_constants';
 import { Route, Routes } from 'react-router-dom';
 
+import { Layout } from '@/components/_index';
+import { NotFound } from '@/pages/_index';
+
+import { ROUTE } from '@/router/_constants';
 import routes from './routes';
 
 const AppRouter = () => {
