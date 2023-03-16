@@ -9,8 +9,8 @@ export class CardList extends Component {
   render() {
     return (
       <section className={styles.list}>
-        {cards.map((card, key) => (
-          <Card card={card} key={key} />
+        {cards.map((card) => (
+          <Card card={card} key={card.id} />
         ))}
       </section>
     );
