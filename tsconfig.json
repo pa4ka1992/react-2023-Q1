@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "lib": ["dom", "esnext", "dom.iterable"],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "noImplicitAny": true,
     "noFallthroughCasesInSwitch": true,
     "useDefineForClassFields": true,
@@ -23,9 +23,10 @@
       "@/*": ["./src/*"],
       "~app/*": ["src/app/*"],
       "~assets/*": ["src/assets/*"],
-      "~compos/*": ["src/components/*"]
+      "~compos/*": ["src/components/*"],
+      "~pages/*": ["src/pages/*"]
     }
   },
-  "include": ["./src"],
+  "include": ["./src", "vite.config.ts", "global.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
