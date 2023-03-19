@@ -6,8 +6,8 @@ import styles from './Card.module.scss';
 
 import { cards } from '@/mock/cards';
 
-export class Card extends Component<{ card: typeof cards[0] }> {
-  constructor(props: { card: typeof cards[0] }) {
+export class Card extends Component<{ card: (typeof cards)[0] }> {
+  constructor(props: { card: (typeof cards)[0] }) {
     super(props);
   }
 
@@ -17,7 +17,7 @@ export class Card extends Component<{ card: typeof cards[0] }> {
       styles;
 
     return (
-      <section className={card}>
+      <section className={card} data-testid="card">
         <h3 className={titleName}>{title}</h3>
         <p>{category}</p>
 
