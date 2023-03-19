@@ -1,10 +1,10 @@
 {
-  "name": "react",
+  "name": "react-components",
   "version": "1.0.0",
-  "description": "React + TypeScript + Vite + Github Actions starter template",
+  "description": "React + TypeScript + Vite + Github Actions",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pchmn/vite-react-ts-ghactions-template.git"
+    "url": ""
   },
   "keywords": [
     "react",
@@ -14,9 +14,9 @@
     "ghactions",
     "vitest"
   ],
-  "author": "pchmn",
+  "author": "nikita kisly",
   "license": "MIT",
-  "homepage": "https://github.com/pchmn/vite-react-ts-ghactions-template",
+  "homepage": "",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -26,7 +26,7 @@
     "test:ci": "vitest run --coverage",
     "serve": "vite preview",
     "prepare": "husky install && rm -rf .git/hooks && ln -s ../.husky .git/hooks",
-    "lint": "eslint --cache --fix ./src"
+    "lint": "eslint --ext js,ts,tsx src"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.3.0",
