@@ -28,6 +28,7 @@ export default defineConfig({
     setupFiles: ['./src/setupTests.ts'],
     coverage: {
       reporter: ['text', 'json', 'html'],
+      exclude: ['src/**/*.ts', 'src/**/*.test.tsx'],
     },
   },
 });

@@ -11,7 +11,7 @@ export class Header extends Component {
   render() {
     const { header, nav, wrap, link, page } = styles;
     return (
-      <header className={header}>
+      <header className={header} data-testid="header">
         <nav className={nav}>
           <div className={wrap}>
             <NavLink className={link} to={ROUTE.home}>

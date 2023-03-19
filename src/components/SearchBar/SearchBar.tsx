@@ -22,7 +22,7 @@ export class SearchBar extends Component<{}, { searchVal: string }> {
   componentDidMount() {
     const savedSearch = this.LS.getItem('search');
     if (typeof savedSearch === 'string') {
-      this.setState({ searchVal: savedSearch ? savedSearch : '' });
+      this.setState({ searchVal: savedSearch ?? '' });
     }
   }
 
@@ -32,8 +32,9 @@ export class SearchBar extends Component<{}, { searchVal: string }> {
 
   render() {
     return (
-      <div className={styles.form}>
+      <div data-testid="search" className={styles.form}>
         <input
+          role="search-input"
           className={styles.search}
           onChange={this.changeHandler}
           type="text"

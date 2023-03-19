@@ -5,6 +5,7 @@ describe('App', () => {
   render(<App />);
 
   it('renders', () => {
-    expect(screen.getByRole('main'));
+    expect(screen.getByTestId('header')).toBeInTheDocument();
+    expect(screen.getByTestId('home')).toBeInTheDocument();
   });
 });

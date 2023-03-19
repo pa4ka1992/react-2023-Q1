@@ -8,7 +8,7 @@ import { cards } from '@/mock/cards';
 export class CardList extends Component {
   render() {
     return (
-      <section className={styles.list}>
+      <section className={styles.list} data-testid="cardlist">
         {cards.map((card) => (
           <Card card={card} key={card.id} />
         ))}
