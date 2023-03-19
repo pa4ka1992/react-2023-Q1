@@ -1,0 +1,41 @@
+@import '~variables';
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: map-get($space-sm, 'y') map-get($space-xl, 'x');
+
+  background-color: $primary;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: map-get($space-sm, 'x');
+
+  margin: 0 auto;
+  max-width: $breakpoint-md;
+  width: 100%;
+}
+
+.wrap {
+  display: flex;
+}
+
+.link {
+  display: block;
+  padding: map-get($space-sm, 'x');
+
+  border-bottom: 2px solid transparent;
+  color: $grey-4;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.page {
+  margin: 0;
+
+  color: $grey-1;
+}
