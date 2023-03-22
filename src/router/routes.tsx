@@ -1,4 +1,4 @@
-import { About, Home } from '@/pages/_index';
+import { About, Form, Home } from '@/pages/_index';
 import { ROUTE } from './_constants';
 
 const routes = [
@@ -11,6 +11,11 @@ const routes = [
     path: ROUTE.about,
     element: <About />,
     name: 'About',
+  },
+  {
+    path: ROUTE.form,
+    element: <Form />,
+    name: 'Form',
   },
 ];
 

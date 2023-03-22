@@ -20,6 +20,9 @@ export class Header extends Component {
             <NavLink className={link} to={ROUTE.about}>
               About
             </NavLink>
+            <NavLink className={link} to={ROUTE.form}>
+              Form
+            </NavLink>
           </div>
 
           <h4 className={page}>
