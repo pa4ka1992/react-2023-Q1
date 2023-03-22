@@ -1,5 +1,5 @@
-import { CardList, SearchBar } from '@/components/_index';
 import { Component } from 'react';
+import { CardList, SearchBar } from '~compos/_index';
 
 export class Home extends Component {
   render() {

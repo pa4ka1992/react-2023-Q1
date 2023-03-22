@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-import { Card } from '@/components/card/Card';
+import { Card } from '~compos/cards/card/Card';
 import styles from './CardList.module.scss';
 
 import { cards } from '@/mock/cards';
