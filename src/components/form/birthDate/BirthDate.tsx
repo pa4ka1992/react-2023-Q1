@@ -1,7 +1,12 @@
-import { Component } from 'react';
+import { Component, RefObject } from 'react';
 
-export class BirthDate extends Component {
+type TProps = { data: { ref: RefObject<HTMLInputElement> } };
+
+export class BirthDate extends Component<TProps> {
+  constructor(props: TProps) {
+    super(props);
+  }
   render() {
-    return <input type="date" name="birth-date" />;
+    return <input ref={this.props.data.ref} type="date" name="birth-date" />;
   }
 }

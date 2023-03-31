@@ -1,14 +1,30 @@
-import { Component } from 'react';
+import { Component, RefObject } from 'react';
 
-export class Gender extends Component {
+type TProps = {
+  data: {
+    refs: {
+      title: string;
+      link: RefObject<HTMLInputElement>;
+    }[];
+  };
+};
+
+export class Gender extends Component<TProps> {
+  constructor(props: TProps) {
+    super(props);
+  }
+
   render() {
+    const { refs } = this.props.data;
+
     return (
       <div>
-        <input type="radio" id="male" name="gender" />
-        <label htmlFor="male">Male</label>
-
-        <input type="radio" id="female" name="gender" />
-        <label htmlFor="female">Female</label>
+        {refs.map((ref) => (
+          <>
+            <input ref={ref.link} type="radio" id={ref.title} name="gender" />
+            <label htmlFor="info">{ref.title}</label>
+          </>
+        ))}
       </div>
     );
   }

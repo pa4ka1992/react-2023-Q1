@@ -1,17 +1,29 @@
-import { Component } from 'react';
+import { Component, RefObject } from 'react';
 
-export class AddInfo extends Component {
+type TProps = {
+  data: {
+    refs: {
+      title: string;
+      link: RefObject<HTMLInputElement>;
+    }[];
+  };
+};
+export class AddInfo extends Component<TProps> {
+  constructor(props: TProps) {
+    super(props);
+  }
+
   render() {
+    const { refs } = this.props.data;
+
     return (
       <div>
-        <input type="checkbox" id="info" name="scales" />
-        <label htmlFor="info">Info</label>
-
-        <input type="checkbox" id="info1" name="scales" />
-        <label htmlFor="info1">Info1</label>
-
-        <input type="checkbox" id="info2" name="scales" />
-        <label htmlFor="info2">Info2</label>
+        {refs.map((ref) => (
+          <>
+            <input ref={ref.link} type="checkbox" id={ref.title} name="scales" />
+            <label htmlFor="info">{ref.title}</label>
+          </>
+        ))}
       </div>
     );
   }

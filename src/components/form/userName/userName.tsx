@@ -1,7 +1,12 @@
-import { Component } from 'react';
+import { Component, RefObject } from 'react';
 
-export class UserName extends Component {
+type TProps = { data: { ref: RefObject<HTMLInputElement> } };
+
+export class UserName extends Component<TProps> {
+  constructor(props: TProps) {
+    super(props);
+  }
   render() {
-    return <input type="text" name="user-name" />;
+    return <input ref={this.props.data.ref} type="text" name="user-name" />;
   }
 }
