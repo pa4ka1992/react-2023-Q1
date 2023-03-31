@@ -15,8 +15,8 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path={ROUTE.home} element={<Layout />}>
-        {routes.map(({ path, element }, key) => (
-          <Route index={path === ROUTE.home} path={path} element={element} key={key} />
+        {routes.map(({ path, element, name }, key) => (
+          <Route index={path === ROUTE.home} id={name} path={path} element={element} key={key} />
         ))}
       </Route>
       <Route path={ROUTE.notFound} element={<NotFound />} />

@@ -1,48 +1,39 @@
+import { useEffect, useRef, useState, type FC } from 'react';
+
 import { LocalStorageService } from '@/services/localStorage';
-import { Component } from 'react';
+
 import styles from './SearchBar.module.scss';
 
-export class SearchBar extends Component<{}, { searchVal: string }> {
-  LS = new LocalStorageService('react');
+export const SearchBar: FC = () => {
+  const [searchVal, setSearchVal] = useState('');
+  const LS = useRef(new LocalStorageService('react'));
 
-  constructor(props: {}) {
-    super(props);
-
-    this.state = {
-      searchVal: '',
-    };
-
-    this.changeHandler = this.changeHandler.bind(this);
-  }
-
-  changeHandler({ target }: React.ChangeEvent<HTMLInputElement>) {
-    this.setState({ searchVal: target.value });
-  }
-
-  componentDidMount() {
-    const savedSearch = this.LS.getItem('search');
+  useEffect(() => {
+    const savedSearch = LS.current.getItem('search');
     if (typeof savedSearch === 'string') {
-      this.setState({ searchVal: savedSearch ?? '' });
+      setSearchVal(savedSearch ?? '');
     }
-  }
+  }, []);
 
-  componentWillUnmount() {
-    this.LS.setItem('search', this.state.searchVal);
-  }
+  useEffect(() => {
+    LS.current.setItem('search', searchVal);
+  }, [searchVal]);
 
-  render() {
-    return (
-      <div data-testid="search" className={styles.form}>
-        <input
-          role="search-input"
-          className={styles.search}
-          onChange={this.changeHandler}
-          type="text"
-          placeholder="Search..."
-          value={this.state.searchVal}
-        />
-        <button className={styles.button}>Search</button>
-      </div>
-    );
-  }
-}
+  const changeHandler = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchVal(target.value);
+  };
+
+  return (
+    <div data-testid="search" className={styles.form}>
+      <input
+        role="search-input"
+        className={styles.search}
+        onChange={changeHandler}
+        type="text"
+        placeholder="Search..."
+        value={searchVal}
+      />
+      <button className={styles.button}>Search</button>
+    </div>
+  );
+};

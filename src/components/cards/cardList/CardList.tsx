@@ -1,18 +1,16 @@
-import { Component } from 'react';
+import { type FC } from 'react';
 
 import { Card } from '~compos/cards/card/Card';
 import styles from './CardList.module.scss';
 
 import { cards } from '@/mock/cards';
 
-export class CardList extends Component {
-  render() {
-    return (
-      <section className={styles.list} data-testid="cardlist">
-        {cards.map((card) => (
-          <Card card={card} key={card.id} />
-        ))}
-      </section>
-    );
-  }
-}
+export const CardList: FC = () => {
+  return (
+    <section className={styles.list} data-testid="cardlist">
+      {cards.map((card) => (
+        <Card cardData={card} key={card.id} />
+      ))}
+    </section>
+  );
+};
