@@ -1,0 +1,26 @@
+@import '~variables';
+
+.userWrapper {
+  padding: map-get($space-md, 'x');
+
+  background-color: $light;
+  border-radius: $button-push-border-radius;
+  box-shadow: $button-shadow;
+}
+
+.img {
+  display: block;
+  width: 100px;
+  height: 100px;
+
+  border-radius: 50%;
+}
+
+.title {
+  margin-right: map-get($space-sm, 'x');
+  font-weight: 600;
+}
+
+.info {
+  margin: 0;
+}

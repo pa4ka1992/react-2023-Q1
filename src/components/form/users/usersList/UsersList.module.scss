@@ -1,0 +1,10 @@
+@import '~variables';
+
+.usersList {
+  display: grid;
+  align-items: stretch;
+  grid-template-columns: repeat(5, 1fr);
+  gap: map-get($space-md, 'x');
+
+  margin-top: map-get($space-md, 'x');
+}
