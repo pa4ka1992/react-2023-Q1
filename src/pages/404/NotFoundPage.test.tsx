@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { NotFound } from './NotFound';
+import { NotFound } from './NotFoundPage';
 
 describe('NotFound', () => {
   render(<NotFound />);

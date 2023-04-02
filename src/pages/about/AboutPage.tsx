@@ -1,6 +1,6 @@
 import { type FC } from 'react';
 
-export const About: FC = () => {
+export const AboutPage: FC = () => {
   return (
     <div data-testid="about">
       Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has

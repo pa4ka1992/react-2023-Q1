@@ -1,6 +1,6 @@
 import { type FC } from 'react';
 
-export const NotFound: FC = () => {
+export const NotFoundPage: FC = () => {
   return (
     <div data-testid="404">
       <p>404</p>
