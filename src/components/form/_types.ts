@@ -4,6 +4,7 @@ import { FieldValues } from '~pages/form/_types';
 export interface IFormProps {
   register: UseFormRegister<FieldValues>;
   error?: FieldError;
+  isReseted?: boolean;
 }
 
 export interface ICheckboxProps {

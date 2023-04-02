@@ -4,5 +4,5 @@ export interface FieldValues {
   country: string;
   addInfo: string[];
   gender: string;
-  photo: string;
+  photo: FileList;
 }
