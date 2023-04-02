@@ -1,0 +1,9 @@
+@import '~variables';
+
+.title {
+  margin: map-get($space-sm, 'x') 0;
+}
+
+.border {
+  border-top: 1px solid $grey-5;
+}
