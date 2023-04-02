@@ -8,7 +8,7 @@ import { FieldValues } from '@/pages/form/_types';
 
 export const UsersList: FC<{ users: FieldValues[] }> = ({ users }) => {
   return (
-    <div className={styles.usersList}>
+    <div data-testid="users" className={styles.usersList}>
       {users.map((user, i) => (
         <User user={user} key={i} />
       ))}

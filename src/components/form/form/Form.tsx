@@ -40,7 +40,7 @@ export const Form: FC<TProps> = ({ setUsers }) => {
 
   return (
     <>
-      <form className={form} onSubmit={handleSubmit(submitHandler)}>
+      <form data-testid="form" className={form} onSubmit={handleSubmit(submitHandler)}>
         <h3 className={header}>Form</h3>
         <div className={grid}>
           <UserName register={register} error={errors.userName} />

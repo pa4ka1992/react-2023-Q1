@@ -1,3 +1,4 @@
+import AppRouter from '@/router/Router';
 import { ROUTE } from '@/router/_constants';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
@@ -8,7 +9,8 @@ describe('Layout', () => {
     render(
       <MemoryRouter initialEntries={[ROUTE.about]}>
         <Layout />
-      </MemoryRouter>
+      </MemoryRouter>,
+      { wrapper: AppRouter }
     );
 
     expect(screen.getByTestId('header'));

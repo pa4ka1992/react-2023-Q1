@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import { Home } from './HomePage';
+import { HomePage } from './HomePage';
 
 describe('Home', () => {
-  render(<Home />);
+  render(<HomePage />);
 
   it('renders', () => {
     expect(screen.getByTestId('cardlist')).toBeInTheDocument();

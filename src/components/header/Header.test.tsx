@@ -1,3 +1,4 @@
+import AppRouter from '@/router/Router';
 import { ROUTE } from '@/router/_constants';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
@@ -8,7 +9,8 @@ describe('Header', () => {
     render(
       <MemoryRouter initialEntries={[ROUTE.home]}>
         <Header />
-      </MemoryRouter>
+      </MemoryRouter>,
+      { wrapper: AppRouter }
     );
 
     expect(screen.getByRole('heading', { level: 4 })).toHaveTextContent('Home');

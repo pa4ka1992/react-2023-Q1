@@ -8,9 +8,13 @@ const { img, title, avatar, wrapper, content, userWrapper, info, infoItem } = st
 
 export const User: FC<{ user: FieldValues }> = ({ user }) => {
   return (
-    <div className={userWrapper}>
+    <div data-testid="user" className={userWrapper}>
       <div className={avatar}>
-        <img className={img} src={URL.createObjectURL(user.photo[0])} alt="avatar" />
+        <img
+          className={img}
+          src={user.photo ? URL.createObjectURL(user.photo[0]) : ''}
+          alt="avatar"
+        />
       </div>
 
       <div className={wrapper}>
