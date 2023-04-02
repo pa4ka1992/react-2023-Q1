@@ -24,7 +24,8 @@
       "~app/*": ["src/app/*"],
       "~assets/*": ["src/assets/*"],
       "~compos/*": ["src/components/*"],
-      "~pages/*": ["src/pages/*"]
+      "~pages/*": ["src/pages/*"],
+      "~global/*": ["src/global/*"]
     }
   },
   "include": ["./src", "vite.config.ts", "global.d.ts"],

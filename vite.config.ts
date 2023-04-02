@@ -16,6 +16,7 @@ export default defineConfig({
       '~compos/*': path.resolve(__dirname, './src/components/'),
       '~pages/*': path.resolve(__dirname, './src/pages/'),
       '~variables': path.resolve(__dirname, './src/global/scss/variables.sass'),
+      '~global/*': path.resolve(__dirname, './src/global/'),
     },
   },
   plugins: [react(), tsconfigPaths()],
@@ -28,7 +29,7 @@ export default defineConfig({
     setupFiles: ['./src/setupTests.ts'],
     coverage: {
       reporter: ['text', 'html', 'lcov'],
-      exclude: ['src/**/*.test.tsx'],
+      exclude: ['src/**/*.test.tsx', 'src/**/*.ts'],
     },
   },
 });

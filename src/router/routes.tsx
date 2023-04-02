@@ -1,20 +1,20 @@
-import { About, Form, Home } from '@/pages/_index';
+import { AboutPage, FormPage, HomePage } from '@/pages/_index';
 import { ROUTE } from './_constants';
 
 const routes = [
   {
     path: ROUTE.home,
-    element: <Home />,
+    element: <HomePage />,
     name: 'Home',
   },
   {
     path: ROUTE.about,
-    element: <About />,
+    element: <AboutPage />,
     name: 'About',
   },
   {
     path: ROUTE.form,
-    element: <Form />,
+    element: <FormPage />,
     name: 'Form',
   },
 ];
