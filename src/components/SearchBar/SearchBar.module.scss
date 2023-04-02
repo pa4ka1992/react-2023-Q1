@@ -7,47 +7,7 @@ $search-size: map-get($space-sm, 'x');
   justify-content: center;
   align-items: center;
   gap: $search-size;
-}
 
-.search {
-  padding: $button-padding;
-
-  font: {
-    weight: $button-font-weight;
-    size: $input-font-size;
-  }
-
-  background-color: $grey-3;
-  border: none {
-    radius: $button-border-radius;
-  }
-  box-shadow: $button-shadow;
-  outline: none;
-  transition: $button-transition;
-
-  &:focus-visible {
-    background-color: $grey-4;
-  }
-}
-
-.button {
-  padding: $button-padding;
-
-  font-size: $button-font-size;
-
-  background-color: $primary;
-  border: none;
-  border-radius: $button-border-radius;
-  box-shadow: $button-shadow;
-  color: $light;
-  cursor: pointer;
-  transition: all 0.2s;
-
-  &:hover {
-    background-color: $secondary;
-  }
-
-  &:active {
-    transform: scale(0.95);
-  }
+  max-width: 40%;
+  margin: 0 auto;
 }

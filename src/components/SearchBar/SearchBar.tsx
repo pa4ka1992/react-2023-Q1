@@ -2,6 +2,8 @@ import { useEffect, useRef, useState, type FC } from 'react';
 
 import { LocalStorageService } from '@/services/localStorage';
 
+import buttonStyle from '~global/scss/Button.module.scss';
+import inputStyle from '~global/scss/Input.module.scss';
 import styles from './SearchBar.module.scss';
 
 export const SearchBar: FC = () => {
@@ -27,13 +29,13 @@ export const SearchBar: FC = () => {
     <div data-testid="search" className={styles.form}>
       <input
         role="search-input"
-        className={styles.search}
+        className={inputStyle.input}
         onChange={changeHandler}
         type="text"
         placeholder="Search..."
         value={searchVal}
       />
-      <button className={styles.button}>Search</button>
+      <button className={buttonStyle.button}>Search</button>
     </div>
   );
 };
