@@ -10,18 +10,23 @@ export const SearchBar: FC = () => {
   const [searchVal, setSearchVal] = useState('');
   const LS = useRef(new LocalStorageService('react'));
 
+  const cBValue = useRef('');
+
+  useEffect(() => {
+    cBValue.current = searchVal;
+  }, [searchVal]);
+
   useEffect(() => {
     const savedSearch = LS.current.getItem('search');
     if (typeof savedSearch === 'string') {
       setSearchVal(savedSearch ?? '');
     }
+    const storage = LS.current;
+
+    return () => storage.setItem('search', cBValue.current);
   }, []);
 
-  useEffect(() => {
-    LS.current.setItem('search', searchVal);
-  }, [searchVal]);
-
-  const changeHandler = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+  const inputHandler = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     setSearchVal(target.value);
   };
 
@@ -30,7 +35,7 @@ export const SearchBar: FC = () => {
       <input
         role="search-input"
         className={inputStyle.input}
-        onChange={changeHandler}
+        onInput={inputHandler}
         type="text"
         placeholder="Search..."
         value={searchVal}
