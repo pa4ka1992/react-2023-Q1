@@ -1,0 +1,13 @@
+@import '~variables';
+
+$search-size: map-get($space-sm, 'x');
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $search-size;
+
+  max-width: 40%;
+  margin: 0 auto;
+}

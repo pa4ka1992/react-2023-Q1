@@ -1,0 +1,25 @@
+@import '~variables';
+
+.input {
+  box-sizing: border-box;
+  padding: $button-padding;
+  width: 100%;
+
+  font: {
+    family: $typography-font-family;
+    weight: $button-font-weight;
+    size: $input-font-size;
+  }
+
+  background-color: $light;
+  border: none {
+    radius: $button-border-radius;
+  }
+  box-shadow: $button-shadow;
+  outline: none;
+  transition: $button-transition;
+
+  &:focus-visible {
+    background-color: $grey-4;
+  }
+}

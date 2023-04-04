@@ -1,0 +1,13 @@
+@import '~variables';
+
+.select {
+  padding: map-get($space-xs, 'x');
+  width: 100%;
+
+  color: $light;
+  background-color: $primary;
+  border: none {
+    radius: $button-border-radius;
+  }
+  outline: none;
+}
