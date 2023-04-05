@@ -1,11 +1,11 @@
 import { type FC } from 'react';
 
-import { FormError } from '../error/FormError';
+import { FormError } from '../Error/FormError';
 
 import '../styles/Field.scss';
 import styles from './Country.module.scss';
 
-import { COUNTRIES, SELECT } from './constants';
+import { COUNTRIES, SELECT } from './_constants';
 
 import { IFormProps } from '~compos/form/_types';
 

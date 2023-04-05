@@ -6,8 +6,8 @@ import { AddInfo, BirthDate, Country, Gender, Photo, UserName } from '~compos/fo
 import buttonStyle from '~global/scss/Button.module.scss';
 import styles from './Form.module.scss';
 
-import { FieldValues } from '@/pages/form/_types';
-import { Modal } from '../modal/Modal';
+import { FieldValues } from '@/pages/Form/_types';
+import { Modal } from '../Modal/Modal';
 
 const { form, header, grid } = styles;
 

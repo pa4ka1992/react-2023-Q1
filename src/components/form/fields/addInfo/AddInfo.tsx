@@ -1,6 +1,6 @@
 import { type FC } from 'react';
 
-import { FormError } from '../error/FormError';
+import { FormError } from '../Error/FormError';
 
 import '../styles/Field.scss';
 import styles from '../styles/RadioCheck.module.scss';

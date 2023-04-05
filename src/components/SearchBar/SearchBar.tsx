@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type FC } from 'react';
 
-import { LocalStorageService } from '@/services/localStorage';
+import { LocalStorageService } from '@/services/storage/localStorage';
 
 import buttonStyle from '~global/scss/Button.module.scss';
 import inputStyle from '~global/scss/Input.module.scss';

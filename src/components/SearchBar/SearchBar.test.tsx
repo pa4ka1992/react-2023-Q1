@@ -1,4 +1,4 @@
-import { LocalStorageService } from '@/services/localStorage';
+import { LocalStorageService } from '@/services/storage/localStorage';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { SearchBar } from './SearchBar';
 

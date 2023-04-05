@@ -1,6 +1,6 @@
 import { type FC } from 'react';
 
-import { Card } from '~compos/cards/card/Card';
+import { Card } from '@/components/cards/Card/Card';
 import styles from './CardList.module.scss';
 
 import { cards } from '@/mock/cards';

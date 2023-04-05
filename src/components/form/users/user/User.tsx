@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import styles from './User.module.scss';
 
-import { FieldValues } from '@/pages/form/_types';
+import { FieldValues } from '@/pages/Form/_types';
 
 const { img, title, avatar, wrapper, content, userWrapper, info, infoItem } = styles;
 

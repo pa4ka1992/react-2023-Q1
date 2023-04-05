@@ -1,4 +1,4 @@
 export { NotFoundPage } from '@/pages/404/NotFoundPage';
-export { AboutPage } from '@/pages/about/AboutPage';
-export { FormPage } from '@/pages/form/FormPage';
-export { HomePage } from '@/pages/home/HomePage';
+export { AboutPage } from '@/pages/About/AboutPage';
+export { FormPage } from '@/pages/Form/FormPage';
+export { HomePage } from '@/pages/Home/HomePage';

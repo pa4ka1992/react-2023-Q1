@@ -1,10 +1,10 @@
 import { type FC } from 'react';
 
-import { User } from '~compos/form/users/user/User';
+import { User } from '@/components/form/users/User/User';
 
 import styles from './UsersList.module.scss';
 
-import { FieldValues } from '@/pages/form/_types';
+import { FieldValues } from '@/pages/Form/_types';
 
 export const UsersList: FC<{ users: FieldValues[] }> = ({ users }) => {
   return (

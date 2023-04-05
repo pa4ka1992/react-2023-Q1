@@ -1,4 +1,4 @@
-export { CardList } from '~compos/cards/cardList/CardList';
-export { Header } from '~compos/header/Header';
-export { Layout } from '~compos/layout/Layout';
-export { SearchBar } from '~compos/SearchBar/SearchBar';
+export { Header } from '@/components/Header/Header';
+export { Layout } from '@/components/Layout/Layout';
+export { SearchBar } from '@/components/SearchBar/SearchBar';
+export { CardList } from '@/components/cards/CardList/CardList';
