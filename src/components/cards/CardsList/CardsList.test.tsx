@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { CardList } from './CardList';
+import { CardList } from './CardsList';
 
 describe('CardList', () => {
   it('renders', () => {
