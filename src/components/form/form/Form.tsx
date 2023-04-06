@@ -26,8 +26,6 @@ export const Form: FC<TProps> = ({ setUsers }) => {
   } = useForm<FieldValues>({ mode: 'onSubmit', reValidateMode: 'onSubmit' });
 
   const submitHandler: SubmitHandler<FieldValues> = async (data, e) => {
-    console.log(data);
-
     e?.preventDefault();
     await setUsers((prev) => [...prev, structuredClone(data)]);
     setIsReseted(true);
@@ -50,13 +48,7 @@ export const Form: FC<TProps> = ({ setUsers }) => {
           <Gender register={register} error={errors.gender} />
           <Photo register={register} error={errors.photo} isReseted={isReseted} />
         </div>
-        <button
-          className={buttonStyle.button}
-          onClick={() => {
-            console.log(errors);
-          }}
-          type="submit"
-        >
+        <button className={buttonStyle.button} type="submit">
           Add
         </button>
         {isReseted ? <Modal /> : null}

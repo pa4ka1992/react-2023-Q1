@@ -1,5 +1,5 @@
 import { Suspense, type FC } from 'react';
-import { Await, defer, useLoaderData } from 'react-router-dom';
+import { Await, useLoaderData } from 'react-router-dom';
 
 import { Unsplash } from '~services/unsplash/unsplash';
 
@@ -8,10 +8,6 @@ import { isPhotoArray } from '@/type-guards/photo-array-type-guard';
 
 const CardsList: FC = () => {
   const { cards } = useLoaderData() as { cards: TPhotos };
-
-  if (isPhotoArray(cards)) {
-    console.log(cards);
-  }
 
   return (
     <div>
@@ -34,16 +30,14 @@ const CardsList: FC = () => {
   );
 };
 
-const cardsLoader = async (): Promise<ReturnType<typeof defer>> => {
-  const getPhotos = async () => {
-    const photos = await Unsplash.getPhotos();
+const getPhotos = async () => {
+  const photos = await Unsplash.getPhotos();
 
-    return photos || undefined;
-  };
+  return photos;
+};
 
-  return defer({
-    cards: getPhotos(),
-  });
+const cardsLoader = async (): Promise<{ cards: Promise<TPhotos | undefined> }> => {
+  return { cards: getPhotos() };
 };
 
 export { CardsList, cardsLoader };

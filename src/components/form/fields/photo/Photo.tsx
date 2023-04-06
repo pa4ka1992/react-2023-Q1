@@ -12,7 +12,6 @@ export const Photo: FC<IFormProps> = ({ register, error, isReseted }) => {
   const [img, setImg] = useState('');
 
   useEffect(() => {
-    console.log('useeffect');
     if (isReseted) {
       setImg('');
     }
