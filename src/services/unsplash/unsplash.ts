@@ -2,18 +2,16 @@ import { AxiosError } from 'axios';
 
 import { unsplashAPI } from './_interceptor';
 
-import { RES_STATUS } from './_constants';
+import { TPhotos } from './_types';
 
 export class Unsplash {
   private constructor() {}
 
-  static async getPhotos() {
+  static async getPhotos(): Promise<TPhotos | undefined> {
     try {
-      const { status, data } = await unsplashAPI.get<unknown>('/photos');
+      const { data } = await unsplashAPI.get<TPhotos>('/photos');
 
-      if (status === RES_STATUS.ok && data) {
-        return data;
-      }
+      return data;
     } catch (error) {
       if (error instanceof AxiosError && error.response) {
         const { status, message } = error.response.data;

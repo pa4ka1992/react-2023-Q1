@@ -17,6 +17,7 @@ export default defineConfig({
       '~pages/*': path.resolve(__dirname, './src/pages/'),
       '~variables': path.resolve(__dirname, './src/global/scss/variables.sass'),
       '~global/*': path.resolve(__dirname, './src/global/'),
+      '~services/*': path.resolve(__dirname, './src/services/'),
     },
   },
   plugins: [react(), tsconfigPaths()],
