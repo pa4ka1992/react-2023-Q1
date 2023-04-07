@@ -26,7 +26,10 @@
       "~compos/*": ["src/components/*"],
       "~pages/*": ["src/pages/*"],
       "~global/*": ["src/global/*"],
-      "~services/*": ["src/services/*"]
+      "~services/*": ["src/services/*"],
+      "~context/*": ["src/context/*"],
+      "~hook/*": ["src/hook/*"],
+      "~helpers/*": ["src/helpers/*"],
     }
   },
   "include": ["./src", "vite.config.ts", "global.d.ts"],
