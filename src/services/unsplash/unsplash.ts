@@ -15,7 +15,9 @@ export class Unsplash {
 
   static async searchPhoto(query: string): Promise<unknown> {
     return axiosCatcher(async () => {
-      const { data } = await unsplashAPI.get<ISearchRes>(`/search/photos?query=${query}`);
+      const { data } = await unsplashAPI.get<ISearchRes>(
+        `/search/photos?query=${query}&per_page=30`
+      );
 
       return data.results;
     });
