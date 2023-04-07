@@ -1,37 +1,32 @@
-import { useEffect, useRef, useState, type FC } from 'react';
-
-import { LocalStorageService } from '@/services/storage/localStorage';
+import { useContext, type ChangeEvent, type FC, type FormEvent } from 'react';
 
 import buttonStyle from '~global/scss/Button.module.scss';
 import inputStyle from '~global/scss/Input.module.scss';
 import styles from './SearchBar.module.scss';
 
+import { HomeContext } from '~context/homePageContext';
+import { checkSearch } from '~helpers/checkSearch';
+
 export const SearchBar: FC = () => {
-  const [searchVal, setSearchVal] = useState('');
-  const LS = useRef(new LocalStorageService('react'));
+  const { cardsState, searchState, isFetchingState } = useContext(HomeContext);
+  const { setCards } = cardsState;
+  const { searchVal, setSearchVal } = searchState;
+  const { setIsFetching } = isFetchingState;
 
-  const cBValue = useRef('');
-
-  useEffect(() => {
-    cBValue.current = searchVal;
-  }, [searchVal]);
-
-  useEffect(() => {
-    const savedSearch = LS.current.getItem('search');
-    if (typeof savedSearch === 'string') {
-      setSearchVal(savedSearch ?? '');
-    }
-    const storage = LS.current;
-
-    return () => storage.setItem('search', cBValue.current);
-  }, []);
-
-  const inputHandler = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+  const inputHandler = ({ target }: ChangeEvent<HTMLInputElement>) => {
     setSearchVal(target.value);
   };
 
+  const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    setIsFetching(true);
+
+    checkSearch(searchVal, setSearchVal, setCards, setIsFetching);
+  };
+
   return (
-    <div data-testid="search" className={styles.form}>
+    <form onSubmit={submitHandler} data-testid="search" className={styles.form}>
       <input
         role="search-input"
         className={inputStyle.input}
@@ -40,7 +35,9 @@ export const SearchBar: FC = () => {
         placeholder="Search..."
         value={searchVal}
       />
-      <button className={buttonStyle.button}>Search</button>
-    </div>
+      <button type="submit" className={buttonStyle.button}>
+        Search
+      </button>
+    </form>
   );
 };
