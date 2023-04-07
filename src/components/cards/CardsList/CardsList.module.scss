@@ -2,9 +2,14 @@
 
 .list {
   display: grid;
-  align-items: stretch;
-  grid-template-columns: repeat(4, 1fr);
-  gap: map-get($space-md, 'x');
+  grid-column-gap: map-get($space-lg, 'x');
+  align-items: start;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 
-  padding: map-get($space-xl, 'x') 0
+  margin-top: map-get($space-xl, 'x');
+}
+
+.column {
+  display: grid;
+  grid-row-gap: map-get($space-lg, 'x');
 }

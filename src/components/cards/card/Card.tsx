@@ -7,19 +7,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IPhoto } from '@/services/unsplash/_types';
 import styles from './Card.module.scss';
 
-const { titleName, skeleton, wrapImg, img, dollar, star, wrapRate, wrapPrice, wrapStar } = styles;
+const { skeleton, wrapImg, img, dollar, star, wrapRate, wrapPrice, wrapStar } = styles;
 
 export const Card: FC<{ card: IPhoto }> = ({ card }) => {
-  const { id, description, alt_description, likes, urls, user } = card;
+  const { id, likes, urls, user } = card;
 
   return (
     <section className={skeleton} data-testid="card">
       <NavLink to={`/:${id}`} className={wrapImg}>
-        <img className={img} src={urls.thumb} alt="product" />
-      </NavLink>
-
-      <NavLink to={`/:${id}`}>
-        <h3 className={titleName}>{description ?? alt_description}</h3>
+        <img className={img} src={urls.regular} alt="product" />
       </NavLink>
 
       <div className={wrapRate}>

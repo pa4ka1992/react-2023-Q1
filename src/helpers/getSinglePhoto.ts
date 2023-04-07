@@ -13,6 +13,5 @@ export const getSinglePhoto: TGetPhoto = async (photoId, setPhoto) => {
 
   if (isPhoto(photo)) {
     setPhoto(photo);
-    console.log(photo);
   }
 };
