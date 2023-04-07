@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react';
 import { useBeforeUnload } from 'react-router-dom';
 
-import { LocalStorageService } from '~services/storage/localStorage';
+import { LocalStorageService } from '~services/_index';
 
-import { checkSearch } from '~helpers/checkSearch';
+import { checkSearch } from '~helpers/_index';
 import { TPhotos } from '~services/unsplash/_types';
 
 type TSaverProps = {
@@ -15,12 +15,7 @@ type TSaverProps = {
 
 type TSaverHook = (props: TSaverProps) => void;
 
-export const useLocalStorageSaver: TSaverHook = ({
-  searchVal,
-  setSearchVal,
-  setCards,
-  setIsFetching,
-}) => {
+export const usePreloader: TSaverHook = ({ searchVal, setSearchVal, setCards, setIsFetching }) => {
   const LS = useRef(new LocalStorageService('react'));
 
   const cBValue = useRef('');

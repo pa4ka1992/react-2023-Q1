@@ -1,6 +1,8 @@
-import { LocalStorageService } from '@/services/storage/localStorage';
 import { fireEvent, render, screen } from '@testing-library/react';
+
 import { SearchBar } from './SearchBar';
+
+import { LocalStorageService } from '@/services/_index';
 
 describe('SearchBar', () => {
   afterEach(() => {

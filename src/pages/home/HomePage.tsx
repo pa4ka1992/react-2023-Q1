@@ -1,9 +1,10 @@
 import { useState, type FC } from 'react';
+import { useParams } from 'react-router-dom';
 
-import { CardsList, SearchBar, Spinner } from '~compos/_index';
+import { CardsList, Product, SearchBar, Spinner } from '~compos/_index';
 
+import { usePreloader } from '@/hook/use-preloader';
 import { HomeContext } from '~context/homePageContext';
-import { useLocalStorageSaver } from '~hook/use-local-storage-saver';
 import { TPhotos } from '~services/unsplash/_types';
 
 export const HomePage: FC = () => {
@@ -11,7 +12,9 @@ export const HomePage: FC = () => {
   const [searchVal, setSearchVal] = useState('');
   const [isFetching, setIsFetching] = useState(false);
 
-  useLocalStorageSaver({ searchVal, setSearchVal, setCards, setIsFetching });
+  const { photoId } = useParams();
+
+  usePreloader({ searchVal, setSearchVal, setCards, setIsFetching });
 
   const context = {
     cardsState: { cards, setCards },
@@ -33,6 +36,7 @@ export const HomePage: FC = () => {
             <CardsList />
           </>
         )}
+        {photoId ? <Product /> : null}
       </HomeContext.Provider>
     </div>
   );
