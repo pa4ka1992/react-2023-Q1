@@ -1,6 +1,5 @@
-import { isPhotoArray } from '@/type-guards/photo-array-type-guard';
-import { isString } from '@/type-guards/string-guard';
-import { Unsplash } from '~services/unsplash/unsplash';
+import { isPhotoArray, isString } from '@/type-guards/_index';
+import { Unsplash } from '~services/_index';
 
 import { TPhotos } from '@/services/unsplash/_types';
 
