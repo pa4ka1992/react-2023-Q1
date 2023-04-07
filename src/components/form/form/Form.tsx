@@ -25,9 +25,9 @@ export const Form: FC<TProps> = ({ setUsers }) => {
     formState: { errors },
   } = useForm<FieldValues>({ mode: 'onSubmit', reValidateMode: 'onSubmit' });
 
-  const submitHandler: SubmitHandler<FieldValues> = async (data, e) => {
+  const submitHandler: SubmitHandler<FieldValues> = (data, e) => {
     e?.preventDefault();
-    await setUsers((prev) => [...prev, structuredClone(data)]);
+    setUsers((prev) => [...prev, structuredClone(data)]);
     setIsReseted(true);
 
     setTimeout(() => {
