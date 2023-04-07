@@ -25,7 +25,7 @@ export class Unsplash {
 
   static async getSinglePhoto(photoId: string): Promise<unknown> {
     return axiosCatcher(async () => {
-      const { data } = await unsplashAPI.get<ISearchRes>(`/photos/${photoId.slice(1)}`);
+      const { data } = await unsplashAPI.get<ISearchRes>(`/photos/${photoId}`);
 
       return data;
     });

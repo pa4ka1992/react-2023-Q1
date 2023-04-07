@@ -14,7 +14,7 @@ export const Card: FC<{ card: IPhoto }> = ({ card }) => {
 
   return (
     <section className={skeleton} data-testid="card">
-      <NavLink to={`/:${id}`} className={wrapImg}>
+      <NavLink to={`${id}`} className={wrapImg}>
         <img className={img} src={urls.regular} alt="product" />
       </NavLink>
 
