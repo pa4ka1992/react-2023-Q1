@@ -1,45 +1,35 @@
 import { type FC } from 'react';
 
-import { faDollarSign, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faThumbsUp, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import { IPhoto } from '@/services/unsplash/_types';
 import styles from './Card.module.scss';
 
-import { cards } from '@/mock/cards';
+const { titleName, skeleton, wrapImg, img, dollar, star, wrapRate, wrapPrice, wrapStar } = styles;
 
-const { titleName, card, wrapImg, img, dollar, star, desc, wrapRate, wrapPrice, wrapStar } = styles;
-
-export const Card: FC<{ cardData: (typeof cards)[0] }> = ({ cardData }) => {
-  const { title, image, description, rating, price, category } = cardData;
+export const Card: FC<{ card: IPhoto }> = ({ card }) => {
+  const { description, alt_description, likes, urls, user } = card;
 
   return (
-    <section className={card} data-testid="card">
-      <h3 className={titleName}>{title}</h3>
-      <p>{category}</p>
-
+    <section className={skeleton} data-testid="card">
       <div className={wrapImg}>
-        <img className={img} src={image} alt="product" />
+        <img className={img} src={urls.thumb} alt="product" />
       </div>
+
+      <h3 className={titleName}>{description ?? alt_description}</h3>
 
       <div className={wrapRate}>
         <div className={wrapStar}>
-          <FontAwesomeIcon className={star} icon={faStar} />
-          <span>{rating.rate}</span>
+          <FontAwesomeIcon className={star} icon={faThumbsUp} />
+          <span>{likes}</span>
         </div>
-        <span>Rest: {rating.count}</span>
       </div>
 
       <div className={wrapPrice}>
-        <span>
-          <b>Price:</b> {price}
-        </span>
-        <FontAwesomeIcon className={dollar} icon={faDollarSign} />
+        <FontAwesomeIcon className={dollar} icon={faUser} />
+        <span>{user.username}</span>
       </div>
-
-      <p className={desc}>
-        <b>Description:</b> <br />
-        {description}
-      </p>
     </section>
   );
 };
