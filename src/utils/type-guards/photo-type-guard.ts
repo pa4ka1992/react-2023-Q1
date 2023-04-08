@@ -1,6 +1,13 @@
 import { IPhoto } from '~services/unsplash/_types';
 
-const usedProps = ['id', 'likes', 'description', 'alt_description', 'urls'] as (keyof IPhoto)[];
+const usedProps = [
+  'id',
+  'likes',
+  'description',
+  'alt_description',
+  'urls',
+  'user',
+] as (keyof IPhoto)[];
 
 export function isPhoto(photo: unknown): photo is IPhoto {
   const predict = photo as IPhoto;

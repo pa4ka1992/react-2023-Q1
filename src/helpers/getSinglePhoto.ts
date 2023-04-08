@@ -1,5 +1,5 @@
-import { isPhoto } from '@/type-guards/photo-type-guard';
 import { Unsplash } from '~services/_index';
+import { isPhoto } from '~utils/type-guards/photo-type-guard';
 
 import { IPhoto } from '~services/unsplash/_types';
 

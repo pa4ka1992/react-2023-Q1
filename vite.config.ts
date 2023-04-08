@@ -21,6 +21,7 @@ export default defineConfig({
       '~context/*': path.resolve(__dirname, './src/context/'),
       '~hook/*': path.resolve(__dirname, './src/hook/'),
       '~helpers/*': path.resolve(__dirname, './src/helpers/'),
+      '~utils/*': path.resolve(__dirname, './src/utils/'),
     },
   },
   plugins: [react(), tsconfigPaths()],
