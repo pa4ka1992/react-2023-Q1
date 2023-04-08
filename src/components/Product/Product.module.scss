@@ -1,10 +1,6 @@
 @import '~variables';
 
 .modal {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   position: fixed;
   top: 0;
   bottom: 0;
@@ -16,7 +12,18 @@
   color: $dark;
   background-color: $modal;
   z-index: $z-max;
-  overflow-y: scroll;
+  overflow: auto;
+  cursor: zoom-out;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: map-get($space-lg, 'x') map-get($space-xl, 'x');
+
+  min-height: 100%;
 }
 
 .content {
@@ -25,12 +32,12 @@
   flex-direction: column;
 
   position: relative;
-  margin: map-get($space-lg, 'x') 0;
   padding: map-get($space-lg, 'x');
-  width: 90%;
+  width: 100%;
 
   background-color: $light;
   border-radius: $button-border-radius;
+  cursor: auto;
 }
 
 .closer {
@@ -76,12 +83,18 @@
 .wrapImg {
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
+  min-height: 80vh;
+
+  background-color: $grey-1;
 }
 
 .img {
   display: block;
-  max-height: 100px;
+  width: 100%;
+  height: 80vh;
+  object-fit: contain;
 }
 
 .stats {

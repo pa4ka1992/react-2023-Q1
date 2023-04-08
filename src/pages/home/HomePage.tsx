@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 
 import { CardsList, Product, SearchBar, Spinner } from '~compos/_index';
 
+import styles from './Home.module.scss';
+
 import { usePreloader } from '@/hook/use-preloader';
 import { HomeContext } from '~context/homePageContext';
 import { TPhotos } from '~services/unsplash/_types';
@@ -26,16 +28,10 @@ export const HomePage: FC = () => {
   };
 
   return (
-    <div data-testid="home">
+    <div className={styles.home} data-testid="home">
       <HomeContext.Provider value={context}>
-        {isFetching ? (
-          <Spinner />
-        ) : (
-          <>
-            <SearchBar />
-            <CardsList />
-          </>
-        )}
+        <SearchBar />
+        {isFetching ? <Spinner /> : <CardsList />}
         {photoId ? <Product /> : null}
       </HomeContext.Provider>
     </div>

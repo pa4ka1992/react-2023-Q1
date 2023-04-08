@@ -3,9 +3,12 @@ import { IPhoto } from '~services/unsplash/_types';
 const usedProps = [
   'id',
   'likes',
+  'color',
   'description',
   'alt_description',
   'urls',
+  'width',
+  'height',
   'user',
   'created_at',
 ] as (keyof IPhoto)[];

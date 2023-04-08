@@ -1,14 +1,17 @@
 @import '~variables';
+.layout {
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+  min-height: 100vh;
+
+  background-color: $light;
+}
 
 .container {
   margin: 0 auto;
   padding: map-get($space-lg, 'x');
   max-width: $breakpoint-md;
-}
-
-.layout {
-  position: relative;
-  height: 100vh;
-
-  background-color: $light;
+  width: 100%;
 }

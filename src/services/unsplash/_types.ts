@@ -1,6 +1,9 @@
 export interface IPhoto {
   id: string;
   downloads?: number;
+  color: string;
+  width: number;
+  height: number;
   views?: number;
   exif?: { name: string };
   likes: number;

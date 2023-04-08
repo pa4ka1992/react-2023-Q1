@@ -11,13 +11,15 @@ import styles from './Card.module.scss';
 const { skeleton, postDate, wrapImg, img, info, wrapLikes, like, wrapAuthor, avatar, authorName } =
   styles;
 
-export const Card: FC<{ card: IPhoto }> = ({ card }) => {
-  const { id, likes, urls, user, created_at } = card;
+export const Card: FC<{ card: IPhoto; list?: number }> = ({ card, list }) => {
+  const { id, likes, urls, user, created_at, color, width, height } = card;
+
+  const koef = list ? (list - 24 * 3) / 4 / width : 0;
 
   return (
-    <section className={skeleton} data-testid="card">
+    <div className={skeleton} data-testid="card" style={{ backgroundColor: color }}>
       <h4 className={postDate}>{formateDate(created_at)}</h4>
-      <NavLink to={`${id}`} className={wrapImg}>
+      <NavLink to={`${id}`} className={wrapImg} style={{ height: height * koef }}>
         <img className={img} src={urls.regular} alt="product" />
       </NavLink>
 
@@ -32,6 +34,6 @@ export const Card: FC<{ card: IPhoto }> = ({ card }) => {
           <span className={authorName}>{user.username}</span>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
