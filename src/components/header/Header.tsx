@@ -6,7 +6,7 @@ import './Header.scss';
 
 import { ROUTE } from '@/router/_constants';
 
-const { header, nav, wrap, link, page } = styles;
+const { header, nav, wrap, link } = styles;
 
 export const Header: FC = () => {
   const matches = useMatches();
@@ -26,7 +26,7 @@ export const Header: FC = () => {
           </NavLink>
         </div>
 
-        <h4 className={page}>{matches[1].id}</h4>
+        <h4>{matches[1].id}</h4>
       </nav>
     </header>
   );

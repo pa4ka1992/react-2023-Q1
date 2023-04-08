@@ -1,8 +1,6 @@
 @import '~variables';
 
 .header {
-  margin: 0;
-
   font-size: map-get($body2, 'size');
 }
 
@@ -13,12 +11,8 @@
 
 .label {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   gap: map-get($space-xs, 'x');
 
   cursor: pointer;
-}
-
-.check {
-  margin: 0;
 }

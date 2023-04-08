@@ -7,7 +7,7 @@ import styles from '../styles/RadioCheck.module.scss';
 
 import { ICheckboxProps } from '~compos/form/_types';
 
-const { wrapper, label, header, check } = styles;
+const { wrapper, label, header } = styles;
 
 export const AddInfo: FC<ICheckboxProps> = ({ register, error }) => {
   const validateHandler = (data: string[]) => {
@@ -28,20 +28,15 @@ export const AddInfo: FC<ICheckboxProps> = ({ register, error }) => {
         <div className={wrapper}>
           <label className={label}>
             <span className={header}>Clothing</span>
-            <input className={check} type="checkbox" value="clothing" {...register('addInfo.0')} />
+            <input type="checkbox" value="clothing" {...register('addInfo.0')} />
           </label>
           <label className={label}>
             <span className={header}>Jewelery</span>
-            <input className={check} type="checkbox" value="jewelery" {...register('addInfo.1')} />
+            <input type="checkbox" value="jewelery" {...register('addInfo.1')} />
           </label>
           <label className={label}>
             <span className={header}>Electronics</span>
-            <input
-              className={check}
-              type="checkbox"
-              value="electronics"
-              {...register('addInfo.2')}
-            />
+            <input type="checkbox" value="electronics" {...register('addInfo.2')} />
           </label>
         </div>
 

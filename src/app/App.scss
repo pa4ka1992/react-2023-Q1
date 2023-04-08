@@ -1,10 +1,12 @@
 @import '~variables';
 
-body {
+*,
+::before,
+::after {
   margin: 0;
-  font-family: $typography-font-family;
-}
+  padding: 0;
 
-p {
-  margin: 0;
+  font-family: $typography-font-family;
+
+  box-sizing: border-box;
 }

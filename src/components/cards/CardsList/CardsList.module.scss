@@ -6,7 +6,7 @@
   align-items: start;
   grid-template-columns: repeat(4, minmax(0, 1fr));
 
-  margin-top: map-get($space-xl, 'x');
+  margin-top: map-get($space-lg, 'x');
 }
 
 .column {

@@ -4,9 +4,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: map-get($space-sm, 'y') map-get($space-xl, 'x');
 
-  background-color: $primary;
+  padding: map-get($space-sm, 'y') map-get($space-lg, 'x');
+  width: 100%;
+
+  color: $dark;
+  background-color: $light;
+  box-shadow: $menu-box-shadow;
 }
 
 .nav {
@@ -29,13 +33,7 @@
   padding: map-get($space-sm, 'x');
 
   border-bottom: 2px solid transparent;
-  color: $grey-4;
+  color: $grey-7;
   text-decoration: none;
   transition: all 0.3s;
-}
-
-.page {
-  margin: 0;
-
-  color: $grey-1;
 }

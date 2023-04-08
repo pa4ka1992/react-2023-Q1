@@ -4,7 +4,7 @@ import styles from './User.module.scss';
 
 import { FieldValues } from '@/pages/Form/_types';
 
-const { img, title, avatar, wrapper, content, userWrapper, info, infoItem } = styles;
+const { img, title, avatar, wrapper, content, userWrapper, infoItem } = styles;
 
 export const User: FC<{ user: FieldValues }> = ({ user }) => {
   return (
@@ -39,7 +39,7 @@ export const User: FC<{ user: FieldValues }> = ({ user }) => {
 
       <div className={wrapper}>
         <span className={title}>Preferences:</span>
-        <ul className={info}>
+        <ul>
           {user.addInfo.map((info, i) =>
             info ? (
               <li className={infoItem} key={i}>

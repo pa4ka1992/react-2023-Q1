@@ -9,7 +9,7 @@ import styles from './Form.module.scss';
 import { FieldValues } from '@/pages/Form/_types';
 import { Modal } from '../Modal/Modal';
 
-const { form, header, grid } = styles;
+const { form, grid } = styles;
 
 type TProps = {
   setUsers: React.Dispatch<React.SetStateAction<FieldValues[]>>;
@@ -39,7 +39,7 @@ export const Form: FC<TProps> = ({ setUsers }) => {
   return (
     <>
       <form data-testid="form" className={form} onSubmit={handleSubmit(submitHandler)}>
-        <h3 className={header}>Form</h3>
+        <h3>Form</h3>
         <div className={grid}>
           <UserName register={register} error={errors.userName} />
           <BirthDate register={register} error={errors.birthDate} />

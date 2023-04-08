@@ -4,20 +4,10 @@ export interface IPhoto {
   likes: number;
   description: string;
   alt_description: string;
+  created_at: string;
   tags?: { title: string }[];
   urls: TUrls;
-  links: {
-    self: string;
-  };
-  user: {
-    id: string;
-    username: string;
-    profile_image: {
-      small: string;
-      [key: string]: unknown;
-    };
-    [key: string]: unknown;
-  };
+  user: TUser;
   [key: string]: unknown;
 }
 
@@ -27,6 +17,16 @@ type TUrls = {
   regular: string;
   small: string;
   thumb: string;
+};
+
+type TUser = {
+  id: string;
+  username: string;
+  profile_image: {
+    small: string;
+    [key: string]: unknown;
+  };
+  [key: string]: unknown;
 };
 
 export type TPhotos = IPhoto[];

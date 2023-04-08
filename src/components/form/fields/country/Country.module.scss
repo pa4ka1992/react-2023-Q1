@@ -4,10 +4,10 @@
   padding: map-get($space-xs, 'x');
   width: 100%;
 
-  color: $light;
-  background-color: $primary;
+  background-color: $grey-3;
   border: none {
     radius: $button-border-radius;
   }
+  box-shadow: $button-shadow;
   outline: none;
 }

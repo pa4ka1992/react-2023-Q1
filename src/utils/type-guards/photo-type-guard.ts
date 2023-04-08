@@ -7,6 +7,7 @@ const usedProps = [
   'alt_description',
   'urls',
   'user',
+  'created_at',
 ] as (keyof IPhoto)[];
 
 export function isPhoto(photo: unknown): photo is IPhoto {
