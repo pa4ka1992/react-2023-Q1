@@ -1,5 +1,5 @@
-import { unsplashAPI } from './_interceptor';
 import { axiosCatcher } from './axiosCatcher';
+import { unsplashAPI } from './_interceptor';
 
 import { ISearchRes } from './_types';
 
@@ -9,6 +9,8 @@ export class Unsplash {
   static async getPhotos(): Promise<unknown> {
     return axiosCatcher(async () => {
       const { data } = await unsplashAPI.get<unknown>('/photos?per_page=30&page=3');
+      console.log(data);
+
       return data;
     });
   }

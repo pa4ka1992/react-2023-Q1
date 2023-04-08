@@ -6,9 +6,16 @@ export interface IPhoto {
   alt_description: string;
   tags?: { title: string }[];
   urls: TUrls;
+  links: {
+    self: string;
+  };
   user: {
     id: string;
     username: string;
+    profile_image: {
+      small: string;
+      [key: string]: unknown;
+    };
     [key: string]: unknown;
   };
   [key: string]: unknown;
