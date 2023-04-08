@@ -19,7 +19,7 @@
     & > .postDate {
       opacity: 1;
       color: $light;
-      z-index: 5;
+      z-index: $z-tooltip;
     }
 
     & > .info {

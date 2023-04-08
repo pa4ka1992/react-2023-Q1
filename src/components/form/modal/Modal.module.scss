@@ -16,7 +16,7 @@
   background-color: $modal;
   border-radius: $button-push-border-radius;
 
-  z-index: 5;
+  z-index: $z-tooltip;
 }
 
 .wrapper {

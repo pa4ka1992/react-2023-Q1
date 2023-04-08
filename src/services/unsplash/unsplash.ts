@@ -9,7 +9,6 @@ export class Unsplash {
   static async getPhotos(): Promise<unknown> {
     return axiosCatcher(async () => {
       const { data } = await unsplashAPI.get<unknown>('/photos?per_page=28&page=3');
-      console.log(data);
 
       return data;
     });

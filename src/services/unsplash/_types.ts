@@ -1,11 +1,14 @@
 export interface IPhoto {
   id: string;
   downloads?: number;
+  views?: number;
+  exif?: { name: string };
   likes: number;
   description: string;
   alt_description: string;
   created_at: string;
-  tags?: { title: string }[];
+  location: { name: string };
+  tags_preview?: { title: string }[];
   urls: TUrls;
   user: TUser;
   [key: string]: unknown;
@@ -22,6 +25,8 @@ type TUrls = {
 type TUser = {
   id: string;
   username: string;
+  first_name: string;
+  last_name: string;
   profile_image: {
     small: string;
     [key: string]: unknown;
