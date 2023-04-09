@@ -19,7 +19,7 @@ export const CardsList: FC = () => {
   const countInColumn = Math.floor(cards.length / GRIDCOLUMNS.length);
 
   return cards.length > 0 ? (
-    <section ref={list} className={styles.list}>
+    <section data-testid="card-list" ref={list} className={styles.list}>
       {GRIDCOLUMNS.map((column, order) => (
         <div key={column} className={styles.column}>
           {cards.slice(order * countInColumn, (order + 1) * countInColumn).map((card) => (

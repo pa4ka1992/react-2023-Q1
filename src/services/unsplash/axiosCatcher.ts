@@ -1,16 +1,19 @@
 import { AxiosError } from 'axios';
 
-export const axiosCatcher = async (request: () => unknown) => {
+export const axiosCatcher = async (request: () => Promise<unknown>): Promise<unknown> => {
   try {
-    return request();
+    const res = await request();
+
+    return res;
   } catch (error) {
-    if (error instanceof AxiosError && error.response) {
-      const { status, message } = error.response.data;
+    if (error instanceof AxiosError) {
+      // console.log('error message: ', error.message);
 
-      console.log(`status: ${status}; error: ${message}`);
+      return error.message;
+    } else {
+      // console.log('unexpected error: ', error);
 
-      return message;
+      return 'An unexpected error occurred';
     }
-    console.log(error);
   }
 };

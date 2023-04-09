@@ -7,7 +7,7 @@ export const unsplashAPI = axios.create({
 });
 
 const onRequest = (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
-  config.headers.Authorization = ACCES_KEY;
+  config.headers.Authorization = `Client-ID ${ACCES_KEY}`;
 
   return config;
 };

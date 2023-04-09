@@ -10,7 +10,7 @@ export interface IPhoto {
   description: string;
   alt_description: string;
   created_at: string;
-  location: { name: string };
+  location?: { name: string };
   tags_preview?: { title: string }[];
   urls: TUrls;
   user: TUser;

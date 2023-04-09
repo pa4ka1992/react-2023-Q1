@@ -16,11 +16,5 @@ const usedProps = [
 export function isPhoto(photo: unknown): photo is IPhoto {
   const predict = photo as IPhoto;
 
-  return usedProps.every((key) => {
-    if (Object.prototype.hasOwnProperty.call(predict, key)) {
-      return true;
-    } else {
-      throw new Error(`${key} property is undefined`);
-    }
-  });
+  return usedProps.every((key) => Object.prototype.hasOwnProperty.call(predict, key));
 }

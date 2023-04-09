@@ -14,10 +14,8 @@ import { Spinner } from '~compos/_index';
 
 import styles from './Product.module.scss';
 
-import { formateDate } from '@/helpers/formatDate';
-
-import { IPhoto } from '@/services/unsplash/_types';
-import { getSinglePhoto } from '~helpers/_index';
+import { formateDate, getSinglePhoto } from '~helpers/_index';
+import { IPhoto } from '~services/unsplash/_types';
 
 const {
   modal,
@@ -73,7 +71,7 @@ export const Product: FC = () => {
   }
 
   return (
-    <section onClick={closeHandler} className={modal}>
+    <section data-testid="product" onClick={closeHandler} className={modal}>
       <div className={container}>
         <section onClick={(e) => e.stopPropagation()} className={content}>
           <div onClick={closeHandler} className={closer}>

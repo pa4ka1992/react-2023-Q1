@@ -1,11 +1,11 @@
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { type FC } from 'react';
+import { useState, type FC } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { formateDate } from '~helpers/formatDate';
+import { formateDate } from '~helpers/_index';
 
-import { IPhoto } from '@/services/unsplash/_types';
+import { IPhoto } from '~services/unsplash/_types';
 import styles from './Card.module.scss';
 
 const { skeleton, postDate, wrapImg, img, info, wrapLikes, like, wrapAuthor, avatar, authorName } =
@@ -13,13 +13,18 @@ const { skeleton, postDate, wrapImg, img, info, wrapLikes, like, wrapAuthor, ava
 
 export const Card: FC<{ card: IPhoto; list?: number }> = ({ card, list }) => {
   const { id, likes, urls, user, created_at, color, width, height } = card;
+  const [isloaded, setIsloaded] = useState(false);
 
   const koef = list ? (list - 24 * 3) / 4 / width : 0;
 
   return (
     <div className={skeleton} data-testid="card" style={{ backgroundColor: color }}>
       <h4 className={postDate}>{formateDate(created_at)}</h4>
-      <NavLink to={`${id}`} className={wrapImg} style={{ height: height * koef }}>
+      <NavLink
+        to={`${id}`}
+        className={wrapImg}
+        style={{ height: isloaded ? 'auto' : height * koef }}
+      >
         <img className={img} src={urls.regular} alt="product" />
       </NavLink>
 
@@ -30,7 +35,12 @@ export const Card: FC<{ card: IPhoto; list?: number }> = ({ card, list }) => {
         </div>
 
         <div className={wrapAuthor}>
-          <img className={avatar} src={user.profile_image.small} alt="avatar" />
+          <img
+            onLoad={() => setIsloaded(true)}
+            className={avatar}
+            src={user.profile_image.small}
+            alt="avatar"
+          />
           <span className={authorName}>{user.username}</span>
         </div>
       </div>
