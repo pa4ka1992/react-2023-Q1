@@ -6,13 +6,13 @@ import { AddInfo, BirthDate, Country, Gender, Photo, UserName } from '~compos/fo
 import buttonStyle from '~global/scss/Button.module.scss';
 import styles from './Form.module.scss';
 
-import { FieldValues } from '@/pages/Form/_types';
+import { IUser } from '@/pages/Form/_types';
 import { Modal } from '../Modal/Modal';
 
 const { form, grid } = styles;
 
 type TProps = {
-  setUsers: React.Dispatch<React.SetStateAction<FieldValues[]>>;
+  setUsers: React.Dispatch<React.SetStateAction<IUser[]>>;
 };
 
 export const Form: FC<TProps> = ({ setUsers }) => {
@@ -23,9 +23,9 @@ export const Form: FC<TProps> = ({ setUsers }) => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<FieldValues>({ mode: 'onSubmit', reValidateMode: 'onSubmit' });
+  } = useForm<IUser>({ mode: 'onSubmit', reValidateMode: 'onSubmit' });
 
-  const submitHandler: SubmitHandler<FieldValues> = (data, e) => {
+  const submitHandler: SubmitHandler<IUser> = (data, e) => {
     e?.preventDefault();
     setUsers((prev) => [...prev, structuredClone(data)]);
     setIsReseted(true);

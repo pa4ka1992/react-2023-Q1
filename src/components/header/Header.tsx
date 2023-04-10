@@ -4,7 +4,7 @@ import { NavLink, useMatches } from 'react-router-dom';
 import styles from './Header.module.scss';
 import './Header.scss';
 
-import { ROUTE } from '@/router/_constants';
+import { ROUTE } from '~router/_constants';
 
 const { header, nav, wrap, link } = styles;
 

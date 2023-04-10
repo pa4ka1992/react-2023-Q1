@@ -30,7 +30,10 @@
       "~context/*": ["src/context/*"],
       "~hook/*": ["src/hook/*"],
       "~helpers/*": ["src/helpers/*"],
-      "~utils/*": ["src/utils/*"]
+      "~utils/*": ["src/utils/*"],
+      "~store/*": ["src/store/*"],
+      "~reducers/*": ["src/store/reducers/*"],
+      "~router/*": ["src/router/*"]
     }
   },
   "include": ["./src", "vite.config.ts", "global.d.ts"],

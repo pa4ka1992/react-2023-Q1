@@ -2,11 +2,11 @@ import { FC } from 'react';
 
 import styles from './User.module.scss';
 
-import { FieldValues } from '@/pages/Form/_types';
+import { IUser } from '@/pages/Form/_types';
 
 const { img, title, avatar, wrapper, content, userWrapper, infoItem } = styles;
 
-export const User: FC<{ user: FieldValues }> = ({ user }) => {
+export const User: FC<{ user: IUser }> = ({ user }) => {
   return (
     <div data-testid="user" className={userWrapper}>
       <div className={avatar}>

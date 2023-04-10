@@ -1,7 +1,7 @@
-import AppRouter from '@/router/Router';
-import { ROUTE } from '@/router/_constants';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+import AppRouter from '~router/Router';
+import { ROUTE } from '~router/_constants';
 import { Header } from './Header';
 
 describe('Header', () => {

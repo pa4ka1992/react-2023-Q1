@@ -1,6 +1,6 @@
 import { type FC } from 'react';
 
-import AppRouter from '@/router/Router';
+import AppRouter from '~router/Router';
 
 import './App.scss';
 

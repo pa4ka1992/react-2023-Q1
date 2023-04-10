@@ -1,4 +1,4 @@
-export interface FieldValues {
+export interface IUser {
   userName: string;
   birthDate: string;
   country: string;
