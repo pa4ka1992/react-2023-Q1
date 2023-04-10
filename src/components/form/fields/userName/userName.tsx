@@ -1,5 +1,5 @@
 import { type FC } from 'react';
-import { FormError } from '../Error/FormError';
+import { FormError } from '../error/FormError';
 
 import styles from '~global/scss/Input.module.scss';
 import '../styles/Field.scss';

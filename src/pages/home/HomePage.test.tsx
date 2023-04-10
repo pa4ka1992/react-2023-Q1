@@ -1,14 +1,25 @@
-import AppRouter from '@/router/Router';
-import { ROUTE } from '@/router/_constants';
-import { render, screen, waitFor } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { cleanup, render, screen } from '@testing-library/react';
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
+
 import { HomePage } from './HomePage';
 
 describe('Home', () => {
   afterEach(() => {
     vi.clearAllMocks();
     vi.resetAllMocks();
+    cleanup();
   });
+
+  const router = (entry: string) => {
+    return (
+      <MemoryRouter initialEntries={[entry]}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/photoID/:photoId" element={<HomePage />} />
+        </Routes>
+      </MemoryRouter>
+    );
+  };
 
   test('renders with out photos', () => {
     render(<HomePage />);
@@ -19,34 +30,18 @@ describe('Home', () => {
   });
 
   test('renders with card list', async () => {
-    render(
-      <MemoryRouter initialEntries={[`${ROUTE.home}`]}>
-        <HomePage />
-      </MemoryRouter>,
-      { wrapper: AppRouter }
-    );
+    render(router('/'));
 
-    await waitFor(() => async () => {
-      const photos = await screen.findAllByTestId('card');
-      const product = await screen.findByTestId('product');
+    const photos = await screen.findAllByTestId('card');
 
-      expect(photos).toHaveLength(3);
-      expect(product).not.toBeInTheDocument();
-    });
+    expect(photos).toHaveLength(3);
   });
 
-  test('renders modal product', async () => {
-    render(
-      <MemoryRouter initialEntries={[`${ROUTE.home}asdasd`]}>
-        <HomePage />
-      </MemoryRouter>,
-      { wrapper: AppRouter }
-    );
+  test('renders with the product modal', async () => {
+    render(router('/photoID/cats'));
 
-    await waitFor(() => async () => {
-      const product = await screen.findByTestId('product');
+    const product = await screen.findByTestId('product');
 
-      expect(product).toBeInTheDocument();
-    });
+    expect(product).toBeInTheDocument();
   });
 });

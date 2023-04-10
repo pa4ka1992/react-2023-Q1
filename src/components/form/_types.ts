@@ -1,4 +1,4 @@
-import { FieldValues } from '@/pages/Form/_types';
+import { FieldValues } from '@/pages/form/_types';
 import { type FieldError, type Merge, type UseFormRegister } from 'react-hook-form';
 
 export interface IFormProps {

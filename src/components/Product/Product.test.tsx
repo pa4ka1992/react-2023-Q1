@@ -1,6 +1,7 @@
-import { Product } from '@/components/_index';
 import { cleanup, render, screen } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
+
+import { Product } from '~compos/_index';
 
 describe('product', () => {
   afterEach(() => {
