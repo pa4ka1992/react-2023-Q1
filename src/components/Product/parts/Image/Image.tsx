@@ -10,7 +10,7 @@ const { wrapImg, img } = styles;
 
 export const Image: FC<IImageProps> = ({ photo, setIsLoading, isLoading }) => {
   return (
-    <div className={wrapImg}>
+    <div className={wrapImg} style={{ backgroundColor: `${photo.color}0d` }}>
       {isLoading ? (
         <Spinner />
       ) : (

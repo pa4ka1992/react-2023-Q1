@@ -59,6 +59,8 @@
 .desc {
   font-weight: 400;
 
+  color: $dark;
+
   &::first-letter {
     text-transform: uppercase;
   }
