@@ -1,34 +1,41 @@
-import { axiosCatcher } from './axiosCatcher';
-import { unsplashAPI } from './_interceptor';
+import { ACCES_KEY, UNSPLASH } from '@/services/unsplash/_constants';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query';
 
-import { ISearchRes } from './_types';
+const prepareHeaders = (headers: Headers) => {
+  headers.set('authorization', `Client-ID ${ACCES_KEY}`);
 
-export class Unsplash {
-  private constructor() {}
+  return headers;
+};
 
-  static async getPhotos(): Promise<unknown> {
-    return axiosCatcher(async () => {
-      const { data } = await unsplashAPI.get<unknown>('/photos?per_page=28&page=3');
+export const unsplashAPI = createApi({
+  reducerPath: 'unsplashAPI',
+  baseQuery: fetchBaseQuery({
+    baseUrl: UNSPLASH,
+    prepareHeaders: prepareHeaders,
+  }),
+  endpoints: (builder) => ({
+    getPhotos: builder.query<unknown, { per_page: number; page: number }>({
+      query: ({ per_page, page }) => ({
+        url: '/photos',
+        params: {
+          per_page: per_page,
+          page: page,
+        },
+      }),
+    }),
 
-      return data;
-    });
-  }
+    searchPhoto: builder.query<unknown, { query: string; per_page: number }>({
+      query: ({ per_page, query }) => ({
+        url: '/search/photos',
+        params: {
+          per_page: per_page,
+          query: query,
+        },
+      }),
+    }),
 
-  static async searchPhoto(query: string): Promise<unknown> {
-    return axiosCatcher(async () => {
-      const { data } = await unsplashAPI.get<ISearchRes>(
-        `/search/photos?query=${query}&per_page=28`
-      );
-
-      return data.results;
-    });
-  }
-
-  static async getSinglePhoto(photoId: string): Promise<unknown> {
-    return axiosCatcher(async () => {
-      const { data } = await unsplashAPI.get<ISearchRes>(`/photos/${photoId}`);
-
-      return data;
-    });
-  }
-}
+    getSinglePhoto: builder.query<unknown, { photoId: string }>({
+      query: ({ photoId }) => `/photos/${photoId}`,
+    }),
+  }),
+});
