@@ -8,22 +8,22 @@ import styles from './CardsList.module.scss';
 
 export const CardsList: FC = () => {
   const { cardsState } = useContext(HomeContext);
-  const list = useRef<HTMLElement>(null);
-  const [listRef, setListRef] = useState<HTMLElement | null>(null);
+  const container = useRef<HTMLElement>(null);
+  const [containerRef, setContainerRef] = useState<HTMLElement | null>(null);
   const { cards } = cardsState;
 
   useEffect(() => {
-    setListRef(list.current);
-  }, [list]);
+    setContainerRef(container.current);
+  }, [container]);
 
   const countInColumn = Math.floor(cards.length / GRIDCOLUMNS.length);
 
   return cards.length > 0 ? (
-    <section data-testid="card-list" ref={list} className={styles.list}>
+    <section data-testid="card-list" ref={container} className={styles.list}>
       {GRIDCOLUMNS.map((column, order) => (
         <div key={column} className={styles.column}>
           {cards.slice(order * countInColumn, (order + 1) * countInColumn).map((card) => (
-            <Card key={card.id} card={card} list={listRef?.clientWidth} />
+            <Card key={card.id} card={card} container={containerRef} />
           ))}
         </div>
       ))}
