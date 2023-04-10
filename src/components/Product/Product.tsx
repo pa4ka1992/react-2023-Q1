@@ -123,7 +123,7 @@ export const Product: FC = () => {
           <div className={info}>
             <div className={fieldRow}>
               <FontAwesomeIcon className={icon} icon={faLocationDot} />
-              <span className={title}> {photo.location.name ?? 'Unknown location'}</span>
+              <span className={title}> {photo.location?.name ?? 'Unknown location'}</span>
             </div>
 
             <div className={fieldRow}>

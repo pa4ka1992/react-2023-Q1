@@ -1,6 +1,6 @@
 import AppRouter from '@/router/Router';
 import { ROUTE } from '@/router/_constants';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { HomePage } from './HomePage';
 
@@ -18,24 +18,35 @@ describe('Home', () => {
     expect(screen.queryByTestId('product')).not.toBeInTheDocument();
   });
 
-  test('renders photo modal', async () => {
+  test('renders with card list', async () => {
     render(
-      <MemoryRouter initialEntries={[`${ROUTE.home}/photo`]}>
+      <MemoryRouter initialEntries={[`${ROUTE.home}`]}>
         <HomePage />
       </MemoryRouter>,
       { wrapper: AppRouter }
     );
 
-    const a = await screen.findByTestId('card');
+    await waitFor(() => async () => {
+      const photos = await screen.findAllByTestId('card');
+      const product = await screen.findByTestId('product');
 
-    expect(a).toBeInTheDocument();
+      expect(photos).toHaveLength(3);
+      expect(product).not.toBeInTheDocument();
+    });
+  });
 
-    // await waitFor(() => {
-    //   expect(screen.getByTestId('card-list')).toBeInTheDocument();
-    // });
+  test('renders modal product', async () => {
+    render(
+      <MemoryRouter initialEntries={[`${ROUTE.home}asdasd`]}>
+        <HomePage />
+      </MemoryRouter>,
+      { wrapper: AppRouter }
+    );
 
-    // await act(async () => {
-    //   expect(screen.getByTestId('card')).toBeInTheDocument();
-    // });
+    await waitFor(() => async () => {
+      const product = await screen.findByTestId('product');
+
+      expect(product).toBeInTheDocument();
+    });
   });
 });
