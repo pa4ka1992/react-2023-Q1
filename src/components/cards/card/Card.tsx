@@ -19,7 +19,8 @@ export const Card: FC<{ card: IPhoto; container: HTMLElement | null }> = ({ card
     <div className={skeleton} data-testid="card" style={{ backgroundColor: color }}>
       <h4 className={postDate}>{formateDate(created_at)}</h4>
       <NavLink
-        to={`${id}`}
+        data-testid="card-link"
+        to={`/photoID/${id}`}
         className={wrapImg}
         style={{ minHeight: isloaded ? 'auto' : height * getPreloadHeight(container, width) }}
       >

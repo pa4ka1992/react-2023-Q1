@@ -10,21 +10,23 @@ export const CardsList: FC = () => {
   const { cardsState } = useContext(HomeContext);
   const container = useRef<HTMLElement>(null);
   const [containerRef, setContainerRef] = useState<HTMLElement | null>(null);
-  const { cards } = cardsState;
 
   useEffect(() => {
     setContainerRef(container.current);
   }, [container]);
 
-  const countInColumn = Math.floor(cards.length / GRIDCOLUMNS.length);
+  const computedCountInColumn = Math.floor(cardsState.cards.length / GRIDCOLUMNS.length);
+  const countInColumn = computedCountInColumn ? computedCountInColumn : 1;
 
-  return cards.length > 0 ? (
+  return cardsState.cards.length > 0 ? (
     <section data-testid="card-list" ref={container} className={styles.list}>
       {GRIDCOLUMNS.map((column, order) => (
         <div key={column} className={styles.column}>
-          {cards.slice(order * countInColumn, (order + 1) * countInColumn).map((card) => (
-            <Card key={card.id} card={card} container={containerRef} />
-          ))}
+          {cardsState.cards
+            .slice(order * countInColumn, (order + 1) * countInColumn)
+            .map((card) => (
+              <Card key={card.id} card={card} container={containerRef} />
+            ))}
         </div>
       ))}
     </section>
