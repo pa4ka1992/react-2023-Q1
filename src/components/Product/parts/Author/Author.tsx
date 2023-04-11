@@ -2,19 +2,14 @@ import { type FC } from 'react';
 
 import styles from './Author.module.scss';
 
-import { IAuthorProps } from '~components/Product/parts/_types';
+import { IPhoto } from '~types/unsplash';
 
 const { author, avatar, authorNick } = styles;
 
-export const Author: FC<IAuthorProps> = ({ photo, setIsLoading }) => {
+export const Author: FC<{ photo: IPhoto }> = ({ photo }) => {
   return (
     <section className={author}>
-      <img
-        onLoad={() => setIsLoading(false)}
-        className={avatar}
-        src={photo.user.profile_image.small}
-        alt="avatar"
-      />
+      <img className={avatar} src={photo.user.profile_image.small} alt="avatar" />
 
       <div>
         <p>{`${photo.user.first_name}  ${photo.user.last_name}`}</p>

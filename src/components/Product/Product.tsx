@@ -1,6 +1,6 @@
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useEffect, useState, type FC } from 'react';
+import { useEffect, type FC } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { Spinner } from '@/components';
@@ -8,24 +8,18 @@ import { Author, Image, Info, Stats, Tags } from '~components/Product/parts';
 
 import styles from './Product.module.scss';
 
-import { IPhoto } from '@/types/unsplash';
+import { useGetSinglePhotoQuery } from '~store/reducers';
 
 const { modal, container, closer, content, desc } = styles;
 
 export const Product: FC = () => {
   const navigate = useNavigate();
   const { photoId } = useParams();
-  const [photo, setPhoto] = useState<IPhoto | undefined>(undefined);
-  const [isLoading, setIsLoading] = useState(true);
+
+  const { data: photo, isLoading } = useGetSinglePhotoQuery(photoId ?? '');
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
-
-    setPhoto(undefined);
-
-    // if (photoId) {
-    //   getSinglePhoto(photoId, setPhoto);
-    // }
   }, [photoId]);
 
   const closeHandler = () => {
@@ -34,7 +28,7 @@ export const Product: FC = () => {
     navigate('/');
   };
 
-  if (!photo) {
+  if (isLoading) {
     return (
       <section onClick={closeHandler} className={modal}>
         <div className={container}>
@@ -52,11 +46,11 @@ export const Product: FC = () => {
             <FontAwesomeIcon icon={faXmark} />
           </div>
 
-          <Author photo={photo} setIsLoading={setIsLoading} />
+          <Author photo={photo} />
 
           <h4 className={desc}>{photo.description ? photo.description : photo.alt_description}</h4>
 
-          <Image photo={photo} isLoading={isLoading} setIsLoading={setIsLoading} />
+          <Image photo={photo} />
           <Stats photo={photo} />
           <Info photo={photo} />
           <Tags preview={photo.tags_preview} />

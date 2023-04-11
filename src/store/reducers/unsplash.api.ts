@@ -38,12 +38,12 @@ export const unsplashAPI = createApi({
       },
     }),
 
-    getSinglePhoto: builder.query<IPhoto | null, { photoId: string }>({
-      query: ({ photoId }) => `/photos/${photoId}`,
+    getSinglePhoto: builder.query<IPhoto | null, string>({
+      query: (photoId) => `/photos/${photoId}`,
       transformResponse: (res: unknown) => (isPhoto(res) ? res : null),
     }),
   }),
 });
 
-export const { useLazyGetPhotosQuery, useLazyGetSinglePhotoQuery, useLazySearchPhotoQuery } =
+export const { useLazyGetPhotosQuery, useGetSinglePhotoQuery, useLazySearchPhotoQuery } =
   unsplashAPI;

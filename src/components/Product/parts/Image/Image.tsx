@@ -1,14 +1,16 @@
-import { type FC } from 'react';
+import { useState, type FC } from 'react';
 
 import { Spinner } from '@/components';
 
 import styles from './Image.module.scss';
 
-import { IImageProps } from '~components/Product/parts/_types';
+import { IPhoto } from '~types/unsplash';
 
 const { wrapImg, img } = styles;
 
-export const Image: FC<IImageProps> = ({ photo, setIsLoading, isLoading }) => {
+export const Image: FC<{ photo: IPhoto }> = ({ photo }) => {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
     <div className={wrapImg} style={{ backgroundColor: `${photo.color}0d` }}>
       {isLoading ? (
