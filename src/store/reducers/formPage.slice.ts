@@ -20,6 +20,6 @@ export const formPageSlice = createSlice({
   },
 });
 
-export const { setUser } = formPageSlice.actions;
+export const formPageActions = formPageSlice.actions;
 
-export default formPageSlice.reducer;
+export const formPageReducer = formPageSlice.reducer;

@@ -28,7 +28,7 @@
       "~global/*": ["src/global/*"],
       "~services/*": ["src/services/*"],
       "~context/*": ["src/context/*"],
-      "~hook/*": ["src/hook/*"],
+      "~hook/*": ["src/hooks/*"],
       "~helpers/*": ["src/helpers/*"],
       "~utils/*": ["src/utils/*"],
       "~store/*": ["src/store/*"],

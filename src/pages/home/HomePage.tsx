@@ -5,8 +5,8 @@ import { CardsList, Product, SearchBar, Spinner } from '~compos/_index';
 
 import styles from './Home.module.scss';
 
+import { usePreloader } from '@/hooks';
 import { HomeContext } from '~context/homePageContext';
-import { usePreloader } from '~hook/_index';
 import { TPhotos } from '~services/unsplash/_types';
 
 export const HomePage: FC = () => {

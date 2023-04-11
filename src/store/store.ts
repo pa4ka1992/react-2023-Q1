@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import { unsplashAPI } from '@/services/_index';
-import * as slices from '~reducers/_index';
+import * as reducers from '~store/reducers';
+
+const { unsplashAPI, homePageReducer, formPageReducer } = reducers;
 
 export const store = configureStore({
   reducer: {
-    ...slices,
-    [unsplashAPI.reducerPath]: unsplashAPI,
+    homePageReducer,
+    formPageReducer,
+    [unsplashAPI.reducerPath]: unsplashAPI.reducer,
   },
   middleware: (getDefaultMiddleWare) => getDefaultMiddleWare().concat(unsplashAPI.middleware),
 });

@@ -1,5 +1,5 @@
 import { ACCES_KEY, UNSPLASH } from '@/services/unsplash/_constants';
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const prepareHeaders = (headers: Headers) => {
   headers.set('authorization', `Client-ID ${ACCES_KEY}`);
@@ -22,6 +22,7 @@ export const unsplashAPI = createApi({
           page: page,
         },
       }),
+      transformErrorResponse: () => {},
     }),
 
     searchPhoto: builder.query<unknown, { query: string; per_page: number }>({
@@ -32,10 +33,14 @@ export const unsplashAPI = createApi({
           query: query,
         },
       }),
+      transformErrorResponse: () => {},
     }),
 
     getSinglePhoto: builder.query<unknown, { photoId: string }>({
       query: ({ photoId }) => `/photos/${photoId}`,
+      transformErrorResponse: () => {},
     }),
   }),
 });
+
+export const { useGetPhotosQuery, useGetSinglePhotoQuery, useLazySearchPhotoQuery } = unsplashAPI;

@@ -32,6 +32,6 @@ export const homePageSlice = createSlice({
   },
 });
 
-export const { setSearchValue } = homePageSlice.actions;
+export const homePageActions = homePageSlice.actions;
 
-export default homePageSlice.reducer;
+export const homePageReducer = homePageSlice.reducer;
