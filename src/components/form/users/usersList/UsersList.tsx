@@ -1,10 +1,10 @@
 import { type FC } from 'react';
 
-import { User } from '@/components/form/users/User/User';
+import User from '../User/User';
 
 import styles from './UsersList.module.scss';
 
-import { IUser } from '@/pages/Form/_types';
+import { IUser } from '~types/user';
 
 export const UsersList: FC<{ users: IUser[] }> = ({ users }) => {
   return (

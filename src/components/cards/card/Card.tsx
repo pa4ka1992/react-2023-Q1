@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 
 import { formateDate, getPreloadHeight } from '@/helpers';
 
-import { IPhoto } from '~services/unsplash/_types';
+import { IPhoto } from '@/types/unsplash';
 import styles from './Card.module.scss';
 
 const { skeleton, postDate, wrapImg, img, info, wrapLikes, like, wrapAuthor, avatar, authorName } =

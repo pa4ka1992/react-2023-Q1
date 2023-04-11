@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { IUser } from '~pages/Form/_types';
+import { IUser } from '~types/user';
 
 type TFormPageSlice = {
   users: IUser[];

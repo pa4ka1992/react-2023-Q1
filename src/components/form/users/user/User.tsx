@@ -2,11 +2,11 @@ import { FC } from 'react';
 
 import styles from './User.module.scss';
 
-import { IUser } from '@/pages/Form/_types';
+import { IUser } from '~types/user';
 
 const { img, title, avatar, wrapper, content, userWrapper, infoItem } = styles;
 
-export const User: FC<{ user: IUser }> = ({ user }) => {
+const User: FC<{ user: IUser }> = ({ user }) => {
   return (
     <div data-testid="user" className={userWrapper}>
       <div className={avatar}>
@@ -52,3 +52,5 @@ export const User: FC<{ user: IUser }> = ({ user }) => {
     </div>
   );
 };
+
+export default User;

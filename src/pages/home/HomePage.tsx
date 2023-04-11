@@ -6,8 +6,8 @@ import { CardsList, Product, SearchBar, Spinner } from '@/components';
 import styles from './Home.module.scss';
 
 import { usePreloader } from '@/hooks';
+import { TPhotos } from '@/types/unsplash';
 import { HomeContext } from '~context/homePageContext';
-import { TPhotos } from '~services/unsplash/_types';
 
 export const HomePage: FC = () => {
   const [cards, setCards] = useState<TPhotos>([]);

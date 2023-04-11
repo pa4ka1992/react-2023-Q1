@@ -1,4 +1,4 @@
-import { TPhotos } from '~services/unsplash/_types';
+import { TPhotos } from '@/types/unsplash';
 import { isPhoto } from './photo-type-guard';
 
 export function isPhotoArray(photos: unknown): photos is TPhotos {

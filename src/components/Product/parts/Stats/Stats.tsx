@@ -4,7 +4,7 @@ import { type FC } from 'react';
 
 import styles from './Stats.module.scss';
 
-import { IPhoto } from '~services/unsplash/_types';
+import { IPhoto } from '@/types/unsplash';
 
 const { title, icon, stats, fieldCol } = styles;
 

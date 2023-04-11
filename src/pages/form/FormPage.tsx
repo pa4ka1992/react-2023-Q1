@@ -2,7 +2,7 @@ import { useState, type FC } from 'react';
 
 import { Form, UsersList } from '@/components/form';
 
-import { IUser } from '@/pages/Form/_types';
+import { IUser } from '@/types/user';
 
 export const FormPage: FC = () => {
   const [users, setUsers] = useState<IUser[]>([]);

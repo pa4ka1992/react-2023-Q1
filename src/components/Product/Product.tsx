@@ -10,7 +10,7 @@ import styles from './Product.module.scss';
 
 import { getSinglePhoto } from '@/helpers';
 
-import { IPhoto } from '~services/unsplash/_types';
+import { IPhoto } from '@/types/unsplash';
 
 const { modal, container, closer, content, desc } = styles;
 

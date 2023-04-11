@@ -1,7 +1,7 @@
 import { Unsplash } from '@/services';
 import { isPhoto } from '~utils/type-guards/photo-type-guard';
 
-import { IPhoto } from '~services/unsplash/_types';
+import { IPhoto } from '@/types/unsplash';
 
 type TGetPhoto = (
   photoId: string,

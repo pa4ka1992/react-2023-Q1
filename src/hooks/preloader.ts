@@ -4,7 +4,7 @@ import { useBeforeUnload } from 'react-router-dom';
 import { LocalStorageService } from '@/services';
 
 import { checkSearch } from '@/helpers';
-import { TPhotos } from '~services/unsplash/_types';
+import { TPhotos } from '@/types/unsplash';
 
 type TSaverProps = {
   searchVal: string;

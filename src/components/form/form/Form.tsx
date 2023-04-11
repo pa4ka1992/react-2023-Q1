@@ -6,7 +6,7 @@ import { AddInfo, BirthDate, Country, Gender, Photo, UserName } from '~component
 import buttonStyle from '~global/scss/Button.module.scss';
 import styles from './Form.module.scss';
 
-import { IUser } from '@/pages/Form/_types';
+import { IUser } from '~types/user';
 import { Modal } from '../Modal/Modal';
 
 const { form, grid } = styles;
@@ -15,7 +15,7 @@ type TProps = {
   setUsers: React.Dispatch<React.SetStateAction<IUser[]>>;
 };
 
-const Form: FC<TProps> = ({ setUsers }) => {
+export const Form: FC<TProps> = ({ setUsers }) => {
   const [isReseted, setIsReseted] = useState(false);
 
   const {
@@ -56,5 +56,3 @@ const Form: FC<TProps> = ({ setUsers }) => {
     </>
   );
 };
-
-export default Form;

@@ -1,7 +1,7 @@
 import { Unsplash } from '@/services';
 import { isPhotoArray, isString } from '~utils/type-guards/_index';
 
-import { TPhotos } from '~services/unsplash/_types';
+import { TPhotos } from '@/types/unsplash';
 
 type TCheckSearch = (
   savedSearch: unknown,

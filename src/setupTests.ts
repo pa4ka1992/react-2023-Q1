@@ -4,8 +4,8 @@ import { expect } from 'vitest';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 
-import { RES_STATUS, UNSPLASH } from '~services/unsplash/_constants';
-import { PHOTOS_ARRAY_MOCK, SINGLE_PHOTO_MOCK } from '~services/unsplash/mock';
+import { PHOTOS_ARRAY_MOCK, SINGLE_PHOTO_MOCK } from '~store/reducers/constants/mockUnsplash';
+import { RES_STATUS, UNSPLASH } from '~store/reducers/constants/unsplash';
 
 expect.extend(matchers);
 

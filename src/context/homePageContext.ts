@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
-import { TPhotos } from '@/services/unsplash/_types';
+import { TPhotos } from '@/types/unsplash';
 
 type THomeContext = {
   cardsState: {

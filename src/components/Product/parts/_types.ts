@@ -1,5 +1,5 @@
+import { IPhoto } from '@/types/unsplash';
 import { Dispatch, SetStateAction } from 'react';
-import { IPhoto } from '~services/unsplash/_types';
 
 export interface IAuthorProps {
   photo: IPhoto;

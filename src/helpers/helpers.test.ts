@@ -3,7 +3,7 @@ import { describe, expect, test } from 'vitest';
 
 import { checkSearch, formateDate, getSinglePhoto } from '.';
 
-import { IPhoto, TPhotos } from '~services/unsplash/_types';
+import { IPhoto, TPhotos } from '@/types/unsplash';
 
 describe('formate date', () => {
   test('formates date correctly', () => {

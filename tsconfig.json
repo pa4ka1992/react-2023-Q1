@@ -20,7 +20,6 @@
     "types": ["vite/client", "node", "vitest/globals"],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
       "~app/*": ["src/app/*"],
       "~assets/*": ["src/assets/*"],
       "~components/*": ["src/components/*"],
@@ -28,12 +27,14 @@
       "~global/*": ["src/global/*"],
       "~services/*": ["src/services/*"],
       "~context/*": ["src/context/*"],
-      "~hook/*": ["src/hooks/*"],
+      "~hooks/*": ["src/hooks/*"],
       "~helpers/*": ["src/helpers/*"],
       "~utils/*": ["src/utils/*"],
       "~store/*": ["src/store/*"],
       "~reducers/*": ["src/store/reducers/*"],
-      "~router/*": ["src/router/*"]
+      "~router/*": ["src/router/*"],
+      "~types/*": ["src/types/*"],
+      "@/*": ["./src/*"]
     }
   },
   "include": ["./src", "vite.config.ts", "global.d.ts"],

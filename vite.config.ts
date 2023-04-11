@@ -10,7 +10,6 @@ export default defineConfig({
   base: '/',
   resolve: {
     alias: {
-      '@/': path.resolve(__dirname, './src/'),
       '~app/*': path.resolve(__dirname, './src/app/'),
       '~assets/*': path.resolve(__dirname, './src/assets/'),
       '~components/*': path.resolve(__dirname, './src/components/'),
@@ -19,12 +18,14 @@ export default defineConfig({
       '~global/*': path.resolve(__dirname, './src/global/'),
       '~services/*': path.resolve(__dirname, './src/services/'),
       '~context/*': path.resolve(__dirname, './src/context/'),
-      '~hook/*': path.resolve(__dirname, './src/hook/'),
+      '~hooks/*': path.resolve(__dirname, './src/hooks/'),
       '~helpers/*': path.resolve(__dirname, './src/helpers/'),
       '~utils/*': path.resolve(__dirname, './src/utils/'),
       '~store/*': path.resolve(__dirname, './src/store/'),
       '~reducers/*': path.resolve(__dirname, './src/store/reducers/'),
       '~routes/*': path.resolve(__dirname, './src/routes/'),
+      '~types/*': path.resolve(__dirname, './src/types/'),
+      '@/': path.resolve(__dirname, './src/'),
     },
   },
   plugins: [react(), tsconfigPaths()],

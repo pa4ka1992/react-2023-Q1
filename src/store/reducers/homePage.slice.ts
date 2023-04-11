@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { TPhotos } from '~services/unsplash/_types';
+import { TPhotos } from '~types/unsplash';
 
 type THomePageSlice = {
   search: string;
