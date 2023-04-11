@@ -1,4 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { LocalStorageService } from '~services/index';
+import { unsplashAPI } from '~store/reducers';
 
 import { TPhotos } from '~types/unsplash';
 
@@ -8,8 +10,10 @@ type THomePageSlice = {
   isFetching: boolean;
 };
 
+const LS = new LocalStorageService('unsplash');
+
 const initialState: THomePageSlice = {
-  search: '',
+  search: LS.getItem('searchValue') ?? '',
   cardsState: [],
   isFetching: false,
 };
@@ -20,15 +24,28 @@ export const homePageSlice = createSlice({
   reducers: {
     setSearchValue(state, action: PayloadAction<string>) {
       state.search = action.payload;
+      LS.setItem('searchValue', action.payload);
     },
 
     setCardsState(state, action: PayloadAction<TPhotos>) {
       state.cardsState = action.payload;
     },
+  },
 
-    setIsFetching(state, action: PayloadAction<boolean>) {
-      state.isFetching = action.payload;
-    },
+  extraReducers: (builder) => {
+    builder.addMatcher(unsplashAPI.endpoints.getPhotos.matchFulfilled, (state, { payload }) => {
+      if (payload) {
+        state.cardsState = payload;
+      }
+    });
+
+    builder.addMatcher(unsplashAPI.endpoints.searchPhoto.matchFulfilled, (state, { payload }) => {
+      if (payload) {
+        state.cardsState = payload;
+        state.search = '';
+        LS.setItem('searchValue', '');
+      }
+    });
   },
 });
 

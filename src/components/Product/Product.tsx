@@ -8,8 +8,6 @@ import { Author, Image, Info, Stats, Tags } from '~components/Product/parts';
 
 import styles from './Product.module.scss';
 
-import { getSinglePhoto } from '@/helpers';
-
 import { IPhoto } from '@/types/unsplash';
 
 const { modal, container, closer, content, desc } = styles;
@@ -23,9 +21,11 @@ export const Product: FC = () => {
   useEffect(() => {
     document.body.style.overflow = 'hidden';
 
-    if (photoId) {
-      getSinglePhoto(photoId, setPhoto);
-    }
+    setPhoto(undefined);
+
+    // if (photoId) {
+    //   getSinglePhoto(photoId, setPhoto);
+    // }
   }, [photoId]);
 
   const closeHandler = () => {

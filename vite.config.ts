@@ -17,7 +17,6 @@ export default defineConfig({
       '~variables': path.resolve(__dirname, './src/global/scss/variables.sass'),
       '~global/*': path.resolve(__dirname, './src/global/'),
       '~services/*': path.resolve(__dirname, './src/services/'),
-      '~context/*': path.resolve(__dirname, './src/context/'),
       '~hooks/*': path.resolve(__dirname, './src/hooks/'),
       '~helpers/*': path.resolve(__dirname, './src/helpers/'),
       '~utils/*': path.resolve(__dirname, './src/utils/'),

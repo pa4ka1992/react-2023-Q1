@@ -1,36 +1,26 @@
-import { useContext, useEffect, useRef, useState, type FC } from 'react';
+import { useRef, type FC } from 'react';
 
-import { HomeContext } from '~context/homePageContext';
 import Card from '../Card/Card';
 
-import { GRIDCOLUMNS } from '@/components/cards/CardsList/_constants';
 import styles from './CardsList.module.scss';
 
+import { useLazyLoader } from '~hooks/lazyLoader';
+import { useAppSelector } from '~hooks/redux';
+
 export const CardsList: FC = () => {
-  const { cardsState } = useContext(HomeContext);
+  const { cardsState } = useAppSelector((state) => state.homePageReducer);
   const container = useRef<HTMLElement>(null);
-  const [containerRef, setContainerRef] = useState<HTMLElement | null>(null);
+  const { splittedArray, containerRef } = useLazyLoader(container, cardsState);
 
-  useEffect(() => {
-    setContainerRef(container.current);
-  }, [container]);
-
-  const computedCountInColumn = Math.floor(cardsState.cards.length / GRIDCOLUMNS.length);
-  const countInColumn = computedCountInColumn ? computedCountInColumn : 1;
-
-  return cardsState.cards.length > 0 ? (
+  return (
     <section data-testid="card-list" ref={container} className={styles.list}>
-      {GRIDCOLUMNS.map((column, order) => (
-        <div key={column} className={styles.column}>
-          {cardsState.cards
-            .slice(order * countInColumn, (order + 1) * countInColumn)
-            .map((card) => (
-              <Card key={card.id} card={card} container={containerRef} />
-            ))}
+      {splittedArray?.map((column, order) => (
+        <div key={order} className={styles.column}>
+          {column.map((photo) => (
+            <Card key={photo.id} photo={photo} container={containerRef} />
+          ))}
         </div>
       ))}
     </section>
-  ) : (
-    <h4>Your search did not match any photos </h4>
   );
 };

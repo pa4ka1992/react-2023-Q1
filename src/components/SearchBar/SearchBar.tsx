@@ -1,28 +1,23 @@
-import { useContext, type ChangeEvent, type FC, type FormEvent } from 'react';
+import { type ChangeEvent, type FC, type FormEvent } from 'react';
 
 import buttonStyle from '~global/scss/Button.module.scss';
 import inputStyle from '~global/scss/Input.module.scss';
+import { useActions } from '~hooks/actions';
+
+import { useAppSelector } from '~hooks/redux';
 import styles from './SearchBar.module.scss';
 
-import { checkSearch } from '@/helpers';
-import { HomeContext } from '~context/homePageContext';
-
 export const SearchBar: FC = () => {
-  const { cardsState, searchState, isFetchingState } = useContext(HomeContext);
-  const { setCards } = cardsState;
-  const { searchVal, setSearchVal } = searchState;
-  const { setIsFetching } = isFetchingState;
+  const { search } = useAppSelector((state) => state.homePageReducer);
+  const { setSearchValue } = useActions();
 
-  const inputHandler = ({ target }: ChangeEvent<HTMLInputElement>) => {
-    setSearchVal(target.value);
+  const searchHandler = ({ target }: ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(target.value);
   };
 
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
+    console.log('submit');
     e.preventDefault();
-
-    setIsFetching(true);
-
-    checkSearch(searchVal, setSearchVal, setCards, setIsFetching);
   };
 
   return (
@@ -30,10 +25,10 @@ export const SearchBar: FC = () => {
       <input
         role="search-input"
         className={inputStyle.input}
-        onInput={inputHandler}
         type="text"
+        onChange={searchHandler}
         placeholder="Search..."
-        value={searchVal}
+        value={search}
       />
       <button type="submit" className={buttonStyle.button}>
         Search

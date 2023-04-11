@@ -1,39 +1,38 @@
-import { useState, type FC } from 'react';
+import { useEffect, type FC } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { CardsList, Product, SearchBar, Spinner } from '@/components';
 
 import styles from './Home.module.scss';
 
-import { usePreloader } from '@/hooks';
-import { TPhotos } from '@/types/unsplash';
-import { HomeContext } from '~context/homePageContext';
+import { useAppSelector } from '~hooks/redux';
+import { useLazyGetPhotosQuery, useLazySearchPhotoQuery } from '~store/reducers';
+
+import { PAGE, PER_PAGE } from '~store/reducers/constants/unsplash';
 
 export const HomePage: FC = () => {
-  const [cards, setCards] = useState<TPhotos>([]);
-  const [searchVal, setSearchVal] = useState('');
-  const [isFetching, setIsFetching] = useState(false);
-
   const { photoId } = useParams();
+  const { search, cardsState } = useAppSelector((state) => state.homePageReducer);
+  const [getPhotos, { isLoading: randomLoad }] = useLazyGetPhotosQuery();
+  const [searchPhoto, { isLoading: searchLoad }] = useLazySearchPhotoQuery();
 
-  usePreloader({ searchVal, setSearchVal, setCards, setIsFetching });
-
-  const context = {
-    cardsState: { cards, setCards },
-    searchState: { searchVal, setSearchVal },
-    isFetchingState: {
-      isFetching,
-      setIsFetching,
-    },
-  };
+  useEffect(() => {
+    search
+      ? searchPhoto({ query: search, per_page: PER_PAGE })
+      : getPhotos({ per_page: PER_PAGE, page: PAGE });
+  }, [search, getPhotos, searchPhoto]);
 
   return (
     <div className={styles.home} data-testid="home">
-      <HomeContext.Provider value={context}>
-        <SearchBar />
-        {isFetching ? <Spinner /> : <CardsList />}
-        {photoId ? <Product /> : null}
-      </HomeContext.Provider>
+      <SearchBar />
+
+      {randomLoad || searchLoad ? <Spinner /> : <CardsList />}
+
+      {!randomLoad && !searchLoad && cardsState.length === 0 ? (
+        <h4>Your search did not match any photos </h4>
+      ) : null}
+
+      {photoId ? <Product /> : null}
     </div>
   );
 };

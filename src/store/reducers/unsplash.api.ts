@@ -1,7 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+import { isPhoto, isPhotoArray } from '~utils/type-guards';
+import { prepareHeaders } from './helpers';
+
 import { UNSPLASH } from '@/store/reducers/constants/unsplash';
-import { checkResType, prepareHeaders } from './helpers';
+
+import { IPhoto, ISearchRes, TPhotos } from '~types/unsplash';
 
 export const unsplashAPI = createApi({
   reducerPath: 'unsplashAPI',
@@ -10,7 +14,7 @@ export const unsplashAPI = createApi({
     prepareHeaders: prepareHeaders,
   }),
   endpoints: (builder) => ({
-    getPhotos: builder.query<unknown, { per_page: number; page: number }>({
+    getPhotos: builder.query<TPhotos | null, { per_page: number; page: number }>({
       query: ({ per_page, page }) => ({
         url: '/photos',
         params: {
@@ -18,12 +22,10 @@ export const unsplashAPI = createApi({
           page: page,
         },
       }),
-      transformResponse: (res) => {
-        return checkResType(res);
-      },
+      transformResponse: (res: unknown) => (isPhotoArray(res) ? res : null),
     }),
 
-    searchPhoto: builder.query<unknown, { query: string; per_page: number }>({
+    searchPhoto: builder.query<TPhotos | null, { query: string; per_page: number }>({
       query: ({ per_page, query }) => ({
         url: '/search/photos',
         params: {
@@ -31,18 +33,17 @@ export const unsplashAPI = createApi({
           query: query,
         },
       }),
-      transformResponse: (res) => {
-        return checkResType(res);
+      transformResponse: (res: ISearchRes) => {
+        return isPhotoArray(res.results) ? res.results : null;
       },
     }),
 
-    getSinglePhoto: builder.query<unknown, { photoId: string }>({
+    getSinglePhoto: builder.query<IPhoto | null, { photoId: string }>({
       query: ({ photoId }) => `/photos/${photoId}`,
-      transformResponse: (res) => {
-        return checkResType(res);
-      },
+      transformResponse: (res: unknown) => (isPhoto(res) ? res : null),
     }),
   }),
 });
 
-export const { useGetPhotosQuery, useGetSinglePhotoQuery, useLazySearchPhotoQuery } = unsplashAPI;
+export const { useLazyGetPhotosQuery, useLazyGetSinglePhotoQuery, useLazySearchPhotoQuery } =
+  unsplashAPI;

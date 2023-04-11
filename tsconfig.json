@@ -26,7 +26,6 @@
       "~pages/*": ["src/pages/*"],
       "~global/*": ["src/global/*"],
       "~services/*": ["src/services/*"],
-      "~context/*": ["src/context/*"],
       "~hooks/*": ["src/hooks/*"],
       "~helpers/*": ["src/helpers/*"],
       "~utils/*": ["src/utils/*"],

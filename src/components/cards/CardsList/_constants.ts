@@ -1,1 +1,1 @@
-export const GRIDCOLUMNS = [1, 2, 3, 4];
+export const GRIDCOLUMNS = 4;
