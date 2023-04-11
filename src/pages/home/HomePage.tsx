@@ -12,7 +12,7 @@ import { PAGE, PER_PAGE } from '~store/reducers/constants/unsplash';
 
 export const HomePage: FC = () => {
   const { photoId } = useParams();
-  const { search, cardsState } = useAppSelector((state) => state.homePageReducer);
+  const { search, cards } = useAppSelector((state) => state.homePageReducer);
   const [getPhotos, { isLoading: randomLoad }] = useLazyGetPhotosQuery();
   const [searchPhoto, { isLoading: searchLoad }] = useLazySearchPhotoQuery();
 
@@ -28,7 +28,7 @@ export const HomePage: FC = () => {
 
       {randomLoad || searchLoad ? <Spinner /> : <CardsList />}
 
-      {!randomLoad && !searchLoad && cardsState.length === 0 ? (
+      {!randomLoad && !searchLoad && cards.length === 0 ? (
         <h4>Your search did not match any photos </h4>
       ) : null}
 

@@ -4,7 +4,7 @@ import { TPhotos } from '~types/unsplash';
 
 import { GRID_COLUMNS, GRID_GAP } from '~components/cards/CardsList/_constants';
 
-export const useLazyLoader = (container: React.RefObject<HTMLElement>, cardsState: TPhotos) => {
+export const useLazyLoader = (container: React.RefObject<HTMLElement>, cards: TPhotos) => {
   useEffect(() => {
     if (container.current) {
       container.current.style.setProperty('--grid-columns', `${GRID_COLUMNS}`);
@@ -12,18 +12,18 @@ export const useLazyLoader = (container: React.RefObject<HTMLElement>, cardsStat
   }, [container]);
 
   const { splittedArray } = useMemo(() => {
-    const elementInGrid = Math.floor(cardsState.length / GRID_COLUMNS);
+    const elementInGrid = Math.floor(cards.length / GRID_COLUMNS);
     const countInColumn = elementInGrid ?? 1;
 
     const splittedArray = [] as TPhotos[];
 
-    for (let i = 0; i < cardsState.length; i += countInColumn) {
-      const chunk = cardsState.slice(i, i + countInColumn);
+    for (let i = 0; i < cards.length; i += countInColumn) {
+      const chunk = cards.slice(i, i + countInColumn);
       splittedArray.push(chunk);
     }
 
     return { splittedArray };
-  }, [cardsState]);
+  }, [cards]);
 
   const getPreloadHeight = useCallback(
     (originWidth: number) => {

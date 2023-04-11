@@ -8,9 +8,9 @@ import { useLazyLoader } from '~hooks/lazyLoader';
 import { useAppSelector } from '~hooks/redux';
 
 export const CardsList: FC = () => {
-  const { cardsState } = useAppSelector((state) => state.homePageReducer);
+  const { cards } = useAppSelector((state) => state.homePageReducer);
   const container = useRef<HTMLElement>(null);
-  const { splittedArray, getPreloadHeight } = useLazyLoader(container, cardsState);
+  const { splittedArray, getPreloadHeight } = useLazyLoader(container, cards);
 
   return (
     <section data-testid="card-list" ref={container} className={styles.list}>
