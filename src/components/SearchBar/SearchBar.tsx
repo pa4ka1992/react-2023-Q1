@@ -1,18 +1,17 @@
-import { type ChangeEvent, type FC, type FormEvent } from 'react';
+import { useState, type ChangeEvent, type FC, type FormEvent } from 'react';
 
 import buttonStyle from '~global/scss/Button.module.scss';
 import inputStyle from '~global/scss/Input.module.scss';
-import { useActions } from '~hooks/actions';
 
-import { useAppSelector } from '~hooks/redux';
 import styles from './SearchBar.module.scss';
 
 export const SearchBar: FC = () => {
-  const { search } = useAppSelector((state) => state.homePageReducer);
-  const { setSearchValue } = useActions();
+  // const { search } = useAppSelector((state) => state.homePageReducer);
+  // const { setSearchValue } = useActions();
+  const [inputValue, setInputValue] = useState('');
 
   const searchHandler = ({ target }: ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(target.value);
+    setInputValue(target.value);
   };
 
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
@@ -25,10 +24,10 @@ export const SearchBar: FC = () => {
       <input
         role="search-input"
         className={inputStyle.input}
-        type="text"
+        type="search"
         onChange={searchHandler}
         placeholder="Search..."
-        value={search}
+        value={inputValue}
       />
       <button type="submit" className={buttonStyle.button}>
         Search
