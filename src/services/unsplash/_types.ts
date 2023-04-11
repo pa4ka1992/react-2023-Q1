@@ -1,6 +1,7 @@
 export interface IPhoto {
   id: string;
   downloads?: number;
+  blur_hash: string;
   color: string;
   width: number;
   height: number;

@@ -4,8 +4,8 @@ import buttonStyle from '~global/scss/Button.module.scss';
 import inputStyle from '~global/scss/Input.module.scss';
 import styles from './SearchBar.module.scss';
 
+import { checkSearch } from '@/helpers';
 import { HomeContext } from '~context/homePageContext';
-import { checkSearch } from '~helpers/_index';
 
 export const SearchBar: FC = () => {
   const { cardsState, searchState, isFetchingState } = useContext(HomeContext);

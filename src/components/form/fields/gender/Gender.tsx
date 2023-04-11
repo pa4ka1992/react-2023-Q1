@@ -1,11 +1,11 @@
 import { type FC } from 'react';
 
-import { FormError } from '../Error/FormError';
+import FormError from '../Error/FormError';
 
 import '../styles/Field.scss';
 import styles from '../styles/RadioCheck.module.scss';
 
-import { IFormProps } from '~compos/form/_types';
+import { IFormProps } from '~components/form/_types';
 
 const { header, wrapper, label } = styles;
 

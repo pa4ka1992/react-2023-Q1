@@ -1,7 +1,7 @@
 import { useState, type FC } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 
-import { AddInfo, BirthDate, Country, Gender, Photo, UserName } from '~compos/form/fields/_index';
+import { AddInfo, BirthDate, Country, Gender, Photo, UserName } from '~components/form/fields';
 
 import buttonStyle from '~global/scss/Button.module.scss';
 import styles from './Form.module.scss';
@@ -15,7 +15,7 @@ type TProps = {
   setUsers: React.Dispatch<React.SetStateAction<IUser[]>>;
 };
 
-export const Form: FC<TProps> = ({ setUsers }) => {
+const Form: FC<TProps> = ({ setUsers }) => {
   const [isReseted, setIsReseted] = useState(false);
 
   const {
@@ -56,3 +56,5 @@ export const Form: FC<TProps> = ({ setUsers }) => {
     </>
   );
 };
+
+export default Form;

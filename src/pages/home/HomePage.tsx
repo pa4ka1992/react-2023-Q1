@@ -1,7 +1,7 @@
 import { useState, type FC } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { CardsList, Product, SearchBar, Spinner } from '~compos/_index';
+import { CardsList, Product, SearchBar, Spinner } from '@/components';
 
 import styles from './Home.module.scss';
 

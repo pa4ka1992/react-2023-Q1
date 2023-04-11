@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, type FC } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { formateDate, getPreloadHeight } from '~helpers/_index';
+import { formateDate, getPreloadHeight } from '@/helpers';
 
 import { IPhoto } from '~services/unsplash/_types';
 import styles from './Card.module.scss';
@@ -11,7 +11,7 @@ import styles from './Card.module.scss';
 const { skeleton, postDate, wrapImg, img, info, wrapLikes, like, wrapAuthor, avatar, authorName } =
   styles;
 
-export const Card: FC<{ card: IPhoto; container: HTMLElement | null }> = ({ card, container }) => {
+const Card: FC<{ card: IPhoto; container: HTMLElement | null }> = ({ card, container }) => {
   const { id, likes, urls, user, created_at, color, width, height } = card;
   const [isloaded, setIsloaded] = useState(false);
 
@@ -22,7 +22,9 @@ export const Card: FC<{ card: IPhoto; container: HTMLElement | null }> = ({ card
         data-testid="card-link"
         to={`/photoID/${id}`}
         className={wrapImg}
-        style={{ minHeight: isloaded ? 'auto' : height * getPreloadHeight(container, width) }}
+        style={{
+          minHeight: isloaded ? 'auto' : height * getPreloadHeight(container, width),
+        }}
       >
         <img className={img} src={urls.regular} alt="product" />
       </NavLink>
@@ -46,3 +48,5 @@ export const Card: FC<{ card: IPhoto; container: HTMLElement | null }> = ({ card
     </div>
   );
 };
+
+export default Card;

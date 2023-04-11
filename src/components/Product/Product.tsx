@@ -3,12 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState, type FC } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { Spinner } from '~compos/_index';
-import { Author, Image, Info, Stats, Tags } from '~compos/Product/parts/_index';
+import { Spinner } from '@/components';
+import { Author, Image, Info, Stats, Tags } from '~components/Product/parts';
 
 import styles from './Product.module.scss';
 
-import { getSinglePhoto } from '~helpers/_index';
+import { getSinglePhoto } from '@/helpers';
+
 import { IPhoto } from '~services/unsplash/_types';
 
 const { modal, container, closer, content, desc } = styles;

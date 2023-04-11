@@ -1,13 +1,13 @@
 import { type FC } from 'react';
 
-import { FormError } from '../Error/FormError';
+import FormError from '../Error/FormError';
 
 import '../styles/Field.scss';
 import styles from './Country.module.scss';
 
 import { COUNTRIES, SELECT } from './_constants';
 
-import { IFormProps } from '~compos/form/_types';
+import { IFormProps } from '~components/form/_types';
 
 export const Country: FC<IFormProps> = ({ register, error }) => {
   const validateHandler = (data: string) => {

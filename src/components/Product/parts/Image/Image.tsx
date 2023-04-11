@@ -1,10 +1,10 @@
 import { type FC } from 'react';
 
-import { Spinner } from '~compos/_index';
+import { Spinner } from '@/components';
 
 import styles from './Image.module.scss';
 
-import { IImageProps } from '~compos/Product/parts/_types';
+import { IImageProps } from '~components/Product/parts/_types';
 
 const { wrapImg, img } = styles;
 

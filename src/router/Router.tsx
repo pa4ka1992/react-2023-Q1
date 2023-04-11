@@ -5,8 +5,8 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 
-import { Layout } from '~compos/_index';
-import { NotFoundPage } from '~pages/_index';
+import { Layout } from '@/components';
+import { NotFoundPage } from '@/pages';
 
 import { ROUTE } from './_constants';
 import routes from './routes';

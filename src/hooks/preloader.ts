@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react';
 import { useBeforeUnload } from 'react-router-dom';
 
-import { LocalStorageService } from '~services/_index';
+import { LocalStorageService } from '@/services';
 
-import { checkSearch } from '~helpers/_index';
+import { checkSearch } from '@/helpers';
 import { TPhotos } from '~services/unsplash/_types';
 
 type TSaverProps = {

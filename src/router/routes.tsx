@@ -1,4 +1,4 @@
-import { AboutPage, FormPage, HomePage } from '@/pages/_index';
+import { AboutPage, FormPage, HomePage } from '@/pages';
 import { ROUTE } from './_constants';
 
 const routes = [

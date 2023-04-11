@@ -2,7 +2,7 @@ import { type FC } from 'react';
 
 import styles from './Author.module.scss';
 
-import { IAuthorProps } from '~compos/Product/parts/_types';
+import { IAuthorProps } from '~components/Product/parts/_types';
 
 const { author, avatar, authorNick } = styles;
 

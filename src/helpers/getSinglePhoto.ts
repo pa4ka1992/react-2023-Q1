@@ -1,4 +1,4 @@
-import { Unsplash } from '~services/_index';
+import { Unsplash } from '@/services';
 import { isPhoto } from '~utils/type-guards/photo-type-guard';
 
 import { IPhoto } from '~services/unsplash/_types';

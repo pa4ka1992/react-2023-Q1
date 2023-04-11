@@ -1,11 +1,11 @@
 import { type FC } from 'react';
 
-import { FormError } from '../Error/FormError';
+import FormError from '../Error/FormError';
 
 import '../styles/Field.scss';
 import styles from '../styles/RadioCheck.module.scss';
 
-import { ICheckboxProps } from '~compos/form/_types';
+import { ICheckboxProps } from '~components/form/_types';
 
 const { wrapper, label, header } = styles;
 

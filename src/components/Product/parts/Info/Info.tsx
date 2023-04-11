@@ -4,7 +4,7 @@ import { FC } from 'react';
 
 import styles from './Info.module.scss';
 
-import { formateDate } from '~helpers/_index';
+import { formateDate } from '@/helpers';
 import { IPhoto } from '~services/unsplash/_types';
 
 const { title, info, icon, fieldRow } = styles;

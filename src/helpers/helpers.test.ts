@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction } from 'react';
 import { describe, expect, test } from 'vitest';
 
-import { checkSearch, formateDate, getSinglePhoto } from './_index';
+import { checkSearch, formateDate, getSinglePhoto } from '.';
 
-import { IPhoto, TPhotos } from '@/services/unsplash/_types';
+import { IPhoto, TPhotos } from '~services/unsplash/_types';
 
 describe('formate date', () => {
   test('formates date correctly', () => {

@@ -3,6 +3,7 @@ import { IPhoto } from '~services/unsplash/_types';
 const usedProps = [
   'id',
   'likes',
+  'blur_hash',
   'color',
   'description',
   'alt_description',

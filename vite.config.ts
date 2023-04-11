@@ -13,7 +13,7 @@ export default defineConfig({
       '@/': path.resolve(__dirname, './src/'),
       '~app/*': path.resolve(__dirname, './src/app/'),
       '~assets/*': path.resolve(__dirname, './src/assets/'),
-      '~compos/*': path.resolve(__dirname, './src/components/'),
+      '~components/*': path.resolve(__dirname, './src/components/'),
       '~pages/*': path.resolve(__dirname, './src/pages/'),
       '~variables': path.resolve(__dirname, './src/global/scss/variables.sass'),
       '~global/*': path.resolve(__dirname, './src/global/'),
