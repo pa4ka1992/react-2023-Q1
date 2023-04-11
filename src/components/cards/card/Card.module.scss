@@ -32,3 +32,53 @@
     }
   }
 }
+
+.postDate {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: map-get($space-sm, 'x');
+
+  font-weight: inherit;
+
+  opacity: 0;
+  transition: $generic-hover-transition;
+}
+
+.wrapImg {
+  display: flex;
+  align-items: center;
+
+  cursor: zoom-in;
+  transition: $generic-hover-transition;
+}
+
+.img {
+  width: 100%;
+  border-radius: $button-push-border-radius;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+
+  position: absolute;
+  bottom: 0;
+  padding: map-get($space-xs, 'y') map-get($space-sm, 'x');
+  width: 100%;
+
+  opacity: 0;
+  transition: $generic-hover-transition;
+  z-index: 5;
+}
+
+.wrapLikes,
+.wrapAuthor {
+  display: flex;
+  align-items: center;
+  gap: map-get($space-sm, 'x');
+}
+
+.avatar {
+  border-radius: 50%;
+}

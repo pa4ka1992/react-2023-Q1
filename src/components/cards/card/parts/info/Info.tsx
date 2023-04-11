@@ -2,13 +2,16 @@ import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { type FC } from 'react';
 
-import { IPhoto } from '@/types/unsplash';
-import styles from './Info.module.scss';
+import styles from '../../Card.module.scss';
+
+import { IPhoto } from '~types/unsplash';
 
 const { info, wrapLikes, wrapAuthor, avatar } = styles;
 
 export const Info: FC<{ photo: IPhoto }> = ({ photo }) => {
   const { likes, user } = photo;
+
+  console.log(styles);
 
   return (
     <div className={info}>

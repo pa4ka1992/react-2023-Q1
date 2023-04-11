@@ -17,6 +17,8 @@ const Card: FC<ICardProps> = ({ photo, lazyLoader }) => {
   const { color, height, width } = photo;
   const [isloaded, setIsloaded] = useState(false);
 
+  console.log(styles);
+
   return (
     <div
       className={skeleton}

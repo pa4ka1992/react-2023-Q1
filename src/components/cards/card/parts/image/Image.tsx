@@ -1,7 +1,7 @@
 import { type Dispatch, type FC, type SetStateAction } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import styles from './Image.module.scss';
+import styles from '../../Card.module.scss';
 
 import { formateDate } from '@/helpers';
 
