@@ -12,7 +12,7 @@ export const Tags: FC<{ preview: { title: string }[] | undefined }> = ({ preview
           <h4>Related tags</h4>
           <div className={wrapTags}>
             {preview?.map((tag, i) => (
-              <span className={tagElem} key={i}>
+              <span className={tagElem} key={i + Date.now()}>
                 {tag.title}
               </span>
             ))}

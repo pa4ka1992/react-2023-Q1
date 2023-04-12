@@ -2,20 +2,19 @@ import { useState, type FC } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 
 import { AddInfo, BirthDate, Country, Gender, Photo, UserName } from '~components/Form/fields';
+import { Modal } from './Modal/Modal';
 
 import buttonStyle from '~global/scss/Button.module.scss';
 import styles from './Form.module.scss';
 
-import { IUser } from '~types/user';
-import { Modal } from './Modal/Modal';
+import { useActions } from '~hooks/actions';
+
+import { IForm } from '~types/user';
 
 const { form, grid } = styles;
 
-type TProps = {
-  setUsers: React.Dispatch<React.SetStateAction<IUser[]>>;
-};
-
-export const Form: FC<TProps> = ({ setUsers }) => {
+export const Form: FC = () => {
+  const { setUser } = useActions();
   const [isReseted, setIsReseted] = useState(false);
 
   const {
@@ -23,11 +22,12 @@ export const Form: FC<TProps> = ({ setUsers }) => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<IUser>({ mode: 'onSubmit', reValidateMode: 'onSubmit' });
+  } = useForm<IForm>({ mode: 'onSubmit', reValidateMode: 'onSubmit' });
 
-  const submitHandler: SubmitHandler<IUser> = (data, e) => {
+  const submitHandler: SubmitHandler<IForm> = (data, e) => {
     e?.preventDefault();
-    setUsers((prev) => [...prev, structuredClone(data)]);
+
+    setUser({ id: Date.now(), ...structuredClone(data) });
     setIsReseted(true);
 
     setTimeout(() => {

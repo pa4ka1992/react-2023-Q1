@@ -13,12 +13,17 @@ export const Photo: FC<IFormProps> = ({ register, error, isReseted }) => {
 
   useEffect(() => {
     if (isReseted) {
+      URL.revokeObjectURL(img);
       setImg('');
     }
-  }, [isReseted]);
+  }, [isReseted, img]);
 
   const uploadHandler = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
-    if (target.files && target.files.length > 0) {
+    if (target.files?.length) {
+      if (img) {
+        URL.revokeObjectURL(img);
+      }
+
       setImg(URL.createObjectURL(target.files[0]));
     }
   };

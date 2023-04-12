@@ -7,42 +7,40 @@ import { IUser } from '~types/user';
 const { img, title, avatar, wrapper, content, userWrapper, infoItem } = styles;
 
 const User: FC<{ user: IUser }> = ({ user }) => {
+  const { photo, userName, birthDate, country, gender, addInfo } = user;
+
   return (
     <div data-testid="user" className={userWrapper}>
       <div className={avatar}>
-        <img
-          className={img}
-          src={user.photo ? URL.createObjectURL(user.photo[0]) : ''}
-          alt="avatar"
-        />
+        <img className={img} src={photo ? URL.createObjectURL(photo[0]) : ''} alt="avatar" />
       </div>
 
       <div className={wrapper}>
         <span className={title}>Name:</span>
-        <span className={content}>{user.userName}</span>
+        <span className={content}>{userName}</span>
       </div>
 
       <div className={wrapper}>
         <span className={title}>Birth date:</span>
-        <span className={content}>{user.birthDate.replace(/[-]/g, '.')}</span>
+        <span className={content}>{birthDate.replace(/[-]/g, '.')}</span>
       </div>
 
       <div className={wrapper}>
         <span className={title}>Country:</span>
-        <span>{user.country}</span>
+        <span>{country}</span>
       </div>
 
       <div className={wrapper}>
         <span className={title}>Gender:</span>
-        <span>{user.gender}</span>
+        <span>{gender}</span>
       </div>
 
       <div className={wrapper}>
         <span className={title}>Preferences:</span>
         <ul>
-          {user.addInfo.map((info, i) =>
+          {addInfo.map((info, i) =>
             info ? (
-              <li className={infoItem} key={i}>
+              <li className={infoItem} key={i + Date.now()}>
                 {info}
               </li>
             ) : null

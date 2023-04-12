@@ -27,9 +27,9 @@ export const Country: FC<IFormProps> = ({ register, error }) => {
             Choose a country
           </option>
           Choose here
-          {COUNTRIES.map((country, i) => (
-            <option key={i} value={country}>
-              {country}
+          {COUNTRIES.map((country) => (
+            <option key={country.id} value={country.name}>
+              {country.name}
             </option>
           ))}
         </select>

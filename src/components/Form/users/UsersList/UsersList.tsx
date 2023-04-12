@@ -3,14 +3,14 @@ import { type FC } from 'react';
 import User from '../User/User';
 
 import styles from './UsersList.module.scss';
+import { useAppSelector } from '~hooks/redux';
 
-import { IUser } from '~types/user';
-
-export const UsersList: FC<{ users: IUser[] }> = ({ users }) => {
+export const UsersList: FC = () => {
+  const { users } = useAppSelector((state) => state.formPageReducer);
   return (
     <div data-testid="users" className={styles.usersList}>
-      {users.map((user, i) => (
-        <User user={user} key={i} />
+      {users.map((user) => (
+        <User user={user} key={user.id} />
       ))}
     </div>
   );

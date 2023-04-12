@@ -6,6 +6,7 @@ import '../styles/Field.scss';
 import styles from '../styles/RadioCheck.module.scss';
 
 import { ICheckboxProps } from '~components/Form/_types';
+import { ADD_INFO } from './_constants';
 
 const { wrapper, label, header } = styles;
 
@@ -26,18 +27,12 @@ export const AddInfo: FC<ICheckboxProps> = ({ register, error }) => {
       <div className="border">
         <p className="title">Choose your produt preferences:</p>
         <div className={wrapper}>
-          <label className={label}>
-            <span className={header}>Clothing</span>
-            <input type="checkbox" value="clothing" {...register('addInfo.0')} />
-          </label>
-          <label className={label}>
-            <span className={header}>Jewelery</span>
-            <input type="checkbox" value="jewelery" {...register('addInfo.1')} />
-          </label>
-          <label className={label}>
-            <span className={header}>Electronics</span>
-            <input type="checkbox" value="electronics" {...register('addInfo.2')} />
-          </label>
+          {ADD_INFO.map((info) => (
+            <label className={label} key={info.id}>
+              <span className={header}>{info.value}</span>
+              <input type="checkbox" value={info.value} {...register(`addInfo.${info.id}`)} />
+            </label>
+          ))}
         </div>
 
         <FormError error={error?.message} />
