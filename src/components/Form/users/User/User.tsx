@@ -12,7 +12,7 @@ const User: FC<{ user: IUser }> = ({ user }) => {
   return (
     <div data-testid="user" className={userWrapper}>
       <div className={avatar}>
-        <img className={img} src={photo ? URL.createObjectURL(photo[0]) : ''} alt="avatar" />
+        <img className={img} src={photo} alt="avatar" />
       </div>
 
       <div className={wrapper}>

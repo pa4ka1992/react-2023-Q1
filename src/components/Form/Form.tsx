@@ -27,7 +27,9 @@ export const Form: FC = () => {
   const submitHandler: SubmitHandler<IForm> = (data, e) => {
     e?.preventDefault();
 
-    setUser({ id: Date.now(), ...structuredClone(data) });
+    const imageToString = URL.createObjectURL(data.photo[0]);
+
+    setUser({ id: Date.now(), ...structuredClone(data), photo: imageToString });
     setIsReseted(true);
 
     setTimeout(() => {

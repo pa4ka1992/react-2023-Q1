@@ -4,9 +4,10 @@ export interface IForm {
   country: string;
   addInfo: string[];
   gender: string;
-  photo?: FileList;
+  photo: FileList;
 }
 
-export interface IUser extends IForm {
+export interface IUser extends Omit<IForm, 'photo'> {
   id: number;
+  photo: string;
 }
