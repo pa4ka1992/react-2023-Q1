@@ -1,0 +1,17 @@
+@import '~variables';
+
+.author {
+  display: flex;
+  gap: map-get($space-md, 'x');
+  align-items: center;
+
+  font-size: map-get($body2, 'size');
+}
+
+.avatar {
+  border-radius: 50%;
+}
+
+.authorNick {
+  color: $grey-7;
+}

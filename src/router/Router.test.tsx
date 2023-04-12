@@ -1,11 +1,12 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import AppRouter from './Router';
 
 describe('App', () => {
   render(<AppRouter />);
 
-  it('renders', () => {
-    // expect(screen.getByRole('h2'));
-    // expect(screen.getByRole('navigation'));
+  test('renders Home page', () => {
+    expect(screen.getByTestId('spinner')).toBeInTheDocument();
+    expect(screen.getByTestId('search')).toBeInTheDocument();
+    expect(screen.queryByTestId('product')).not.toBeInTheDocument();
   });
 });

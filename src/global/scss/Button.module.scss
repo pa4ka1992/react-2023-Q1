@@ -9,7 +9,7 @@ $search-size: map-get($space-sm, 'x');
 
   font-size: $button-font-size;
 
-  background-color: $primary;
+  background-color: $grey-6;
   border: none;
   border-radius: $button-border-radius;
   box-shadow: $button-shadow;
@@ -18,7 +18,7 @@ $search-size: map-get($space-sm, 'x');
   transition: all 0.2s;
 
   &:hover {
-    background-color: $secondary;
+    background-color: $grey-8;
   }
 
   &:active {

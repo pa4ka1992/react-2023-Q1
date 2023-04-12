@@ -1,0 +1,15 @@
+@import '~variables';
+
+.list {
+  display: grid;
+  grid-column-gap: map-get($space-lg, 'x');
+  align-items: start;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  margin-top: map-get($space-lg, 'x');
+}
+
+.column {
+  display: grid;
+  grid-row-gap: map-get($space-lg, 'x');
+}

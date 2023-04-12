@@ -1,9 +1,0 @@
-@import '~variables';
-
-.container {
-  margin: 0 auto;
-  padding: map-get($space-lg, 'x');
-  max-width: $breakpoint-md;
-
-  background-color: $grey-2;
-}

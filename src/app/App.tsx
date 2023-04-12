@@ -5,11 +5,7 @@ import AppRouter from '@/router/Router';
 import './App.scss';
 
 const App: FC = () => {
-  return (
-    <div>
-      <AppRouter />
-    </div>
-  );
+  return <AppRouter />;
 };
 
 export default App;

@@ -17,6 +17,11 @@ export default defineConfig({
       '~pages/*': path.resolve(__dirname, './src/pages/'),
       '~variables': path.resolve(__dirname, './src/global/scss/variables.sass'),
       '~global/*': path.resolve(__dirname, './src/global/'),
+      '~services/*': path.resolve(__dirname, './src/services/'),
+      '~context/*': path.resolve(__dirname, './src/context/'),
+      '~hook/*': path.resolve(__dirname, './src/hook/'),
+      '~helpers/*': path.resolve(__dirname, './src/helpers/'),
+      '~utils/*': path.resolve(__dirname, './src/utils/'),
     },
   },
   plugins: [react(), tsconfigPaths()],
@@ -29,7 +34,13 @@ export default defineConfig({
     setupFiles: ['./src/setupTests.ts'],
     coverage: {
       reporter: ['text', 'lcov'],
-      exclude: ['src/**/*.test.tsx', 'src/**/*.ts'],
+      exclude: [
+        'src/**/*.test.tsx',
+        'src/**/*.test.ts',
+        'src/**/_index.ts',
+        'src/**/_constants.ts',
+        'src/**/_types.ts',
+      ],
     },
   },
 });

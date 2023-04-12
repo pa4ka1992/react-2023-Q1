@@ -1,0 +1,23 @@
+@import '~variables';
+
+.wrapTags {
+  display: flex;
+  gap: map-get($space-sm, 'x');
+
+  color: $grey-8;
+}
+
+.tags {
+  display: flex;
+  flex-direction: column;
+  gap: map-get($space-sm, 'x');
+}
+
+.tagElem {
+  padding: map-get($space-xs, 'x');
+
+  font-size: map-get($body2, 'size');
+
+  background-color: $grey-4;
+  border-radius: $button-border-radius;
+}

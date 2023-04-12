@@ -17,6 +17,11 @@ const routes = [
     element: <FormPage />,
     name: 'Form',
   },
+  {
+    path: ROUTE.photo,
+    element: <HomePage />,
+    name: 'Product',
+  },
 ];
 
 export default routes;

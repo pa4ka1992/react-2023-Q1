@@ -8,8 +8,8 @@ import {
 import { Layout } from '~compos/_index';
 import { NotFoundPage } from '~pages/_index';
 
-import routes from './routes';
 import { ROUTE } from './_constants';
+import routes from './routes';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
