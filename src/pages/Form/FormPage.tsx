@@ -2,7 +2,7 @@ import { useState, type FC } from 'react';
 
 import { Form, UsersList } from '~compos/form/_index';
 
-import { FieldValues } from '@/pages/form/_types';
+import { FieldValues } from '@/pages/Form/_types';
 
 export const FormPage: FC = () => {
   const [users, setUsers] = useState<FieldValues[]>([]);

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef, useState, type FC } from 'react';
 
 import { HomeContext } from '~context/homePageContext';
-import { Card } from '../card/Card';
+import { Card } from '../Card/Card';
 
 import { GRIDCOLUMNS } from '@/components/cards/CardsList/_constants';
 import styles from './CardsList.module.scss';

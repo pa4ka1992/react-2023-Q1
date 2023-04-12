@@ -1,6 +1,6 @@
 import { type FC } from 'react';
 
-import { User } from '@/components/form/users/user/User';
+import { User } from '@/components/form/users/User/User';
 
 import styles from './UsersList.module.scss';
 
