@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 
-import { isPhoto, isPhotoArray, isString } from './_index';
+import { isPhoto, isPhotoArray, isString } from './index';
 
 describe('type guards', () => {
   test('string guard defines type', () => {

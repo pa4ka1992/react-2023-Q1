@@ -1,6 +1,6 @@
 import React, { useEffect, useState, type FC } from 'react';
 
-import FormError from '../Error/FormError';
+import { FormError } from '../Error/FormError';
 
 import buttonStyle from '~global/scss/Button.module.scss';
 import '../styles/Field.scss';

@@ -1,7 +1,7 @@
 import { useState, type FC } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 
-import { AddInfo, BirthDate, Country, Gender, Photo, UserName } from '~components/form/fields';
+import { AddInfo, BirthDate, Country, Gender, Photo, UserName } from '~components/Form/fields';
 
 import buttonStyle from '~global/scss/Button.module.scss';
 import styles from './Form.module.scss';

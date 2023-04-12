@@ -8,11 +8,11 @@ import { IPhoto } from '~types/unsplash';
 
 const { wrapImg, img } = styles;
 
-export const Image: FC<{ photo: IPhoto }> = ({ photo }) => {
+export const Image: FC<{ photo?: IPhoto }> = ({ photo }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <div className={wrapImg} style={{ backgroundColor: `${photo.color}0d` }}>
+    <div className={wrapImg} style={{ backgroundColor: `${photo?.color}0d` }}>
       {isLoading ? (
         <Spinner />
       ) : (
@@ -21,7 +21,7 @@ export const Image: FC<{ photo: IPhoto }> = ({ photo }) => {
             setIsLoading(false);
           }}
           className={img}
-          src={photo.urls.regular}
+          src={photo?.urls.regular}
           alt="photo"
         />
       )}

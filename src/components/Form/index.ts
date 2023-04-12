@@ -1,2 +1,2 @@
-export { Form } from '~components/Form/Form';
-export { UsersList } from '~components/form/users/UsersList/UsersList';
+export { Form } from './Form';
+export { UsersList } from './users/UsersList/UsersList';

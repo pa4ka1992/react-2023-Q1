@@ -16,7 +16,7 @@ export const Product: FC = () => {
   const navigate = useNavigate();
   const { photoId } = useParams();
 
-  const { data: photo, isLoading } = useGetSinglePhotoQuery(photoId ?? '');
+  const { data: photo, isLoading } = useGetSinglePhotoQuery(photoId);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -48,12 +48,14 @@ export const Product: FC = () => {
 
           <Author photo={photo} />
 
-          <h4 className={desc}>{photo.description ? photo.description : photo.alt_description}</h4>
+          <h4 className={desc}>
+            {photo?.description ? photo.description : photo?.alt_description}
+          </h4>
 
           <Image photo={photo} />
           <Stats photo={photo} />
           <Info photo={photo} />
-          <Tags preview={photo.tags_preview} />
+          <Tags preview={photo?.tags_preview} />
         </section>
       </div>
     </section>

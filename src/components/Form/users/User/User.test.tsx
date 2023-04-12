@@ -1,10 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import { User } from './User';
+import User from './User';
 
 describe('User', () => {
   it('renders', () => {
-    // const file = new File([avatar], 'avatar.png', { type: 'png' });
-
     const user = {
       userName: 'vasia',
       birthDate: '02.03.1822',

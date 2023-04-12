@@ -14,7 +14,7 @@ export const unsplashAPI = createApi({
     prepareHeaders: prepareHeaders,
   }),
   endpoints: (builder) => ({
-    getPhotos: builder.query<TPhotos | null, { per_page: number; page: number }>({
+    getPhotos: builder.query<TPhotos | undefined, { per_page: number; page: number }>({
       query: ({ per_page, page }) => ({
         url: '/photos',
         params: {
@@ -22,10 +22,10 @@ export const unsplashAPI = createApi({
           page: page,
         },
       }),
-      transformResponse: (res: unknown) => (isPhotoArray(res) ? res : null),
+      transformResponse: (res: unknown) => (isPhotoArray(res) ? res : undefined),
     }),
 
-    searchPhoto: builder.query<TPhotos | null, { query: string; per_page: number }>({
+    searchPhoto: builder.query<TPhotos | undefined, { query: string; per_page: number }>({
       query: ({ per_page, query }) => ({
         url: '/search/photos',
         params: {
@@ -34,13 +34,13 @@ export const unsplashAPI = createApi({
         },
       }),
       transformResponse: (res: ISearchRes) => {
-        return isPhotoArray(res.results) ? res.results : null;
+        return isPhotoArray(res.results) ? res.results : undefined;
       },
     }),
 
-    getSinglePhoto: builder.query<IPhoto | null, string>({
+    getSinglePhoto: builder.query<IPhoto | undefined, string | undefined>({
       query: (photoId) => `/photos/${photoId}`,
-      transformResponse: (res: unknown) => (isPhoto(res) ? res : null),
+      transformResponse: (res: unknown) => (isPhoto(res) ? res : undefined),
     }),
   }),
 });

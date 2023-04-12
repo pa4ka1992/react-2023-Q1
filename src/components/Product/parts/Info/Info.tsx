@@ -9,22 +9,22 @@ import { IPhoto } from '@/types/unsplash';
 
 const { title, info, icon, fieldRow } = styles;
 
-export const Info: FC<{ photo: IPhoto }> = ({ photo }) => {
+export const Info: FC<{ photo?: IPhoto }> = ({ photo }) => {
   return (
     <div className={info}>
       <div className={fieldRow}>
         <FontAwesomeIcon className={icon} icon={faLocationDot} />
-        <span className={title}> {photo.location?.name ?? 'Unknown location'}</span>
+        <span className={title}> {photo?.location?.name ?? 'Unknown location'}</span>
       </div>
 
       <div className={fieldRow}>
         <FontAwesomeIcon className={icon} icon={faCalendar} />
-        <span className={title}>Published {formateDate(photo.created_at)}</span>
+        <span className={title}>Published {formateDate(photo?.created_at)}</span>
       </div>
 
       <div className={fieldRow}>
         <FontAwesomeIcon className={icon} icon={faCamera} />
-        <span className={title}> {photo.exif?.name ?? 'Unknown gadget'}</span>
+        <span className={title}> {photo?.exif?.name ?? 'Unknown gadget'}</span>
       </div>
     </div>
   );
