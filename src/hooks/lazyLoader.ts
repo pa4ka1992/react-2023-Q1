@@ -1,13 +1,16 @@
-import { useCallback, useEffect, useMemo } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { TPhotos } from '~types/unsplash';
 
 import { GRID_COLUMNS, GRID_GAP } from '~components/cards/CardsList/_constants';
 
 export const useLazyLoader = (container: React.RefObject<HTMLElement>, cards: TPhotos) => {
+  const [ref, setRef] = useState<HTMLElement | null>(null);
+
   useEffect(() => {
     if (container.current) {
       container.current.style.setProperty('--grid-columns', `${GRID_COLUMNS}`);
+      setRef(container.current);
     }
   }, [container]);
 
@@ -27,11 +30,11 @@ export const useLazyLoader = (container: React.RefObject<HTMLElement>, cards: TP
 
   const getPreloadHeight = useCallback(
     (originWidth: number) => {
-      const width = container.current?.clientWidth;
+      const width = ref?.clientWidth;
 
       return width ? (width - GRID_GAP * (GRID_COLUMNS - 1)) / GRID_COLUMNS / originWidth : 0;
     },
-    [container]
+    [ref]
   );
 
   return { splittedArray, getPreloadHeight };

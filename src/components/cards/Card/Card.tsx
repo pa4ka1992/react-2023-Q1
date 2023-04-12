@@ -15,7 +15,7 @@ interface ICardProps {
 
 const Card: FC<ICardProps> = ({ photo, lazyLoader }) => {
   const { color, height, width } = photo;
-  const [isloaded, setIsloaded] = useState(true);
+  const [isloaded, setIsloaded] = useState(false);
 
   return (
     <div
