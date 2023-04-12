@@ -7,7 +7,6 @@ import { TPhotos } from '~types/unsplash';
 type THomePageSlice = {
   search: string;
   cards: TPhotos;
-  isFetching: boolean;
 };
 
 const LS = new LocalStorageService('unsplash');
@@ -15,7 +14,6 @@ const LS = new LocalStorageService('unsplash');
 const initialState: THomePageSlice = {
   search: LS.getItem('searchValue') ?? '',
   cards: [],
-  isFetching: false,
 };
 
 export const homePageSlice = createSlice({
