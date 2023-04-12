@@ -5,13 +5,12 @@ import FormError from '../Error/FormError';
 import '../styles/Field.scss';
 import styles from './Country.module.scss';
 
-import { COUNTRIES, SELECT } from './_constants';
-
-import { IFormProps } from '~components/form/_types';
+import { IFormProps } from '~components/Form/_types';
+import { COUNTRIES_SETTINGS } from './_constants';
 
 export const Country: FC<IFormProps> = ({ register, error }) => {
   const validateHandler = (data: string) => {
-    return data === SELECT.defOption ? SELECT.message : true;
+    return data === COUNTRIES_SETTINGS.defOption ? COUNTRIES_SETTINGS.message : true;
   };
 
   return (
@@ -20,10 +19,10 @@ export const Country: FC<IFormProps> = ({ register, error }) => {
         <p className="title">Choose country:</p>
         <select
           className={styles.select}
-          defaultValue={SELECT.defOption}
+          defaultValue={COUNTRIES_SETTINGS.defOption}
           {...register('country', { validate: validateHandler })}
         >
-          <option value={SELECT.defOption} hidden disabled>
+          <option value={COUNTRIES_SETTINGS.defOption} hidden disabled>
             Choose a country
           </option>
           Choose here

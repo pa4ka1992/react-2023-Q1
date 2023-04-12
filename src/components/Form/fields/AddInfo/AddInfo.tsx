@@ -5,7 +5,7 @@ import FormError from '../Error/FormError';
 import '../styles/Field.scss';
 import styles from '../styles/RadioCheck.module.scss';
 
-import { ICheckboxProps } from '~components/form/_types';
+import { ICheckboxProps } from '~components/Form/_types';
 
 const { wrapper, label, header } = styles;
 

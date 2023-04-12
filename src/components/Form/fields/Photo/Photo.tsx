@@ -6,7 +6,7 @@ import buttonStyle from '~global/scss/Button.module.scss';
 import '../styles/Field.scss';
 import styles from './Photo.module.scss';
 
-import { IFormProps } from '~components/form/_types';
+import { IFormProps } from '~components/Form/_types';
 
 export const Photo: FC<IFormProps> = ({ register, error, isReseted }) => {
   const [img, setImg] = useState('');

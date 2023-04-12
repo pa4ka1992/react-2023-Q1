@@ -7,7 +7,7 @@ import buttonStyle from '~global/scss/Button.module.scss';
 import styles from './Form.module.scss';
 
 import { IUser } from '~types/user';
-import { Modal } from '../Modal/Modal';
+import { Modal } from './Modal/Modal';
 
 const { form, grid } = styles;
 

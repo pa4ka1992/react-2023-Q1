@@ -5,7 +5,7 @@ import FormError from '../Error/FormError';
 import styles from '~global/scss/Input.module.scss';
 import '../styles/Field.scss';
 
-import { IFormProps } from '~components/form/_types';
+import { IFormProps } from '~components/Form/_types';
 
 export const BirthDate: FC<IFormProps> = ({ register, error }) => {
   const validateHandler = (data: string) => {

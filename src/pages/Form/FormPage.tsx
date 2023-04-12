@@ -1,6 +1,6 @@
 import { useState, type FC } from 'react';
 
-import { Form, UsersList } from '@/components/form';
+import { Form, UsersList } from '@/components/Form';
 
 import { IUser } from '@/types/user';
 
