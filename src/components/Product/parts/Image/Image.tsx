@@ -1,7 +1,5 @@
 import { useState, type FC } from 'react';
 
-import { Spinner } from '@/components';
-
 import styles from './Image.module.scss';
 
 import { IPhoto } from '~types/unsplash';
@@ -13,18 +11,15 @@ export const Image: FC<{ photo?: IPhoto }> = ({ photo }) => {
 
   return (
     <div className={wrapImg} style={{ backgroundColor: `${photo?.color}0d` }}>
-      {isLoading ? (
-        <Spinner />
-      ) : (
-        <img
-          onLoad={() => {
-            setIsLoading(false);
-          }}
-          className={img}
-          src={photo?.urls.regular}
-          alt="photo"
-        />
-      )}
+      <img
+        onLoad={() => {
+          setIsLoading(false);
+        }}
+        className={img}
+        src={photo?.urls.regular}
+        alt="photo"
+        style={isLoading ? { filter: 'blur(3px)' } : {}}
+      />
     </div>
   );
 };

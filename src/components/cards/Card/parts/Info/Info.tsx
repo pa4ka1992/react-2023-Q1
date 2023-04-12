@@ -11,8 +11,6 @@ const { info, wrapLikes, wrapAuthor, avatar } = styles;
 export const Info: FC<{ photo: IPhoto }> = ({ photo }) => {
   const { likes, user } = photo;
 
-  console.log(styles);
-
   return (
     <div className={info}>
       <div className={wrapLikes}>

@@ -15,9 +15,7 @@ interface ICardProps {
 
 const Card: FC<ICardProps> = ({ photo, lazyLoader }) => {
   const { color, height, width } = photo;
-  const [isloaded, setIsloaded] = useState(false);
-
-  console.log(styles);
+  const [isloaded, setIsloaded] = useState(true);
 
   return (
     <div
@@ -26,6 +24,7 @@ const Card: FC<ICardProps> = ({ photo, lazyLoader }) => {
       style={{
         minHeight: isloaded ? 'auto' : height * lazyLoader(width),
         backgroundColor: color,
+        filter: isloaded ? 'blur(0)' : 'blur(2px)',
       }}
     >
       <Image photo={photo} setIsloaded={setIsloaded} />
