@@ -1,10 +1,11 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { FormPage } from './FormPage';
+import { renderWithProviders } from '~utils/setupMockStore';
 
 describe('Form', () => {
-  render(<FormPage />);
+  renderWithProviders(<FormPage />, '/form');
 
-  it('renders', () => {
+  test('renders', () => {
     expect(screen.getByTestId('form')).toBeInTheDocument();
     expect(screen.getByTestId('users')).toBeInTheDocument();
   });

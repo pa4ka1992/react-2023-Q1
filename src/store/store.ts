@@ -1,17 +1,23 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { PreloadedState, combineReducers, configureStore } from '@reduxjs/toolkit';
 
 import * as reducers from '~store/reducers';
 
 const { unsplashAPI, homePageReducer, formPageReducer } = reducers;
 
-export const store = configureStore({
-  reducer: {
-    homePageReducer,
-    formPageReducer,
-    [unsplashAPI.reducerPath]: unsplashAPI.reducer,
-  },
-  middleware: (getDefaultMiddleWare) => getDefaultMiddleWare().concat(unsplashAPI.middleware),
+const rootReducer = combineReducers({
+  homePageReducer,
+  formPageReducer,
+  [unsplashAPI.reducerPath]: unsplashAPI.reducer,
 });
 
-export type TRootState = ReturnType<typeof store.getState>;
-export type TAppDispatch = typeof store.dispatch;
+export const setupStore = (preloadedState?: PreloadedState<TRootState>) => {
+  return configureStore({
+    reducer: rootReducer,
+    preloadedState,
+    middleware: (getDefaultMiddleWare) => getDefaultMiddleWare().concat(unsplashAPI.middleware),
+  });
+};
+
+export type TRootState = ReturnType<typeof rootReducer>;
+export type TAppStore = ReturnType<typeof setupStore>;
+export type TAppDispatch = TAppStore['dispatch'];

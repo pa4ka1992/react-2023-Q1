@@ -1,7 +1,8 @@
-import { cleanup, render, screen } from '@testing-library/react';
-import { MemoryRouter, Route, Routes } from 'react-router-dom';
+import { cleanup, screen } from '@testing-library/react';
 
-import { Product } from '@/components';
+import { Product } from './Product';
+
+import { renderWithProviders } from '~utils/setupMockStore';
 
 describe('product', () => {
   afterEach(() => {
@@ -12,13 +13,7 @@ describe('product', () => {
   });
 
   test('renders with photo modal', async () => {
-    render(
-      <MemoryRouter initialEntries={['/photoID/cat']}>
-        <Routes>
-          <Route path="/photoID/:photoId" element={<Product />} />
-        </Routes>
-      </MemoryRouter>
-    );
+    renderWithProviders(<Product />, '/photoID/cat');
 
     const product = await screen.findByTestId('product');
 

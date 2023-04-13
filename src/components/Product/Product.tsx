@@ -52,7 +52,7 @@ export const Product: FC = () => {
             {photo?.description ? photo.description : photo?.alt_description}
           </h4>
 
-          <Image photo={photo} />
+          <Image photo={photo} data-testid="image" />
           <Stats photo={photo} />
           <Info photo={photo} />
           <Tags preview={photo?.tags_preview} />

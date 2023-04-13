@@ -1,6 +1,7 @@
 import { describe, expect, test } from 'vitest';
 
 import { isPhoto, isPhotoArray, isString } from './index';
+import * as mocks from '~store/reducers/constants/mockUnsplash';
 
 describe('type guards', () => {
   test('string guard defines type', () => {
@@ -9,69 +10,13 @@ describe('type guards', () => {
   });
 
   test('photo guard defines type', () => {
-    const photo = {
-      id: 'asdasd',
-      likes: 'asdasd',
-      color: 'asdasd',
-      description: 'asdasd',
-      alt_description: 'asdasd',
-      urls: 'asdasd',
-      width: 'asdasd',
-      height: 'asdasd',
-      user: 'asdasd',
-      created_at: 'asdasd',
-    };
+    expect(isPhoto(mocks.SINGLE_PHOTO_MOCK)).toBeTruthy();
 
-    const notPhoto = {
-      id: 'asda',
-      likes: 'sdsd',
-    };
-
-    expect(isPhoto(photo)).toBeTruthy();
-
-    expect(isPhoto(notPhoto)).toBeFalsy();
+    expect(isPhoto(mocks.NOT_PHOTO)).toBeFalsy();
   });
 
   test('photo array guard defines type', () => {
-    const photoArray = [
-      {
-        id: 'asdasd',
-        likes: 'asdasd',
-        color: 'asdasd',
-        description: 'asdasd',
-        alt_description: 'asdasd',
-        urls: 'asdasd',
-        width: 'asdasd',
-        height: 'asdasd',
-        user: 'asdasd',
-        created_at: 'asdasd',
-      },
-      {
-        id: 'asdasd',
-        likes: 'asdasd',
-        color: 'asdasd',
-        description: 'asdasd',
-        alt_description: 'asdasd',
-        urls: 'asdasd',
-        width: 'asdasd',
-        height: 'asdasd',
-        user: 'asdasd',
-        created_at: 'asdasd',
-      },
-    ];
-
-    const notPhotoArray = [
-      {
-        id: 'asda',
-        likes: 'sdsd',
-      },
-      {
-        id: 'asda',
-        likes: 'sdsd',
-      },
-    ];
-
-    expect(isPhotoArray(photoArray)).toBeTruthy();
-    expect(isPhotoArray(notPhotoArray)).toBeFalsy();
+    expect(isPhotoArray(mocks.PHOTOS_ARRAY_MOCK)).toBeTruthy();
+    expect(isPhotoArray(mocks.NOT_PHOTO_ARRAY)).toBeFalsy();
   });
 });

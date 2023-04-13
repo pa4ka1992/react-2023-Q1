@@ -1,28 +1,20 @@
-import { cleanup, render, screen } from '@testing-library/react';
-import { MemoryRouter, Route, Routes } from 'react-router-dom';
+import { cleanup, screen } from '@testing-library/react';
 
 import { HomePage } from './HomePage';
+
+import { renderWithProviders } from '~utils/setupMockStore';
 
 describe('Home', () => {
   afterEach(() => {
     vi.clearAllMocks();
     vi.resetAllMocks();
     cleanup();
+
+    // store.dispatch(unsplashAPI.util.resetApiState());
   });
 
-  const router = (entry: string) => {
-    return (
-      <MemoryRouter initialEntries={[entry]}>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/photoID/:photoId" element={<HomePage />} />
-        </Routes>
-      </MemoryRouter>
-    );
-  };
-
   test('renders with out photos', () => {
-    render(<HomePage />);
+    renderWithProviders(<HomePage />, '/');
 
     expect(screen.getByTestId('spinner')).toBeInTheDocument();
     expect(screen.getByTestId('search')).toBeInTheDocument();
@@ -30,18 +22,10 @@ describe('Home', () => {
   });
 
   test('renders with card list', async () => {
-    render(router('/'));
+    renderWithProviders(<HomePage />, '/');
 
     const photos = await screen.findAllByTestId('card');
 
     expect(photos).toHaveLength(3);
-  });
-
-  test('renders with the product modal', async () => {
-    render(router('/photoID/cats'));
-
-    const product = await screen.findByTestId('product');
-
-    expect(product).toBeInTheDocument();
   });
 });

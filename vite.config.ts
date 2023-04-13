@@ -40,9 +40,11 @@ export default defineConfig({
       exclude: [
         'src/**/*.test.tsx',
         'src/**/*.test.ts',
-        'src/**/_index.ts',
+        'src/**/index.ts',
         'src/**/_constants.ts',
         'src/**/_types.ts',
+        'src/**/setupTests.ts',
+        'src/**/mockUnsplash.ts',
       ],
     },
   },

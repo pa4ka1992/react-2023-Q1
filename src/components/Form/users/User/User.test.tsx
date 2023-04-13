@@ -1,19 +1,23 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+
 import User from './User';
 
+import { renderWithProviders } from '~utils/setupMockStore';
+
 describe('User', () => {
-  it('renders', () => {
-    const user = {
-      userName: 'vasia',
-      birthDate: '02.03.1822',
-      country: 'gvadelupa',
-      addInfo: ['bla', 'bla'],
-      gender: 'transegender',
-      photo: undefined,
-    };
+  const USER = {
+    id: 1,
+    userName: 'vasia',
+    experience: '02.03.1822',
+    country: 'gvadelupa',
+    addInfo: ['bla', 'bla'],
+    hire: 'yes',
+    photo: 'photo',
+  };
 
-    render(<User user={user} />);
+  renderWithProviders(<User user={USER} />, '/');
 
+  test('renders', () => {
     expect(screen.getByTestId('user')).toBeInTheDocument();
   });
 });

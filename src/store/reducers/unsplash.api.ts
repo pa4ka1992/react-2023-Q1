@@ -9,6 +9,7 @@ import { IPhoto, ISearchRes, TPhotos } from '~types/unsplash';
 
 export const unsplashAPI = createApi({
   reducerPath: 'unsplashAPI',
+  keepUnusedDataFor: process.env.NODE_ENV === 'test' ? 0 : 60,
   baseQuery: fetchBaseQuery({
     baseUrl: UNSPLASH,
     prepareHeaders: prepareHeaders,

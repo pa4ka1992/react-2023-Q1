@@ -1,5 +1,11 @@
-import { AboutPage, FormPage, HomePage } from '@/pages';
+import { Route } from 'react-router-dom';
+
+import * as pages from '@/pages';
+
 import { ROUTE } from './_constants';
+import { Layout } from '@/components';
+
+const { HomePage, AboutPage, FormPage, NotFoundPage } = pages;
 
 const routes = [
   {
@@ -24,4 +30,13 @@ const routes = [
   },
 ];
 
-export default routes;
+export const getRoutes = () => (
+  <>
+    <Route path={ROUTE.home} element={<Layout />}>
+      {routes.map(({ path, element, name }, key) => (
+        <Route index={path === ROUTE.home} id={name} path={path} element={element} key={key} />
+      ))}
+    </Route>
+    <Route path={ROUTE.notFound} element={<NotFoundPage />} />
+  </>
+);

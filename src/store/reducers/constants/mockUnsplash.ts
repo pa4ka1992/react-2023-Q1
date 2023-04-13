@@ -145,3 +145,29 @@ export const SINGLE_PHOTO_MOCK = {
   views: 61451,
   downloads: 382,
 };
+
+export const NOT_PHOTO = {
+  id: '6qqXeFSXCXw',
+  created_at: '2023-04-06T10:16:37Z',
+  width: 3648,
+  height: 5472,
+  color: '#d9f3f3',
+  description: null,
+};
+
+export const NOT_PHOTO_ARRAY = [
+  {
+    id: 'NwOr1Kan2p4',
+    created_at: '2020-04-19T13:13:08Z',
+    width: 3072,
+    height: 4608,
+    color: '#d9d9d9',
+  },
+  {
+    id: 'NwOr1Kan2p4',
+    created_at: '2020-04-19T13:13:08Z',
+    width: 3072,
+    height: 4608,
+    color: '#d9d9d9',
+  },
+];

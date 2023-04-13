@@ -1,12 +1,13 @@
-import { render, screen } from '@testing-library/react';
-import AppRouter from './Router';
+import { screen } from '@testing-library/react';
 
-describe('App', () => {
-  render(<AppRouter />);
+import AppRouter from '~router/Router';
 
-  test('renders Home page', () => {
-    expect(screen.getByTestId('spinner')).toBeInTheDocument();
-    expect(screen.getByTestId('search')).toBeInTheDocument();
-    expect(screen.queryByTestId('product')).not.toBeInTheDocument();
+import { renderWithProviders } from '~utils/setupMockStore';
+
+describe('Router', () => {
+  test('renders header', () => {
+    renderWithProviders(<AppRouter />);
+
+    expect(screen.getByTestId('header')).toBeInTheDocument();
   });
 });
