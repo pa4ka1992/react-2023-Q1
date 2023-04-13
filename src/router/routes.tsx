@@ -2,8 +2,8 @@ import { Route } from 'react-router-dom';
 
 import * as pages from '@/pages';
 
-import { ROUTE } from './_constants';
 import { Layout } from '@/components';
+import { ROUTE } from './_constants';
 
 const { HomePage, AboutPage, FormPage, NotFoundPage } = pages;
 

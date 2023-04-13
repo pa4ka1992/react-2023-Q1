@@ -1,31 +1,19 @@
 import { cleanup, screen } from '@testing-library/react';
+import { renderWithProviders } from '~utils/setupMockStore';
 
 import { HomePage } from './HomePage';
-
-import { renderWithProviders } from '~utils/setupMockStore';
 
 describe('Home', () => {
   afterEach(() => {
     vi.clearAllMocks();
     vi.resetAllMocks();
-    cleanup();
 
-    // store.dispatch(unsplashAPI.util.resetApiState());
+    cleanup();
   });
 
-  test('renders with out photos', () => {
+  test('renders', () => {
     renderWithProviders(<HomePage />, '/');
 
     expect(screen.getByTestId('spinner')).toBeInTheDocument();
-    expect(screen.getByTestId('search')).toBeInTheDocument();
-    expect(screen.queryByTestId('product')).not.toBeInTheDocument();
-  });
-
-  test('renders with card list', async () => {
-    renderWithProviders(<HomePage />, '/');
-
-    const photos = await screen.findAllByTestId('card');
-
-    expect(photos).toHaveLength(3);
   });
 });

@@ -13,8 +13,8 @@ import { PAGE, PER_PAGE } from '~store/reducers/constants/unsplash';
 export const HomePage: FC = () => {
   const { photoId } = useParams();
   const { search, cards } = useAppSelector((state) => state.homePageReducer);
-  const [getPhotos, { isLoading: randomLoad }] = useLazyGetPhotosQuery();
-  const [searchPhoto, { isLoading: searchLoad }] = useLazySearchPhotoQuery();
+  const [getPhotos, { isFetching: randomLoad }] = useLazyGetPhotosQuery();
+  const [searchPhoto, { isFetching: searchLoad }] = useLazySearchPhotoQuery();
 
   useEffect(() => {
     search
