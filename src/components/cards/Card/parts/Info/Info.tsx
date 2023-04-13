@@ -6,7 +6,7 @@ import styles from '../../Card.module.scss';
 
 import { IPhoto } from '~types/unsplash';
 
-const { info, wrapLikes, wrapAuthor, avatar } = styles;
+const { info, wrapLikes, wrapAuthor, avatar, icon } = styles;
 
 export const Info: FC<{ photo: IPhoto }> = ({ photo }) => {
   const { likes, user } = photo;
@@ -14,7 +14,7 @@ export const Info: FC<{ photo: IPhoto }> = ({ photo }) => {
   return (
     <div className={info}>
       <div className={wrapLikes}>
-        <FontAwesomeIcon icon={faThumbsUp} />
+        <FontAwesomeIcon className={icon} icon={faThumbsUp} />
         <span>{likes}</span>
       </div>
 

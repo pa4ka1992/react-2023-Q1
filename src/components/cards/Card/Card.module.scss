@@ -77,8 +77,14 @@
   display: flex;
   align-items: center;
   gap: map-get($space-sm, 'x');
+  text-shadow: 2px 2px 2px $grey-8;
+}
+
+.icon {
+  filter: drop-shadow(2px 2px 2px $grey-8);
 }
 
 .avatar {
   border-radius: 50%;
+  box-shadow: $button-shadow;
 }

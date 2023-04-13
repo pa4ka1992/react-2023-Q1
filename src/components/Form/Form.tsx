@@ -1,7 +1,7 @@
 import { useState, type FC } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 
-import { AddInfo, BirthDate, Country, Gender, Photo, UserName } from '~components/Form/fields';
+import { AddInfo, Experience, Country, Hire, Photo, UserName } from '~components/Form/fields';
 import { Modal } from './Modal/Modal';
 
 import buttonStyle from '~global/scss/Button.module.scss';
@@ -44,10 +44,10 @@ export const Form: FC = () => {
         <h3>Form</h3>
         <div className={grid}>
           <UserName register={register} error={errors.userName} />
-          <BirthDate register={register} error={errors.birthDate} />
+          <Experience register={register} error={errors.experience} />
           <Country register={register} error={errors.country} />
           <AddInfo register={register} error={errors.addInfo} />
-          <Gender register={register} error={errors.gender} />
+          <Hire register={register} error={errors.hire} />
           <Photo register={register} error={errors.photo} isReseted={isReseted} />
         </div>
         <button className={buttonStyle.button} type="submit">

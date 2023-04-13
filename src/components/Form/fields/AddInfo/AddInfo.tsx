@@ -25,7 +25,7 @@ export const AddInfo: FC<ICheckboxProps> = ({ register, error }) => {
   return (
     <>
       <div className="border">
-        <p className="title">Choose your produt preferences:</p>
+        <p className="title">Choose your preferences</p>
         <div className={wrapper}>
           {ADD_INFO.map((info) => (
             <label className={label} key={info.id}>

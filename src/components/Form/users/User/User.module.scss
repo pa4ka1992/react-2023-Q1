@@ -1,6 +1,9 @@
 @import '~variables';
 
 .userWrapper {
+  display: flex;
+  gap: map-get($space-lg, 'x');
+
   padding: map-get($space-md, 'x');
 
   background-color: $light;
@@ -8,15 +11,61 @@
   box-shadow: $button-shadow;
 }
 
-.img {
-  display: block;
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 100px;
   height: 100px;
 
   border-radius: 50%;
+  overflow: hidden;
+
+  box-shadow: $button-shadow;
 }
 
-.title {
-  margin-right: map-get($space-sm, 'x');
+.img {
+  display: block;
+
+  width: 100%;
+
+  object-fit: cover;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: map-get($space-sm, 'x');
+}
+
+.fullName {
+  margin-bottom: map-get($space-md, 'x');
+
   font-weight: 600;
+}
+
+.wrapper {
+  display: flex;
+  gap: map-get($space-md, 'x');
+}
+
+.icon {
+  color: $grey-6;
+}
+
+.prefersItem {
+  padding: map-get($space-xs, 'x');
+
+  background-color: $grey-4;
+  border-radius: $button-push-border-radius;
+  list-style: none;
+}
+
+.positive {
+  color: $green-4;
+}
+
+.negative {
+  color: $red-4;
 }

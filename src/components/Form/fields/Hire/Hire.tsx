@@ -9,22 +9,22 @@ import { IFormProps } from '~components/Form/_types';
 
 const { header, wrapper, label } = styles;
 
-export const Gender: FC<IFormProps> = ({ register, error }) => {
-  register('gender', {
-    required: 'Gender is requaired',
+export const Hire: FC<IFormProps> = ({ register, error }) => {
+  register('hire', {
+    required: 'Hire status is requaired',
   });
 
   return (
     <div className="border">
-      <p className="title">Choose your gender:</p>
+      <p className="title">Avaliable to hire</p>
       <div className={wrapper}>
         <label className={label}>
-          <p className={header}>Male</p>
-          <input type="radio" value="male" {...register('gender')} />
+          <p className={header}>Yes</p>
+          <input type="radio" value="yes" {...register('hire')} />
         </label>
         <label className={label}>
-          <p className={header}>Female</p>
-          <input type="radio" value="female" {...register('gender')} />
+          <p className={header}>No</p>
+          <input type="radio" value="no" {...register('hire')} />
         </label>
       </div>
 

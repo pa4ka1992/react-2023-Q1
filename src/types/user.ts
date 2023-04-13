@@ -1,9 +1,9 @@
 export interface IForm {
   userName: string;
-  birthDate: string;
+  experience: string;
   country: string;
   addInfo: string[];
-  gender: string;
+  hire: string;
   photo: FileList;
 }
 

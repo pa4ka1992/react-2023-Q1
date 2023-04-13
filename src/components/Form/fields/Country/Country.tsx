@@ -17,7 +17,7 @@ export const Country: FC<IFormProps> = ({ register, error }) => {
   return (
     <>
       <label className="border">
-        <p className="title">Choose country:</p>
+        <p className="title">Hire country</p>
         <select
           className={styles.select}
           defaultValue={COUNTRIES_SETTINGS.defOption}
