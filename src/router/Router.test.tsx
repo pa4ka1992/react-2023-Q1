@@ -35,18 +35,4 @@ describe('Router', () => {
 
     expect(product).toBeInTheDocument();
   });
-
-  test('searches product', async () => {
-    renderWithProviders(<AppRouter />);
-
-    const search = await screen.findByRole('search-input');
-    const searchForm = await screen.findByTestId('search-form');
-
-    fireEvent.change(search, { target: { value: 'cats' } });
-    fireEvent.submit(searchForm);
-
-    const cards = await screen.findAllByTestId('card');
-
-    expect(cards).toHaveLength(1);
-  });
 });

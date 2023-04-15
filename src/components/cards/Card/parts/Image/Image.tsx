@@ -21,7 +21,13 @@ export const Image: FC<IImageProps> = ({ photo, setIsloaded }) => {
     <>
       <h4 className={postDate}>{formateDate(created_at)}</h4>
       <NavLink data-testid="card-link" to={`/photoID/${id}`} className={wrapImg}>
-        <img onLoad={() => setIsloaded(true)} className={img} src={urls.regular} alt="product" />
+        <img
+          data-testid="card-image"
+          onLoad={() => setIsloaded(true)}
+          className={img}
+          src={urls.regular}
+          alt="product"
+        />
       </NavLink>
     </>
   );

@@ -15,24 +15,29 @@ vi.stubGlobal('Headers', Headers);
 vi.stubGlobal('Request', Request);
 vi.stubGlobal('Response', Response);
 
-const server = setupServer(
+export const server = setupServer(
   rest.get(`${UNSPLASH}/photos/:photoId`, (req, res, ctx) => {
     return res(ctx.status(RES_STATUS.ok), ctx.json(mocks.SINGLE_PHOTO_MOCK));
   }),
+
   rest.get(`${UNSPLASH}/search/photos`, (req, res, ctx) => {
     return res(
       ctx.status(RES_STATUS.ok),
       ctx.json({ results: mocks.SEARCH_RANDOM_PHOTOS_ARRAY_MOCK })
     );
   }),
+
   rest.get(`${UNSPLASH}/photos`, (req, res, ctx) => {
     return res(ctx.status(RES_STATUS.ok), ctx.json(mocks.RANDOM_PHOTOS_ARRAY_MOCK));
   }),
+
   rest.get('*', (req, res, ctx) => {
     console.error(`Doesn't match with ${req.url.toString()}`);
     return res(ctx.status(RES_STATUS.serverError), ctx.json({ error: 'add request handler' }));
   })
 );
+
+vi.stubGlobal('server', server);
 
 beforeAll(() => server.listen());
 

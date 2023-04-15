@@ -1,4 +1,8 @@
 export const getExperience = (date: string): string => {
+  if (!date) {
+    return 'Have no experience yet';
+  }
+
   const dateNow = new Date();
   const month = dateNow.getMonth();
   const year = dateNow.getFullYear();
