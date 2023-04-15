@@ -16,7 +16,7 @@ export const useLazyLoader = (container: React.RefObject<HTMLElement>, cards: TP
 
   const { splittedArray } = useMemo(() => {
     const elementInGrid = Math.floor(cards.length / GRID_COLUMNS);
-    const countInColumn = elementInGrid ?? 1;
+    const countInColumn = elementInGrid || 1;
 
     const splittedArray = [] as TPhotos[];
 

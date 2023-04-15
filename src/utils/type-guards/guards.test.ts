@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'vitest';
 
-import { isPhoto, isPhotoArray, isString } from './index';
 import * as mocks from '~store/reducers/constants/mockUnsplash';
+import { isPhoto, isPhotoArray, isString } from './index';
 
 describe('type guards', () => {
   test('string guard defines type', () => {
@@ -16,7 +16,7 @@ describe('type guards', () => {
   });
 
   test('photo array guard defines type', () => {
-    expect(isPhotoArray(mocks.PHOTOS_ARRAY_MOCK)).toBeTruthy();
+    expect(isPhotoArray(mocks.RANDOM_PHOTOS_ARRAY_MOCK)).toBeTruthy();
     expect(isPhotoArray(mocks.NOT_PHOTO_ARRAY)).toBeFalsy();
   });
 });

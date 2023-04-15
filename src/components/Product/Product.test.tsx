@@ -2,7 +2,7 @@ import { cleanup, screen } from '@testing-library/react';
 
 import { Product } from './Product';
 
-import { renderWithProviders } from '~utils/setupMockStore';
+import { renderWithProviders } from '~utils/withProviders';
 
 describe('product', () => {
   afterEach(() => {

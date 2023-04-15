@@ -27,7 +27,7 @@ export const SearchBar: FC = () => {
   };
 
   return (
-    <form onSubmit={submitHandler} data-testid="search" className={styles.form}>
+    <form onSubmit={submitHandler} data-testid="search-form" className={styles.form}>
       <input
         role="search-input"
         className={inputStyle.input}

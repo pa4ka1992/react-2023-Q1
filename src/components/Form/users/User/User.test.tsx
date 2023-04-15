@@ -2,7 +2,7 @@ import { screen } from '@testing-library/react';
 
 import User from './User';
 
-import { renderWithProviders } from '~utils/setupMockStore';
+import { renderWithProviders } from '~utils/withProviders';
 
 describe('User', () => {
   const USER = {

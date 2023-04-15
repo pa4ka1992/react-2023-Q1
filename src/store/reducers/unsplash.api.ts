@@ -9,7 +9,6 @@ import { IPhoto, ISearchRes, TPhotos } from '~types/unsplash';
 
 export const unsplashAPI = createApi({
   reducerPath: 'unsplashAPI',
-  keepUnusedDataFor: process.env.NODE_ENV === 'test' ? 0 : 60,
   baseQuery: fetchBaseQuery({
     baseUrl: UNSPLASH,
     prepareHeaders: prepareHeaders,
@@ -23,7 +22,9 @@ export const unsplashAPI = createApi({
           page: page,
         },
       }),
-      transformResponse: (res: unknown) => (isPhotoArray(res) ? res : undefined),
+      transformResponse: (res: unknown) => {
+        return isPhotoArray(res) ? res : undefined;
+      },
     }),
 
     searchPhoto: builder.query<TPhotos | undefined, { query: string; per_page: number }>({
@@ -46,5 +47,4 @@ export const unsplashAPI = createApi({
   }),
 });
 
-export const { useLazyGetPhotosQuery, useGetSinglePhotoQuery, useLazySearchPhotoQuery } =
-  unsplashAPI;
+export const { useGetPhotosQuery, useGetSinglePhotoQuery, useSearchPhotoQuery } = unsplashAPI;

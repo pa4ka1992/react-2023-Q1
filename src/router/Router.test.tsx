@@ -1,8 +1,8 @@
-import { cleanup, screen } from '@testing-library/react';
+import { cleanup, fireEvent, screen } from '@testing-library/react';
 
 import AppRouter from '~router/Router';
 
-import { renderWithProviders } from '~utils/setupMockStore';
+import { renderWithProviders } from '~utils/withProviders';
 
 describe('Router', () => {
   afterEach(() => {
@@ -12,15 +12,41 @@ describe('Router', () => {
     cleanup();
   });
 
-  test('renders header', async () => {
+  test('renders home page', async () => {
     renderWithProviders(<AppRouter />);
 
     const header = screen.getByTestId('header');
-    const homePage = await screen.findByTestId('home');
-    const cardList = await screen.findByTestId('card-list');
+    const homePage = screen.getByTestId('home');
+    const cards = await screen.findAllByTestId('card');
 
     expect(header).toBeInTheDocument();
     expect(homePage).toBeInTheDocument();
-    expect(cardList).toBeInTheDocument();
+    expect(cards).toHaveLength(3);
+  });
+
+  test('routes to product modal', async () => {
+    renderWithProviders(<AppRouter />);
+
+    const links = await screen.findAllByTestId('card-link');
+
+    fireEvent.click(links[0]);
+
+    const product = await screen.findByTestId('product');
+
+    expect(product).toBeInTheDocument();
+  });
+
+  test('searches product', async () => {
+    renderWithProviders(<AppRouter />);
+
+    const search = await screen.findByRole('search-input');
+    const searchForm = await screen.findByTestId('search-form');
+
+    fireEvent.change(search, { target: { value: 'cats' } });
+    fireEvent.submit(searchForm);
+
+    const cards = await screen.findAllByTestId('card');
+
+    expect(cards).toHaveLength(1);
   });
 });

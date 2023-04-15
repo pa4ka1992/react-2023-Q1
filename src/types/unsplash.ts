@@ -1,17 +1,16 @@
 export interface IPhoto {
   id: string;
   downloads?: number;
-  blur_hash: string;
   color: string;
   width: number;
   height: number;
   views?: number;
   exif?: { name: string };
   likes: number;
-  description: string;
+  description: string | null;
   alt_description: string;
   created_at: string;
-  location?: { name: string };
+  location?: { name: string | null };
   tags_preview?: { title: string }[];
   urls: TUrls;
   user: TUser;
