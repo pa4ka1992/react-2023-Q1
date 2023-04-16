@@ -1,11 +1,11 @@
-import { FC } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBagShopping,
-  faLocationDot,
   faCircleCheck,
   faCircleXmark,
+  faLocationDot,
 } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FC } from 'react';
 
 import styles from './User.module.scss';
 
@@ -53,13 +53,11 @@ const User: FC<{ user: IUser }> = ({ user }) => {
         </div>
 
         <ul className={wrapper}>
-          {addInfo.map((info, i) =>
-            info ? (
-              <li className={prefersItem} key={i + Date.now()}>
-                {info}
-              </li>
-            ) : null
-          )}
+          {addInfo.map((info, i) => (
+            <li className={prefersItem} key={i + Date.now()}>
+              {info}
+            </li>
+          ))}
         </ul>
       </div>
     </section>

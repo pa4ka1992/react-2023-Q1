@@ -34,5 +34,11 @@ describe('Router', () => {
     const product = await screen.findByTestId('product');
 
     expect(product).toBeInTheDocument();
+
+    const closer = screen.getByRole('product-closer');
+
+    fireEvent.click(closer);
+
+    expect(product).not.toBeInTheDocument();
   });
 });

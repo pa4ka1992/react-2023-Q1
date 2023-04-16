@@ -42,13 +42,13 @@ export const Product: FC = () => {
     <section data-testid="product" onClick={closeHandler} className={modal}>
       <div className={container}>
         <section onClick={(e) => e.stopPropagation()} className={content}>
-          <div onClick={closeHandler} className={closer}>
+          <div role="product-closer" onClick={closeHandler} className={closer}>
             <FontAwesomeIcon icon={faXmark} />
           </div>
 
           <Author photo={photo} />
 
-          <h4 className={desc}>
+          <h4 role="product-description" className={desc}>
             {photo?.description ? photo.description : photo?.alt_description}
           </h4>
 

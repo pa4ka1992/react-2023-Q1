@@ -11,15 +11,12 @@ import { ADD_INFO } from './_constants';
 const { wrapper, label, header } = styles;
 
 export const AddInfo: FC<ICheckboxProps> = ({ register, error }) => {
-  const validateHandler = (data: string[]) => {
-    const message = 'Atleast one option should be chosen';
-    if (!data) return message;
+  const useFormObj = register('addInfo', {
+    validate: (data) => {
+      const message = 'At least one option should be chosen';
 
-    return data.some((val) => val) ? true : message;
-  };
-
-  register('addInfo', {
-    validate: validateHandler,
+      return !data.length ? message : true;
+    },
   });
 
   return (
@@ -30,7 +27,7 @@ export const AddInfo: FC<ICheckboxProps> = ({ register, error }) => {
           {ADD_INFO.map((info) => (
             <label className={label} key={info.id}>
               <span className={header}>{info.value}</span>
-              <input type="checkbox" value={info.value} {...register(`addInfo.${info.id}`)} />
+              <input role="add-info" type="checkbox" value={info.value} {...useFormObj} />
             </label>
           ))}
         </div>

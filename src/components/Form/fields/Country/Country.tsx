@@ -16,9 +16,10 @@ export const Country: FC<IFormProps> = ({ register, error }) => {
 
   return (
     <>
-      <label className="border">
+      <div className="border">
         <p className="title">Hire country</p>
         <select
+          role="country"
           className={styles.select}
           defaultValue={COUNTRIES_SETTINGS.defOption}
           {...register('country', { validate: validateHandler })}
@@ -35,7 +36,7 @@ export const Country: FC<IFormProps> = ({ register, error }) => {
         </select>
 
         <FormError error={error?.message} />
-      </label>
+      </div>
     </>
   );
 };

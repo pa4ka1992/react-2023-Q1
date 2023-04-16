@@ -13,18 +13,15 @@ export const Photo: FC<IFormProps> = ({ register, error, isReseted }) => {
 
   useEffect(() => {
     if (isReseted) {
-      URL.revokeObjectURL(img);
       setImg('');
     }
-  }, [isReseted, img]);
+  }, [isReseted]);
 
   const uploadHandler = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     if (target.files?.length) {
-      if (img) {
-        URL.revokeObjectURL(img);
-      }
-
-      setImg(URL.createObjectURL(target.files[0]));
+      const file = target.files[0];
+      const blob = new Blob([file], { type: file.type });
+      setImg(URL.createObjectURL(blob));
     }
   };
 
@@ -36,23 +33,22 @@ export const Photo: FC<IFormProps> = ({ register, error, isReseted }) => {
   };
 
   return (
-    <>
-      <label className="border">
-        <p className="title">Choose avatar:</p>
-        <label className={buttonStyle.button}>
-          <span>Choose file</span>
-          <input
-            className={styles.input}
-            type="file"
-            accept="image/png, image/jpeg"
-            {...useFormObj}
-          />
-        </label>
-
-        {img ? <img className={styles.img} src={img} alt="avatar" /> : null}
-
-        <FormError error={error?.message} />
+    <div className="border">
+      <p className="title">Choose avatar:</p>
+      <label className={buttonStyle.button}>
+        <span role="avatar">Choose file</span>
+        <input
+          aria-label="avatar"
+          className={styles.input}
+          type="file"
+          accept="image/png, image/jpeg"
+          {...useFormObj}
+        />
       </label>
-    </>
+
+      {img ? <img className={styles.img} src={img} alt="avatar" /> : null}
+
+      <FormError error={error?.message} />
+    </div>
   );
 };

@@ -1,7 +1,7 @@
 import { useState, type FC } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 
-import { AddInfo, Experience, Country, Hire, Photo, UserName } from '~components/Form/fields';
+import { AddInfo, Country, Experience, Hire, Photo, UserName } from '~components/Form/fields';
 import { Modal } from './Modal/Modal';
 
 import buttonStyle from '~global/scss/Button.module.scss';
@@ -22,12 +22,18 @@ export const Form: FC = () => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<IForm>({ mode: 'onSubmit', reValidateMode: 'onSubmit' });
+  } = useForm<IForm>({
+    mode: 'onSubmit',
+    reValidateMode: 'onSubmit',
+    defaultValues: { addInfo: [] },
+  });
 
   const submitHandler: SubmitHandler<IForm> = (data, e) => {
     e?.preventDefault();
 
-    const imageToString = URL.createObjectURL(data.photo[0]);
+    const file = data.photo[0];
+    const blob = new Blob([file], { type: file.type });
+    const imageToString = URL.createObjectURL(blob);
 
     setUser({ id: Date.now(), ...structuredClone(data), photo: imageToString });
     setIsReseted(true);

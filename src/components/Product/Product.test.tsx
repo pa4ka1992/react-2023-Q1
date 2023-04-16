@@ -1,4 +1,4 @@
-import { cleanup, screen } from '@testing-library/react';
+import { cleanup, fireEvent, screen } from '@testing-library/react';
 
 import { Product } from './Product';
 
@@ -16,7 +16,14 @@ describe('product', () => {
     renderWithProviders(<Product />, '/photoID/cat');
 
     const product = await screen.findByTestId('product');
+    const description = await screen.findByRole('product-description');
+    const image = await screen.findByRole('product-image');
+
+    fireEvent.load(image);
 
     expect(product).toBeInTheDocument();
+    expect(description).toHaveTextContent(
+      'a woman sitting on a chair in front of a white backdrop'
+    );
   });
 });

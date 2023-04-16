@@ -22,7 +22,7 @@ export const UserName: FC<IFormProps> = ({ register, error }) => {
     <>
       <label className="border">
         <p className="title">Full name</p>
-        <input className={styles.input} type="text" {...useFormObj} />
+        <input role="user-name" className={styles.input} type="text" {...useFormObj} />
 
         <FormError error={error?.message} />
       </label>
