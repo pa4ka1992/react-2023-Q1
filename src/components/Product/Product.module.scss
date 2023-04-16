@@ -1,0 +1,75 @@
+@import '~variables';
+
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  font-weight: 400;
+
+  color: $dark;
+  background-color: $modal;
+  z-index: $z-max;
+  overflow: auto;
+  cursor: zoom-out;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: map-get($space-lg, 'x') map-get($space-xl, 'x');
+
+  min-height: 100%;
+}
+
+.content {
+  display: flex;
+  gap: map-get($space-md, 'x');
+  flex-direction: column;
+
+  position: relative;
+  padding: map-get($space-lg, 'x');
+  width: 100%;
+
+  background-color: $light;
+  border-radius: $button-border-radius;
+  cursor: auto;
+}
+
+.closer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: map-get($space-md, 'x');
+
+  color: $grey-5;
+  z-index: $z-max;
+  cursor: pointer;
+  transition: $generic-hover-transition;
+
+  &:hover {
+    color: $grey-6;
+  }
+}
+
+.desc {
+  font-weight: 400;
+
+  color: $dark;
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.icon {
+  color: $grey-6;
+}
+
+.title {
+  font-size: map-get($body2, 'size');
+}

@@ -1,0 +1,17 @@
+@import '~variables';
+.layout {
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+  min-height: 100vh;
+
+  background-color: $light;
+}
+
+.container {
+  margin: 0 auto;
+  padding: map-get($space-lg, 'x');
+  max-width: $breakpoint-md;
+  width: 100%;
+}

@@ -1,0 +1,14 @@
+@import '~variables';
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: map-get($space-sm, 'x');
+
+  color: $grey-8;
+}
+
+.fieldRow {
+  display: flex;
+  gap: map-get($space-sm, 'x');
+}

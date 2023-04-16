@@ -1,0 +1,27 @@
+@import '~variables';
+
+$search-size: map-get($space-sm, 'x');
+
+.button {
+  display: inline-block;
+
+  padding: $button-padding;
+
+  font-size: $button-font-size;
+
+  background-color: $grey-6;
+  border: none;
+  border-radius: $button-border-radius;
+  box-shadow: $button-shadow;
+  color: $light;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: $grey-8;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}

@@ -1,0 +1,13 @@
+@import '~variables';
+
+.stats {
+  display: flex;
+  gap: map-get($space-md, 'x');
+}
+
+.fieldCol {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: map-get($space-sm, 'x');
+}
