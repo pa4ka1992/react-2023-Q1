@@ -6,8 +6,11 @@
     "noFallthroughCasesInSwitch": true,
     "useDefineForClassFields": true,
     "allowJs": false,
+    "sourceMap": true,
     "skipLibCheck": true,
     "esModuleInterop": false,
+    "rootDir": ".",
+    "outDir": "dist",
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
@@ -36,6 +39,15 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["./src", "vite.config.ts", "global.d.ts"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["./src", "vite.config.ts", "global.d.ts", "server.ts"],
+  "references": [{ "path": "./tsconfig.node.json" }],
+
+  "ts-node": {
+    "files": true,
+    "transpileOnly": true,
+    "esm": true,
+    "compilerOptions": {
+      "moduleResolution": "Node16"
+    }
+  }
 }

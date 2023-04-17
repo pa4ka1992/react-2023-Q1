@@ -6,3 +6,7 @@ declare global {
     interface Assertion<T = any> extends jest.Matchers<void, T>, TestingLibraryMatchers<T, void> {}
   }
 }
+
+declare module './dist/server/entry-server.ts';
+
+declare module 'compression';
