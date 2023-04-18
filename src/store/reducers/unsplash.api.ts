@@ -1,4 +1,9 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import {
+  buildCreateApi,
+  coreModule,
+  fetchBaseQuery,
+  reactHooksModule,
+} from '@reduxjs/toolkit/query/react';
 
 import { isPhoto, isPhotoArray } from '~utils/type-guards';
 import { prepareHeaders } from './helpers';
@@ -7,7 +12,12 @@ import { UNSPLASH } from '@/store/reducers/constants/unsplash';
 
 import { IPhoto, ISearchRes, TPhotos } from '~types/unsplash';
 
-export const unsplashAPI = createApi({
+const customCreateApi = buildCreateApi(
+  coreModule(),
+  reactHooksModule({ unstable__sideEffectsInRender: true })
+);
+
+export const unsplashAPI = customCreateApi({
   reducerPath: 'unsplashAPI',
   baseQuery: fetchBaseQuery({
     baseUrl: UNSPLASH,
