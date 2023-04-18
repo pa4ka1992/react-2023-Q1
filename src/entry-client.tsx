@@ -1,8 +1,18 @@
-import ReactDOM from 'react-dom/client'
-import App from '~app/App'
+import { StrictMode } from 'react';
+import { hydrateRoot } from 'react-dom/client';
+import { Provider } from 'react-redux';
+import AppRouter from '~router/Router';
+import { setupStore } from '~store/store';
 
-ReactDOM.hydrateRoot(
-  document.getElementById('app')!,
-    <App />
-)
-console.log('hydrated')
+hydrate();
+
+async function hydrate() {
+  hydrateRoot(
+    document.getElementById('app')!,
+    <StrictMode>
+      <Provider store={setupStore()}>
+        <AppRouter />
+      </Provider>
+    </StrictMode>
+  );
+}

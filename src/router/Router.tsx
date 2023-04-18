@@ -1,11 +1,11 @@
-import { createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import { getRoutes } from './routes';
+import { routes } from './routes';
 
-const router = createBrowserRouter(createRoutesFromElements(getRoutes()));
+const router = createBrowserRouter(routes);
 
 const AppRouter = () => {
-  return <RouterProvider router={router} />;
+  return <RouterProvider router={router} fallbackElement={null} />;
 };
 
 export default AppRouter;

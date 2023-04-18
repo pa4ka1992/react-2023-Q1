@@ -7,6 +7,4 @@ declare global {
   }
 }
 
-declare module './dist/server/entry-server.ts';
-
-declare module 'compression';
+declare module './dist/server/entry-server.tsx';

@@ -1,98 +1,114 @@
+import { installGlobals } from '@remix-run/node';
 import express from 'express';
-import fs from 'node:fs';
+import fsp from 'fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { PipeableStream, RenderToPipeableStreamOptions } from 'react-dom/server';
+import { ViteDevServer } from 'vite';
+
+installGlobals();
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const isTest = process.env.VITEST;
+const root = process.cwd();
+const isProduction = process.env.NODE_ENV === 'production';
 
-process.env.MY_CUSTOM_SECRET = 'API_KEY_qwertyuiop';
+function resolve(p: string) {
+  return path.resolve(__dirname, p);
+}
 
-export async function createServer(
-  hmrPort = undefined,
-  root = process.cwd(),
-  isProd = process.env.NODE_ENV === 'production'
-) {
-  const resolve = (p) => path.resolve(__dirname, p);
-
-  const indexProd = isProd ? fs.readFileSync(resolve('dist/client/index.html'), 'utf-8') : '';
-
+async function createServer() {
   const app = express();
-
   /**
    * @type {import('vite').ViteDevServer}
    */
-  let vite;
-  if (!isProd) {
+  let vite: ViteDevServer;
+
+  if (!isProduction) {
     vite = await (
       await import('vite')
     ).createServer({
       root,
-      logLevel: isTest ? 'error' : 'info',
       server: {
         middlewareMode: true,
         watch: {
           usePolling: true,
           interval: 100,
         },
-        hmr: {
-          port: hmrPort,
-        },
       },
       appType: 'custom',
     });
+
     app.use(vite.middlewares);
   } else {
     app.use((await import('compression')).default());
-    app.use(
-      (await import('serve-static')).default(resolve('dist/client'), {
-        index: false,
-      })
-    );
+    app.use(express.static(resolve('dist/client')));
   }
 
-  app.use('*', async (req, res, next) => {
-    try {
-      const url = req.originalUrl;
+  app.use('*', async (req, res) => {
+    const url = req.originalUrl;
 
-      let template, render;
-      if (!isProd) {
-        template = fs.readFileSync(resolve('index.html'), 'utf-8');
+    try {
+      let template: string;
+      let render: (
+        request: express.Request,
+        options: RenderToPipeableStreamOptions
+      ) => Promise<PipeableStream>;
+
+      if (!isProduction) {
+        template = await fsp.readFile(resolve('index.html'), 'utf8');
         template = await vite.transformIndexHtml(url, template);
-        render = (await vite.ssrLoadModule('/src/entry-server.tsx')).render;
+        render = await vite.ssrLoadModule('src/entry-server.tsx').then((m) => m.render);
       } else {
-        template = indexProd;
-        render = (await import('./dist/server/entry-server.ts')).render;
+        template = await fsp.readFile(resolve('dist/client/index.html'), 'utf8');
+        render = (await import('./dist/server/entry-server.tsx'!)).render;
       }
 
-      // const context= {};
-      const appHtml = render(url);
+      const parts = template.split('<!--app-->');
+      try {
+        res.write(parts[0]);
+        const stream = await render(req, {
+          onShellReady() {
+            stream.pipe(res);
+          },
+          // onShellError() {
+          //   // do error handling
+          // },
+          onAllReady() {
+            res.write(parts[1]);
+            res.end();
+          },
+          // onError(err) {
+          //   console.error(err);
+          // },
+        });
+      } catch (e) {
+        if (e instanceof Response && e.status >= 300 && e.status <= 399) {
+          return res.redirect(e.status, e.headers.get('Location')!);
+        }
+        throw e;
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        if (!isProduction) {
+          vite.ssrFixStacktrace(error);
+        }
 
-      // if (context.url) {
-      //   return res.redirect(301, context.url);
-      // }
+        console.log(error.stack);
+        res.status(500).end(error.stack);
 
-      const html = template.replace(`<!--app-->`, appHtml);
+        return;
+      }
 
-      res.status(200).set({ 'Content-Type': 'text/html' }).end(html);
-    } catch (e) {
-      !isProd && vite.ssrFixStacktrace(e);
-
-      console.log(e.stack);
-      res.status(500).end(e.stack);
-
-      next(e);
+      console.log(error);
     }
   });
 
-  return { app, vite };
+  return app;
 }
 
-if (!isTest) {
-  createServer().then(({ app }) =>
-    app.listen(5173, () => {
-      console.log('http://localhost:5173');
-    })
-  );
-}
+createServer().then((app) => {
+  app.listen(3000, () => {
+    console.log('HTTP server is running at http://localhost:3000');
+  });
+});

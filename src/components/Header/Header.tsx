@@ -26,7 +26,7 @@ export const Header: FC = () => {
           </NavLink>
         </div>
 
-        <h4>{matches[1].id}</h4>
+        <h4>{matches[1].pathname}</h4>
       </nav>
     </header>
   );
