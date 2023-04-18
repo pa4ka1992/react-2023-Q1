@@ -14,28 +14,28 @@ export const routes = [
       {
         index: true,
         element: <HomePage />,
-        name: 'Home',
+        id: 'Home',
       },
       {
         path: ROUTE.about,
         element: <AboutPage />,
-        name: 'About',
+        id: 'About',
       },
       {
         path: ROUTE.form,
         element: <FormPage />,
-        name: 'Form',
+        id: 'Form',
       },
       {
         path: ROUTE.photo,
         element: <HomePage />,
-        name: 'Product',
+        id: 'Product',
       },
     ],
   },
   {
     path: ROUTE.notFound,
     element: <NotFoundPage />,
-    name: 'NotFound',
+    id: 'NotFound',
   },
 ];
