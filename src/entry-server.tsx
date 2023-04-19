@@ -7,6 +7,7 @@ import {
   createStaticRouter,
   StaticRouterProvider,
 } from 'react-router-dom/server';
+
 import { routes } from '~router/routes';
 import { setupStore } from '~store/store';
 

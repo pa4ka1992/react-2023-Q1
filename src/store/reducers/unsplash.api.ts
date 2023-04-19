@@ -1,9 +1,4 @@
-import {
-  buildCreateApi,
-  coreModule,
-  fetchBaseQuery,
-  reactHooksModule,
-} from '@reduxjs/toolkit/query/react';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { isPhoto, isPhotoArray } from '~utils/type-guards';
 import { prepareHeaders } from './helpers';
@@ -12,12 +7,12 @@ import { UNSPLASH } from '@/store/reducers/constants/unsplash';
 
 import { IPhoto, ISearchRes, TPhotos } from '~types/unsplash';
 
-const customCreateApi = buildCreateApi(
-  coreModule(),
-  reactHooksModule({ unstable__sideEffectsInRender: true })
-);
+// const customCreateApi = buildCreateApi(
+//   coreModule(),
+//   reactHooksModule({ unstable__sideEffectsInRender: true })
+// );
 
-export const unsplashAPI = customCreateApi({
+export const unsplashAPI = createApi({
   reducerPath: 'unsplashAPI',
   baseQuery: fetchBaseQuery({
     baseUrl: UNSPLASH,
@@ -55,6 +50,11 @@ export const unsplashAPI = customCreateApi({
       transformResponse: (res: unknown) => (isPhoto(res) ? res : undefined),
     }),
   }),
+  // extractRehydrationInfo(action, { reducerPath }) {
+  //   if (action.type === hydrate.toString()) {
+  //     return action.payload[reducerPath];
+  //   }
+  // },
 });
 
 export const { useGetPhotosQuery, useGetSinglePhotoQuery, useSearchPhotoQuery } = unsplashAPI;
