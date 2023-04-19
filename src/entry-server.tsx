@@ -3,9 +3,9 @@ import { StrictMode } from 'react';
 import { renderToPipeableStream, type RenderToPipeableStreamOptions } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import {
-  StaticRouterProvider,
   createStaticHandler,
   createStaticRouter,
+  StaticRouterProvider,
 } from 'react-router-dom/server';
 import { routes } from '~router/routes';
 import { setupStore } from '~store/store';
@@ -20,14 +20,27 @@ export async function render(request: express.Request, options: RenderToPipeable
   }
 
   const router = createStaticRouter(dataRoutes, context);
-  return renderToPipeableStream(
+  const initialStore = setupStore();
+  const preloadedState = initialStore.getState();
+
+  const injectPreload = () => {
+    return `
+    <script>
+    window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
+  </script>
+    `;
+  };
+
+  const stream = renderToPipeableStream(
     <StrictMode>
-      <Provider store={setupStore()}>
+      <Provider store={initialStore}>
         <StaticRouterProvider router={router} context={context} nonce="the-nonce" />
       </Provider>
     </StrictMode>,
     options
   );
+
+  return { stream, injectPreload };
 }
 
 export function createFetchRequest(req: express.Request): Request {
