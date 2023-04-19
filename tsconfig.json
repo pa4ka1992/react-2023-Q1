@@ -15,7 +15,7 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
@@ -36,19 +36,15 @@
       "~reducers/*": ["src/store/reducers/*"],
       "~router/*": ["src/router/*"],
       "~types/*": ["src/types/*"],
-      "@/*": ["./src/*"]
+      "@/*": ["src/*"]
     }
   },
-  "include": ["./src", "./server", "vite.config.ts", "global.d.ts", "server.ts"],
+  "include": ["src", "server", "vite.config.ts", "global.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }],
 
   "ts-node": {
     "files": true,
-    // "transpileOnly": true,
-    "esm": true,
-    "compilerOptions": {
-      "moduleResolution": "Node16",
-      "noImplicitAny": true
-    }
+    "transpileOnly": true,
+    "esm": true
   }
 }

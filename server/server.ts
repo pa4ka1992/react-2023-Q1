@@ -6,19 +6,16 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ViteDevServer, createServer as createViteServer } from 'vite';
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const root = process.cwd();
+const isProd = process.env.NODE_ENV === 'production';
+const resolve = (p: string) => path.resolve(__dirname, p);
+
 if (!globalThis.fetch) {
   globalThis.fetch = fetch;
   globalThis.Headers = Headers;
   globalThis.Request = Request;
   globalThis.Response = Response;
-}
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const root = process.cwd();
-const isProd = process.env.NODE_ENV === 'production';
-
-function resolve(p: string) {
-  return path.resolve(__dirname, p);
 }
 
 async function startServer() {
@@ -47,14 +44,14 @@ async function startServer() {
 
     try {
       const index = fs.readFileSync(
-        resolve(isProd ? 'dist/client/index.html' : 'index.html'),
+        resolve(isProd ? `${root}/dist/client/index.html` : `${root}/index.html`),
         'utf8'
       );
       const template = isProd ? index : await viteServer.transformIndexHtml(url, index);
 
       const { render } = isProd
-        ? await import('./dist/server/entry-server.js'!)
-        : await viteServer.ssrLoadModule('src/entry-server.tsx');
+        ? await import(`${root}/dist/server/entry-server.js`!)
+        : await viteServer.ssrLoadModule(`${root}/src/entry-server.tsx`);
 
       const parts = template.split('<!--app-->');
 

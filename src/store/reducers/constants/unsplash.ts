@@ -6,6 +6,3 @@ export enum RES_STATUS {
   notFound = 404,
   serverError = 500,
 }
-
-export const PER_PAGE = 28;
-export const PAGE = Math.round(0.5 + Math.random() * 999);

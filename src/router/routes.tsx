@@ -9,7 +9,7 @@ export const routes = [
   {
     path: ROUTE.home,
     element: <Layout />,
-    name: 'Layout',
+    id: 'Layout',
     children: [
       {
         index: true,

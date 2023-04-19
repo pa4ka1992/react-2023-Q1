@@ -7,8 +7,10 @@ import {
   createStaticRouter,
   StaticRouterProvider,
 } from 'react-router-dom/server';
+import { PAGE, PER_PAGE } from 'server/constants';
 
 import { routes } from '~router/routes';
+import { unsplashAPI } from '~store/reducers';
 import { setupStore } from '~store/store';
 
 export async function render(request: express.Request, options: RenderToPipeableStreamOptions) {
@@ -21,7 +23,14 @@ export async function render(request: express.Request, options: RenderToPipeable
   }
 
   const router = createStaticRouter(dataRoutes, context);
-  const initialStore = setupStore();
+  const initialStore = setupStore({
+    homePageReducer: { search: '', page: PAGE, per_page: PER_PAGE },
+  });
+
+  await initialStore.dispatch(
+    unsplashAPI.endpoints.getPhotos.initiate({ page: PAGE, per_page: PER_PAGE })
+  );
+
   const preloadedState = initialStore.getState();
 
   const injectPreload = () => {

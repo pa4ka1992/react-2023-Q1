@@ -19,7 +19,7 @@
   "homepage": "",
   "type": "module",
   "scripts": {
-    "dev": "nodemon server.ts",
+    "dev": "nodemon server/server.ts",
     "build": "npm run build:client && npm run build:server",
     "build:client": "tsc && vite build --outDir dist/client",
     "build:server": " ts-node vite build --ssr src/entry-server.tsx --outDir dist/server",

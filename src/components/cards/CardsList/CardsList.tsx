@@ -9,25 +9,27 @@ import { useLazyLoader } from '~hooks/lazyLoader';
 import { useAppSelector } from '~hooks/redux';
 import { useGetPhotosQuery, useSearchPhotoQuery } from '~store/reducers';
 
-import { PAGE, PER_PAGE } from '~store/reducers/constants/unsplash';
-
 export const CardsList: FC = () => {
   const { search } = useAppSelector((state) => state.homePageReducer);
   const container = useRef<HTMLElement>(null);
 
-  const isUnsplashPending = useAppSelector((state) =>
-    Object.values(state.unsplashAPI.queries).some(
+  const { isUnsplashPending, page, per_page } = useAppSelector((state) => {
+    const isUnsplashPending = Object.values(state.unsplashAPI.queries).some(
       (query) => query?.status === 'pending' && query.endpointName !== 'getSinglePhoto'
-    )
-  );
+    );
+
+    const { page, per_page } = state.homePageReducer;
+
+    return { isUnsplashPending, page, per_page };
+  });
 
   const { data: random = [] } = useGetPhotosQuery({
-    per_page: PER_PAGE,
-    page: PAGE,
+    per_page: per_page,
+    page: page,
   });
   const { data: searchResult = [] } = useSearchPhotoQuery({
     query: search,
-    per_page: PER_PAGE,
+    per_page: per_page,
   });
 
   const { splittedArray, getPreloadHeight } = useLazyLoader(
