@@ -9,3 +9,4 @@ coverage
 *.code-workspace
 .pnpm-lock.yaml
 .secrets
+.nyc_output

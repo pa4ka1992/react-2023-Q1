@@ -43,8 +43,8 @@
   "references": [{ "path": "./tsconfig.node.json" }],
 
   "ts-node": {
-    "files": true,
     "transpileOnly": true,
-    "esm": true
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
   }
 }
