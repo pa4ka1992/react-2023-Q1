@@ -4,15 +4,16 @@
   "check-coverage": true,
   "include": [
     "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.js",
-    "src/**/*.jsx"
+    "src/**/*.tsx"
   ],
   "exclude": [
-    "cypress/**/*.*",
-    "**/*.d.ts",
-    "**/*.cy.tsx",
-    "**/*.cy.ts",
-    "**/*.test.tsx"
+    "**/*.test.ts*",
+    "**/*index.ts",
+    "**/*_types.ts",
+    "**/*_constants.ts",
+    "**/types/**",
+    "**/constants/**",
+    "**/setupTests.ts",
+    "**/withProviders.tsx"
   ]
 }

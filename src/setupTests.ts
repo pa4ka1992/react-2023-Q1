@@ -5,8 +5,8 @@ import { expect } from 'vitest';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 
-import * as mocks from '~store/reducers/constants/mockUnsplash';
 import { RES_STATUS, UNSPLASH } from '~store/reducers/constants/unsplash';
+import * as mocks from '~store/reducers/constants/unsplash.mock';
 
 expect.extend(matchers);
 

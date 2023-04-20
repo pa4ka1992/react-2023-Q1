@@ -1,7 +1,7 @@
 import { cleanup, render, renderHook, waitFor } from '@testing-library/react';
 import { createRef } from 'react';
 import { useLazyLoader } from '~hooks/lazyLoader';
-import { RANDOM_PHOTOS_ARRAY_MOCK } from '~store/reducers/constants/mockUnsplash';
+import { RANDOM_PHOTOS_ARRAY_MOCK } from '~store/reducers/constants/unsplash.mock';
 
 describe('lazyLoader', () => {
   afterEach(() => {

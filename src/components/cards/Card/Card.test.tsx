@@ -2,7 +2,7 @@ import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
 import Card from '~components/cards/Card/Card';
-import { SINGLE_PHOTO_MOCK } from '~store/reducers/constants/mockUnsplash';
+import { SINGLE_PHOTO_MOCK } from '~store/reducers/constants/unsplash.mock';
 
 describe('product', () => {
   afterEach(() => {

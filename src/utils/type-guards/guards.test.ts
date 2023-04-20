@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 
-import * as mocks from '~store/reducers/constants/mockUnsplash';
+import * as mocks from '~store/reducers/constants/unsplash.mock';
 import { isPhoto, isPhotoArray, isString } from './index';
 
 describe('type guards', () => {
