@@ -23,29 +23,27 @@ export default defineConfig({
     tsconfigPaths(),
     istanbul({
       cypress: true,
-      include: 'src/*',
-      extension: ['.tsx', '.ts', 'js', 'jsx'],
       requireEnv: false,
     }),
   ],
   build: {
     sourcemap: true,
   },
-  test: {
-    // globals: true,
-    // environment: 'jsdom',
-    // setupFiles: ['./src/setupTests.ts'],
-    coverage: {
-      reporter: ['text', 'lcov'],
-      // exclude: [
-      //   'src/**/*.test.tsx',
-      //   'src/**/*.test.ts',
-      //   'src/**/index.ts',
-      //   'src/**/_constants.ts',
-      //   'src/**/_types.ts',
-      //   'src/**/setupTests.ts',
-      //   'src/**/mockUnsplash.ts',
-      // ],
-    },
-  },
+  // test: {
+  //   // globals: true,
+  //   // environment: 'jsdom',
+  //   // setupFiles: ['./src/setupTests.ts'],
+  //   coverage: {
+  //     reporter: ['text', 'lcov'],
+  //     // exclude: [
+  //     //   'src/**/*.test.tsx',
+  //     //   'src/**/*.test.ts',
+  //     //   'src/**/index.ts',
+  //     //   'src/**/_constants.ts',
+  //     //   'src/**/_types.ts',
+  //     //   'src/**/setupTests.ts',
+  //     //   'src/**/mockUnsplash.ts',
+  //     // ],
+  //   },
+  // },
 });
