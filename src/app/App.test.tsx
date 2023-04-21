@@ -1,10 +1,13 @@
 import { cleanup, fireEvent, screen } from '@testing-library/react';
+import { expect } from 'vitest';
 
-import AppRouter from '~router/Router';
+import App from './App';
 
+import { act } from 'react-dom/test-utils';
 import { renderWithProviders } from '~utils/withProviders';
 
-describe('Router', () => {
+
+describe('App', () => {
   afterEach(() => {
     vi.clearAllMocks();
     vi.resetAllMocks();
@@ -13,7 +16,7 @@ describe('Router', () => {
   });
 
   test('renders home page', async () => {
-    renderWithProviders(<AppRouter />);
+    renderWithProviders(<App />);
 
     const header = screen.getByTestId('header');
     const homePage = screen.getByTestId('home');
@@ -25,11 +28,13 @@ describe('Router', () => {
   });
 
   test('routes to product modal', async () => {
-    renderWithProviders(<AppRouter />);
+    renderWithProviders(<App />);
 
     const links = await screen.findAllByTestId('card-link');
 
-    fireEvent.click(links[0]);
+    act(() => {
+      fireEvent.click(links[0]);
+    });
 
     const product = await screen.findByTestId('product');
 
@@ -37,7 +42,9 @@ describe('Router', () => {
 
     const closer = screen.getByRole('product-closer');
 
-    fireEvent.click(closer);
+    act(() => {
+      fireEvent.click(closer);
+    });
 
     expect(product).not.toBeInTheDocument();
   });

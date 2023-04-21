@@ -1,3 +1,5 @@
+import { expect } from 'vitest';
+
 import { formPageActions, formPageSlice, homePageActions, homePageSlice } from '~store/reducers/';
 
 describe('homePageSlice', () => {

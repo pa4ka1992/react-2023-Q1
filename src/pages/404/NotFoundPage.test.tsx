@@ -1,4 +1,6 @@
 import { render, screen } from '@testing-library/react';
+import { expect } from 'vitest';
+
 import { NotFoundPage } from './NotFoundPage';
 
 describe('NotFound', () => {

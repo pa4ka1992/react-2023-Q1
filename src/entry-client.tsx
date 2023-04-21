@@ -1,7 +1,8 @@
 import { StrictMode } from 'react';
 import { hydrateRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import AppRouter from '~router/Router';
+
+import App from '~app/App';
 import { TRootState, setupStore } from '~store/store';
 
 type CustomWindowInstanse = Window &
@@ -20,7 +21,7 @@ async function hydrate() {
     document.getElementById('app')!,
     <StrictMode>
       <Provider store={store}>
-        <AppRouter />
+        <App />
       </Provider>
     </StrictMode>
   );

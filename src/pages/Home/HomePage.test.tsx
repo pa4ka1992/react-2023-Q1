@@ -1,5 +1,6 @@
 import { cleanup, fireEvent, screen } from '@testing-library/react';
 import { rest } from 'msw';
+import { expect } from 'vitest';
 
 import { HomePage } from './HomePage';
 

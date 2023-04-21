@@ -1,5 +1,7 @@
 import { cleanup, render, renderHook, waitFor } from '@testing-library/react';
 import { createRef } from 'react';
+import { expect } from 'vitest';
+
 import { useLazyLoader } from '~hooks/lazyLoader';
 import { RANDOM_PHOTOS_ARRAY_MOCK } from '~store/reducers/constants/unsplash.mock';
 

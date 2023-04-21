@@ -48,11 +48,11 @@ export const Product: FC = () => {
 
           <Author photo={photo} />
 
-          <h4 role="product-description" className={desc}>
+          <h4 data-testid="product-description" className={desc}>
             {photo?.description ? photo.description : photo?.alt_description}
           </h4>
 
-          <Image photo={photo} data-testid="image" />
+          <Image photo={photo} />
           <Stats photo={photo} />
           <Info photo={photo} />
           <Tags preview={photo?.tags_preview} />

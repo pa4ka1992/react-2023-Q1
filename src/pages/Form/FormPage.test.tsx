@@ -1,9 +1,12 @@
 import { fireEvent, screen } from '@testing-library/react';
+import { expect } from 'vitest';
 
 import { FormPage } from './FormPage';
 
 import * as reduxHooks from '@/hooks/redux';
+import { act } from 'react-dom/test-utils';
 import { renderWithProviders } from '~utils/withProviders';
+
 
 describe('Form', () => {
   vi.spyOn(reduxHooks, 'useAppDispatch');
@@ -36,13 +39,15 @@ describe('Form', () => {
     const form = screen.getByTestId('form');
     const users = screen.getByTestId('users');
 
-    await fireEvent.change(userName, { target: { value: 'catsa asdasd' } });
-    await fireEvent.change(country, { target: { value: 'Belarus' } });
-    await fireEvent.change(experience, { target: { value: '2017-02-02' } });
-    await fireEvent.click(hire);
-    await fireEvent.change(avatar, { target: { files: [file] } });
-    await fireEvent.click(addInfo[0]);
-    await fireEvent.submit(form);
+    act(() => {
+      fireEvent.change(userName, { target: { value: 'catsa asdasd' } });
+      fireEvent.change(country, { target: { value: 'Belarus' } });
+      fireEvent.change(experience, { target: { value: '2017-02-02' } });
+      fireEvent.click(hire);
+      fireEvent.change(avatar, { target: { files: [file] } });
+      fireEvent.click(addInfo[0]);
+      fireEvent.submit(form);
+    });
 
     expect(form).toBeInTheDocument();
     expect(users).toBeInTheDocument();

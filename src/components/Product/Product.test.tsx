@@ -1,4 +1,5 @@
 import { cleanup, fireEvent, screen } from '@testing-library/react';
+import { expect } from 'vitest';
 
 import { Product } from './Product';
 
@@ -16,8 +17,8 @@ describe('product', () => {
     renderWithProviders(<Product />, '/photoID/cat');
 
     const product = await screen.findByTestId('product');
-    const description = await screen.findByRole('product-description');
-    const image = await screen.findByRole('product-image');
+    const description = await screen.findByTestId('product-description');
+    const image = await screen.findByTestId('product-image');
 
     fireEvent.load(image);
 

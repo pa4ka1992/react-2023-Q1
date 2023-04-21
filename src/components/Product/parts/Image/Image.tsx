@@ -12,7 +12,7 @@ export const Image: FC<{ photo?: IPhoto }> = ({ photo }) => {
   return (
     <div className={wrapImg} style={{ backgroundColor: `${photo?.color}0d` }}>
       <img
-        role="product-image"
+        data-testid="product-image"
         onLoad={() => {
           setIsLoading(false);
         }}

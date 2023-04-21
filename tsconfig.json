@@ -39,7 +39,7 @@
       "@/*": ["src/*"]
     }
   },
-  "include": ["src", "server", "vite.config.ts", "global.d.ts"],
+  "include": ["src", "server/*", "vite.config.ts", "global.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }],
 
   "ts-node": {
