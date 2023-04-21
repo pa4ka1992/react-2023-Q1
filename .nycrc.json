@@ -14,6 +14,7 @@
     "**/types/**",
     "**/constants/**",
     "**/setupTests.ts",
-    "**/withProviders.tsx"
+    "**/withProviders.tsx",
+    "**/entry-server.tsx"
   ]
 }
