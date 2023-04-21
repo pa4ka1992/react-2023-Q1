@@ -40,7 +40,7 @@ describe('App', () => {
 
     expect(product).toBeInTheDocument();
 
-    const closer = screen.getByRole('product-closer');
+    const closer = screen.getByTestId('product-closer');
 
     act(() => {
       fireEvent.click(closer);

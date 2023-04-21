@@ -42,7 +42,7 @@ export const Product: FC = () => {
     <section data-testid="product" onClick={closeHandler} className={modal}>
       <div className={container}>
         <section onClick={(e) => e.stopPropagation()} className={content}>
-          <div role="product-closer" onClick={closeHandler} className={closer}>
+          <div data-testid="product-closer" onClick={closeHandler} className={closer}>
             <FontAwesomeIcon icon={faXmark} />
           </div>
 

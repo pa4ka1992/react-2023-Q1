@@ -20,7 +20,7 @@ describe('Home page', () => {
   test('searches product', async () => {
     renderWithProviders(<HomePage />, '/');
 
-    const search = await screen.findByRole('search-input');
+    const search = await screen.findByTestId('search-input');
     const searchForm = await screen.findByTestId('search-form');
 
     fireEvent.change(search, { target: { value: 'cats' } });
@@ -35,7 +35,7 @@ describe('Home page', () => {
   test('shows alert when the search didn`t match anything', async () => {
     renderWithProviders(<HomePage />, '/');
 
-    const search = await screen.findByRole('search-input');
+    const search = await screen.findByTestId('search-input');
     const searchForm = await screen.findByTestId('search-form');
 
     server.use(
@@ -47,7 +47,7 @@ describe('Home page', () => {
     fireEvent.change(search, { target: { value: 'notMatch' } });
     fireEvent.submit(searchForm);
 
-    const notMatch = await screen.findByRole('not-match');
+    const notMatch = await screen.findByTestId('not-match');
 
     expect(notMatch).toBeInTheDocument();
   });

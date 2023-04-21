@@ -20,11 +20,11 @@ export const Hire: FC<IFormProps> = ({ register, error }) => {
       <div className={wrapper}>
         <label className={label}>
           <p className={header}>Yes</p>
-          <input role="hire-yes" type="radio" value="yes" {...register('hire')} />
+          <input data-testid="hire-yes" type="radio" value="yes" {...register('hire')} />
         </label>
         <label className={label}>
           <p className={header}>No</p>
-          <input role="hire-no" type="radio" value="no" {...register('hire')} />
+          <input data-testid="hire-no" type="radio" value="no" {...register('hire')} />
         </label>
       </div>
 

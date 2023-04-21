@@ -1,17 +1,29 @@
 /// <reference types="cypress" />
 
-describe('Home page', () => {
+describe('Product', () => {
   beforeEach(() => {
     cy.visit('/');
+
+    cy.get(`[data-testid=card]`).as('cards');
   });
 
-  it('routes to product modal', () => {
-    cy.get(`[data-testid=card]`).as('cards');
-    cy.get('@cards').eq(0).as('firstCard')
+  it('opens product modal', () => {
+    cy.get('@cards')
+      .invoke('slice', 0, 4)
+      .then(($sliced) => {
+        cy.wrap($sliced).each(($card) => {
+          cy.wrap($card)
+            .click()
+            .then(() => {
+              cy.get(`[data-testid=product]`).as('product');
 
-    cy.get('@firstCard').find(`[data-testid=card-link]`).click();
+              cy.get('@product').find(`[data-testid=product-image]`);
+              cy.url().should('include', '/photoID/');
 
-    cy.get(`[data-testid=product]`).find(`[data-testid=product-image]`);
-    cy.url().should('include', '/photoID/');
+              cy.get(`[data-testid=product-closer]`).click();
+              cy.url().should('not.include', '/photoID/');
+            });
+        });
+      });
   });
 });

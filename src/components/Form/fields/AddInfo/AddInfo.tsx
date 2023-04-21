@@ -27,7 +27,7 @@ export const AddInfo: FC<ICheckboxProps> = ({ register, error }) => {
           {ADD_INFO.map((info) => (
             <label className={label} key={info.id}>
               <span className={header}>{info.value}</span>
-              <input role="add-info" type="checkbox" value={info.value} {...useFormObj} />
+              <input data-testid="add-info" type="checkbox" value={info.value} {...useFormObj} />
             </label>
           ))}
         </div>

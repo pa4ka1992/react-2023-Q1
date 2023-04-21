@@ -35,8 +35,8 @@ export const Photo: FC<IFormProps> = ({ register, error, isReseted }) => {
   return (
     <div className="border">
       <p className="title">Choose avatar:</p>
-      <label className={buttonStyle.button}>
-        <span role="avatar">Choose file</span>
+      <label data-testid="avatar" className={buttonStyle.button}>
+        <span>Choose file</span>
         <input
           aria-label="avatar"
           className={styles.input}

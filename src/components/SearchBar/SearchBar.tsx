@@ -29,7 +29,7 @@ export const SearchBar: FC = () => {
   return (
     <form onSubmit={submitHandler} data-testid="search-form" className={styles.form}>
       <input
-        role="search-input"
+        data-testid="search-input"
         className={inputStyle.input}
         type="search"
         onChange={searchHandler}

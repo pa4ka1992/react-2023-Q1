@@ -27,6 +27,7 @@
     "test:vi": "vitest run --coverage",
     "test:cy": "npx start-server-and-test dev http-get://localhost:3000 cy:run-e2e && npx nyc report && npx nyc report --reporter=text-summary",
     "vitest:watch": "vitest",
+    "cy:single": "cypress run --spec  cypress/e2e/form.cy.ts",
     "cy:open-e2e": "cypress open --e2e --browser chrome",
     "cy:run-e2e": "cypress run --e2e",
     "cy:e2e": "start-server-and-test dev http-get://localhost:3000 cy:open-e2e"

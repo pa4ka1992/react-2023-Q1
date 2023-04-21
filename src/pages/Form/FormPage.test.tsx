@@ -30,11 +30,11 @@ describe('Form', () => {
     const file = new File(['(⌐□_□)'], 'avatar.png', { type: 'image/png' });
 
     const avatar = screen.getByLabelText('avatar');
-    const addInfo = screen.getAllByRole('add-info');
-    const userName = screen.getByRole('user-name');
-    const country = screen.getByRole('country');
-    const experience = screen.getByRole('experience');
-    const hire = screen.getByRole('hire-yes');
+    const addInfo = screen.getAllByTestId('add-info');
+    const userName = screen.getByTestId('user-name');
+    const country = screen.getByTestId('country');
+    const experience = screen.getByTestId('experience');
+    const hire = screen.getByTestId('hire-yes');
 
     const form = screen.getByTestId('form');
     const users = screen.getByTestId('users');

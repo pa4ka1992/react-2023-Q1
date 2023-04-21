@@ -45,22 +45,20 @@ export const Form: FC = () => {
   };
 
   return (
-    <>
-      <form data-testid="form" className={form} onSubmit={handleSubmit(submitHandler)}>
-        <h3>Form</h3>
-        <div className={grid}>
-          <UserName register={register} error={errors.userName} />
-          <Experience register={register} error={errors.experience} />
-          <Country register={register} error={errors.country} />
-          <AddInfo register={register} error={errors.addInfo} />
-          <Hire register={register} error={errors.hire} />
-          <Photo register={register} error={errors.photo} isReseted={isReseted} />
-        </div>
-        <button className={buttonStyle.button} type="submit">
-          Add
-        </button>
-        {isReseted ? <Modal /> : null}
-      </form>
-    </>
+    <form data-testid="form" className={form} onSubmit={handleSubmit(submitHandler)}>
+      <h3>Add new photographer</h3>
+      <div className={grid}>
+        <UserName register={register} error={errors.userName} />
+        <Experience register={register} error={errors.experience} />
+        <Country register={register} error={errors.country} />
+        <AddInfo register={register} error={errors.addInfo} />
+        <Hire register={register} error={errors.hire} />
+        <Photo register={register} error={errors.photo} isReseted={isReseted} />
+      </div>
+      <button className={buttonStyle.button} type="submit">
+        Add
+      </button>
+      {isReseted ? <Modal /> : null}
+    </form>
   );
 };

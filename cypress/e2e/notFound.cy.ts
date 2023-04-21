@@ -1,7 +1,11 @@
 /// <reference types="cypress" />
 
-describe('Just visit e2e test', () => {
-  it('should visit', () => {
-    cy.visit('/notFound')
+describe('Not found', () => {
+  beforeEach(() => {
+    cy.visit('/notFound');
+  });
+
+  it('routes not found', () => {
+    cy.contains('Page is not found');
   });
 });

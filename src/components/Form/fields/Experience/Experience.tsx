@@ -27,7 +27,7 @@ export const Experience: FC<IFormProps> = ({ register, error }) => {
   return (
     <div className="border">
       <p className="title">As a photographer since</p>
-      <input role="experience" className={styles.input} type="date" {...useFormObj} />
+      <input data-testid="experience" className={styles.input} type="date" {...useFormObj} />
 
       <FormError error={error?.message} />
     </div>

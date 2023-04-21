@@ -48,7 +48,7 @@ export const CardsList: FC = () => {
   if (!isUnsplashPending && search && !searchResult.length) {
     return (
       <section className={styles.isNotMatch} ref={container}>
-        <h4 role="not-match">Your search did not match any photos... </h4>
+        <h4 data-testid="not-match">Your search did not match any photos... </h4>
       </section>
     );
   }
