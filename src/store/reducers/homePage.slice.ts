@@ -19,14 +19,6 @@ export const homePageSlice = createSlice({
     setSearch(state, action: PayloadAction<string>) {
       state.search = action.payload;
     },
-
-    setPage(state, action: PayloadAction<number>) {
-      state.page = action.payload;
-    },
-
-    setPerPage(state, action: PayloadAction<number>) {
-      state.per_page = action.payload;
-    },
   },
 });
 
