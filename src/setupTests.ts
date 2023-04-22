@@ -1,6 +1,7 @@
 import matchers from '@testing-library/jest-dom/matchers';
 import { fetch, Headers, Request, Response } from 'cross-fetch';
 import { expect } from 'vitest';
+import { Blob } from 'buffer';
 
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
@@ -14,6 +15,7 @@ vi.stubGlobal('fetch', fetch);
 vi.stubGlobal('Headers', Headers);
 vi.stubGlobal('Request', Request);
 vi.stubGlobal('Response', Response);
+vi.stubGlobal('Blob', Blob);
 
 export const server = setupServer(
   rest.get(`${UNSPLASH}/photos/:photoId`, (req, res, ctx) => {

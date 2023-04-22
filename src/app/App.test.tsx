@@ -3,9 +3,7 @@ import { expect } from 'vitest';
 
 import App from './App';
 
-import { act } from 'react-dom/test-utils';
 import { renderWithProviders } from '~utils/withProviders';
-
 
 describe('App', () => {
   afterEach(() => {
@@ -32,9 +30,7 @@ describe('App', () => {
 
     const links = await screen.findAllByTestId('card-link');
 
-    act(() => {
-      fireEvent.click(links[0]);
-    });
+    fireEvent.click(links[0]);
 
     const product = await screen.findByTestId('product');
 
@@ -42,9 +38,7 @@ describe('App', () => {
 
     const closer = screen.getByTestId('product-closer');
 
-    act(() => {
-      fireEvent.click(closer);
-    });
+    fireEvent.click(closer);
 
     expect(product).not.toBeInTheDocument();
   });

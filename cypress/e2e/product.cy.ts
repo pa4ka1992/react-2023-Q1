@@ -27,3 +27,5 @@ describe('Product', () => {
       });
   });
 });
+
+export {};

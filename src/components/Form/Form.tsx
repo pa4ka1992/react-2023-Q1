@@ -35,7 +35,7 @@ export const Form: FC = () => {
     const blob = new Blob([file], { type: file.type });
     const imageToString = URL.createObjectURL(blob);
 
-    setUser({ id: Date.now(), ...structuredClone(data), photo: imageToString });
+    setUser({ id: Date.now(), ...JSON.parse(JSON.stringify(data)), photo: imageToString });
     setIsReseted(true);
 
     setTimeout(() => {

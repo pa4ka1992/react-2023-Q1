@@ -32,3 +32,5 @@ describe('Home', () => {
     });
   });
 });
+
+export {};

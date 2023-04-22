@@ -9,3 +9,5 @@ describe('Not found', () => {
     cy.contains('Page is not found');
   });
 });
+
+export {};

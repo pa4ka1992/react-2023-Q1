@@ -13,3 +13,5 @@ describe('About', () => {
     cy.get('[data-testid=about]');
   });
 });
+
+export {};
