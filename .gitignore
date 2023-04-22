@@ -3,10 +3,10 @@ node_modules
 dist
 dist-ssr
 *.local
-coverage
+coverage/*
+!coverage/lcov.info
 .eslintcache
 .nvmrc
 *.code-workspace
 .pnpm-lock.yaml
-.secrets
 .nyc_output

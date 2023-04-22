@@ -24,7 +24,6 @@ jobs:
   buildAndTest:
     name: Build & Test
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v2
         with:
@@ -57,7 +56,7 @@ jobs:
         run: pnpm test:vi
 
       - name: TEST CYPRESS
-        run: pnpm test:cy
+        run: pnpm cy:gh-actions
 
       # Upload dist artifacts
       - uses: actions/upload-artifact@v2

@@ -37,7 +37,7 @@ export const CardsList: FC = () => {
     search ? searchResult : random
   );
 
-  if (isUnsplashPending) {
+  if (isUnsplashPending && !splittedArray.length) {
     return (
       <section ref={container}>
         <Spinner />
