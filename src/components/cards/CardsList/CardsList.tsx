@@ -13,7 +13,7 @@ export const CardsList: FC = () => {
   const { search } = useAppSelector((state) => state.homePageReducer);
   const container = useRef<HTMLElement>(null);
 
-  const { isUnsplashPending, page, per_page } = useAppSelector((state) => {
+  const { isUnsplashPending, per_page, page } = useAppSelector((state) => {
     const isUnsplashPending = Object.values(state.unsplashAPI.queries).some(
       (query) => query?.status === 'pending' && query.endpointName !== 'getSinglePhoto'
     );

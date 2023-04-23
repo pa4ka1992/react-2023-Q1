@@ -22,6 +22,7 @@ describe('Form', () => {
       cy.get('[data-testid=country]').as('country');
       cy.get('[data-testid=experience]').as('experience');
       cy.get('[data-testid=hire-yes]').as('hire-yes');
+      cy.get('[data-testid=hire-no]').as('hire-no');
       cy.get('[data-testid=avatar]').as('avatar');
       cy.get('[data-testid=user-name]').as('user-name');
     });
@@ -37,7 +38,7 @@ describe('Form', () => {
       cy.contains('Full name is required');
     });
 
-    it('adds new photographer', () => {
+    it('adds new photographer v1', () => {
       cy.get('@user-name').type('Vasia Pupok');
       cy.get('@experience').type('2017-02-03');
       cy.get('@country').select('Belarus');
@@ -45,6 +46,34 @@ describe('Form', () => {
         cy.wrap($box).click();
       });
       cy.get('@hire-yes').click();
+      cy.fixture('avatar.png', null).then(($buffer: Buffer) => {
+        cy.get('@avatar').selectFile({
+          contents: $buffer,
+        });
+      });
+
+      cy.get('@form').submit();
+
+      cy.clock();
+
+      cy.get('[data-testid=users').then(($users) => {
+        cy.wrap($users).eq(0).as('user');
+
+        cy.get('@user').contains('Vasia Pupok');
+      });
+
+      cy.tick(3000);
+    });
+
+    it('adds new photographer v2', () => {
+      const date = new Date().toJSON().slice(0, 10);
+
+      cy.get('@user-name').type('Vasia Pupok');
+      cy.get('@experience').type(date);
+      cy.get('@country').select('Belarus');
+      cy.get('@add-info').eq(0).click();
+
+      cy.get('@hire-no').click();
       cy.fixture('avatar.png', null).then(($buffer: Buffer) => {
         cy.get('@avatar').selectFile({
           contents: $buffer,

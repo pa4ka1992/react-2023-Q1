@@ -6,10 +6,11 @@ import styles from './SearchBar.module.scss';
 
 import { useActions } from '~hooks/actions';
 import { useAppSelector } from '~hooks/redux';
+import { getRandomPage } from '~helpers/getRandomPage';
 
 export const SearchBar: FC = () => {
   const { search } = useAppSelector((state) => state.homePageReducer);
-  const { setSearch } = useActions();
+  const { setSearch, setPage } = useActions();
   const [inputValue, setInputValue] = useState('');
 
   useEffect(() => {
@@ -20,8 +21,12 @@ export const SearchBar: FC = () => {
     setInputValue(target.value);
   };
 
-  const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
+  const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!inputValue) {
+      setPage(getRandomPage());
+    }
 
     setSearch(inputValue);
   };

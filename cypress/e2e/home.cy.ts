@@ -17,6 +17,12 @@ describe('Home', () => {
       cy.get(`[data-testid=search-input]`).as('input');
     });
 
+    it('with empty search', () => {
+      cy.get('@form').submit();
+
+      cy.get('@cards').should('have.length', 28);
+    });
+
     it('with results', () => {
       cy.get('@input').type('cat');
       cy.get('@form').submit();

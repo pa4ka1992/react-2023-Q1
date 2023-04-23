@@ -8,7 +8,7 @@
     "allowJs": false,
     "sourceMap": true,
     "skipLibCheck": true,
-    "esModuleInterop": false,
+    "esModuleInterop": true,
     "rootDir": ".",
     "outDir": "dist",
     "allowSyntheticDefaultImports": true,
@@ -45,6 +45,9 @@
   "ts-node": {
     "transpileOnly": true,
     "esm": true,
-    "experimentalSpecifierResolution": "node"
+    "experimentalSpecifierResolution": "node",
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
   }
 }

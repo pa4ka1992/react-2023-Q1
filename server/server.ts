@@ -3,10 +3,8 @@ import fetch, { Headers, Request, Response } from 'cross-fetch';
 import express from 'express';
 import fs from 'fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { ViteDevServer, createServer as createViteServer } from 'vite';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = process.cwd();
 const isProd = process.env.NODE_ENV === 'production';
 const resolve = (p: string) => path.resolve(__dirname, p);
@@ -26,9 +24,11 @@ async function startServer() {
   let viteServer: ViteDevServer;
 
   if (isProd) {
-    const sirv = (await import('sirv'!)).default;
-
-    app.use(sirv(`${root}/dist/client`));
+    app.use(
+      (await import('serve-static')).default(resolve('dist/client'), {
+        index: false,
+      })
+    );
   } else {
     viteServer = await createViteServer({
       root,
@@ -44,7 +44,7 @@ async function startServer() {
 
     try {
       const index = fs.readFileSync(
-        resolve(isProd ? `${root}/dist/client/index.html` : `${root}/index.html`),
+        resolve(isProd ? `dist/client/index.html` : `${root}/index.html`),
         'utf8'
       );
       const template = isProd ? index : await viteServer.transformIndexHtml(url, index);
