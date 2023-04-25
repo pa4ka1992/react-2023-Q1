@@ -1,13 +1,13 @@
 name: App CI
 
 on:
-  push:
-    # Run on all branches
-    branches:
-      - '*'
-    # Run only if files modified are not docs
-    paths-ignore:
-      - '*.md'
+  # push:
+  #   # Run on all branches
+  #   branches:
+  #     - '*'
+  #   # Run only if files modified are not docs
+  #   paths-ignore:
+  #     - '*.md'
   pull_request:
     # Run on all branches
     branches:
