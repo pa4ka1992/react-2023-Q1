@@ -1,0 +1,18 @@
+@import '~variables';
+
+.header {
+  font-size: map-get($body2, 'size');
+}
+
+.wrapper {
+  display: flex;
+  gap: map-get($space-md, 'x');
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: map-get($space-xs, 'x');
+
+  cursor: pointer;
+}

@@ -1,0 +1,13 @@
+@import '~variables';
+
+.usersList {
+  display: flex;
+  flex-wrap: wrap;
+  // align-items: stretch;
+  // grid-template-columns: repeat(auto-fit, minmax(0, 0.5fr));
+  gap: map-get($space-md, 'x');
+
+  margin-top: map-get($space-md, 'x');
+
+  color: $dark;
+}

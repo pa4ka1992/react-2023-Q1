@@ -1,0 +1,99 @@
+name: App CI
+
+on:
+  # push:
+  #   # Run on all branches
+  #   branches:
+  #     - '*'
+  #   # Run only if files modified are not docs
+  #   paths-ignore:
+  #     - '*.md'
+  pull_request:
+    # Run on all branches
+    branches:
+      - '*'
+    # Run only if files modified are not docs
+    paths-ignore:
+      - '*.md'
+
+env:
+  GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
+jobs:
+  # Build & Test
+  buildAndTest:
+    continue-on-error: true
+    name: Build & Test
+    strategy:
+      matrix:
+        os: [windows-latest, macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ env.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      # Use cashe
+      - uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+
+      # Install
+      - name: INSTALL
+        run: npm ci
+
+      # Lint
+      - name: LINT
+        run: npm run lint
+
+      # Build
+      - name: BUILD
+        run: npm run build
+
+      # Test
+      - name: TEST VITEST
+        run: npm run test:unit
+
+      - name: TEST CYPRESS
+        uses: cypress-io/github-action@v5
+        with:
+          start: npm run dev
+
+      # Upload dist artifacts
+      - uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: dist/
+
+      # Upload coverage artifacts
+      - uses: actions/upload-artifact@v3
+        with:
+          name: coverage
+          path: coverage/lcov.info
+
+  coverage:
+    name: Coverage analysis
+    needs: buildAndTest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ env.GITHUB_TOKEN }}
+
+      # Donwload coverage artifacts
+      - uses: actions/download-artifact@v3
+        with:
+          name: coverage
+
+      # Update coverage file to codecov
+      - name: CODECOV
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: lcov.info

@@ -1,0 +1,16 @@
+@import '~variables';
+
+.wrapImg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 80vh;
+}
+
+.img {
+  display: block;
+  width: 100%;
+  height: 80vh;
+  object-fit: contain;
+}
