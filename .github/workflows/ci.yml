@@ -57,7 +57,7 @@ jobs:
 
       # Test
       - name: TEST VITEST
-        run: npm run test:vi
+        run: npm run test:unit
 
       - name: TEST CYPRESS
         uses: cypress-io/github-action@v5
